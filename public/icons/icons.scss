@@ -1,0 +1,62 @@
+.icon {
+    display: flex;
+    height: 20px;
+    width: 20px;
+  
+    &.grid {
+      background: $grid-icon;
+    }
+  
+    &.expand {
+      background: $expand-icon;
+    }
+  
+    &.profile {
+      background: $profile-icon;
+    }
+  
+    &.settings {
+      background: $settings-icon;
+    }
+  
+    &.website {
+      background: $website-icon;
+    }
+  
+    &.twitter {
+      background: $twitter-icon;
+    }
+  
+    &.telegram {
+      background: $telegram-icon;
+    }
+  
+    &.discord {
+      background: $discord-icon;
+    }
+  
+    &.arrow-up {
+      background: $arrow-up-icon;
+    }
+  
+    &.arrow-down {
+      background: $arrow-down-icon;
+    }
+  
+    &.activity {
+      background: $activity-icon;
+    }
+  
+    &.love {
+      background: $love-icon;
+    }
+  
+    &.love-grey {
+      background: $love-grey-icon;
+    }
+  
+    &.ethereum {
+      background: $ethereum-icon;
+    }
+  }
+  

@@ -1,0 +1,120 @@
+@import 'variables/variables';
+// @import '../public/icons/icons.scss';
+
+.background-container {
+  width: fit-content;
+  // background-color: red;
+
+  .button {
+    cursor: pointer;
+  }
+
+  &-primary {
+    border: none;
+    border-radius: $border-radius-primary;
+
+    .primary {
+      background: $background-gradient;
+      background: $background-gradient-primary;
+      border: 0;
+      border-radius: $border-radius-primary;
+      color: $white;
+      margin: -1px;
+      padding: 10px 20px;
+    }
+  }
+
+  &-secondary {
+    border: none;
+    border-radius: $border-radius-secondary;
+    background: $background-gradient;
+    background: $background-gradient-secondary;
+    padding: 1px;
+
+    .secondary {
+      background: $black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: $border-radius-secondary;
+      color: $pink;
+    }
+  }
+
+  &-tertiary {
+    border: none;
+    border-radius: $border-radius-tertiary;
+    background: none;
+    padding: 0px;
+
+    .tertiary {
+      background: $button-pink;
+      border: 1px solid $button-border-pink;
+      padding: 10px 20px;
+      border-radius: $border-radius-tertiary;
+      color: $mid-grey-3;
+    }
+  }
+
+  &-quaternary {
+    border: none;
+    border-radius: $border-radius-quaternary;
+    background: none;
+    padding: 0px;
+
+    .quaternary {
+      background: $dark-1;
+      border: 1px solid $button-border-pink;
+      padding: 10px 20px;
+      border-radius: $border-radius-quaternary;
+      color: $mid-grey-2;
+    }
+  }
+
+  &-quinary {
+    border: none;
+    border-radius: $border-radius-quaternary;
+    background: none;
+    padding: 0px;
+
+    .quinary {
+      background: $dark-4;
+      border: 1px solid $button-border-pink;
+      padding: 10px 10px;
+      border-radius: $border-radius-quinary;
+      color: $mid-grey-2;
+      display: flex;
+
+      &.circle {
+        border-radius: $border-radius-quinary-circle;
+      }
+    }
+  }
+
+  &-senary {
+    border: none;
+    border-radius: $border-radius-quaternary;
+    background: none;
+    padding: 0px;
+    max-width: 65px;
+
+    .senary {
+      background: $dark-4;
+      border: 1px solid $button-border-pink;
+      padding: 10px 10px;
+      border-radius: $border-radius-quinary;
+      color: $mid-grey-2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        text-transform: uppercase;
+        font-size: 10px;
+
+        &:nth-child(1) {
+          padding-bottom: 8px;
+        }
+      }
+    }
+  }
+}
