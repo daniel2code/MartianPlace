@@ -1,0 +1,1 @@
+export const DESC = "Martian Fuel is a deflationary token for the entertainment industry that fuels funding for content creators in the film, gaming and music industry, globally.";

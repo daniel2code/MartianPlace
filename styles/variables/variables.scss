@@ -1,0 +1,163 @@
+//Colors
+$background-gradient: rgb(118, 208, 248);
+$background-gradient-primary: linear-gradient(
+    90deg,
+    rgba(118, 208, 248, 1) 0%,
+    rgba(152, 146, 250, 1) 24%,
+    rgba(177, 130, 251, 1) 51%,
+    rgba(209, 108, 252, 1) 75%,
+    rgba(249, 82, 254, 1) 100%
+);
+$background-gradient-secondary: linear-gradient(
+    180deg,
+    rgba(118, 208, 248, 1) 0%,
+    rgba(152, 146, 250, 1) 24%,
+    rgba(177, 130, 251, 1) 51%,
+    rgba(209, 108, 252, 1) 75%,
+    rgba(249, 82, 254, 1) 100%
+);
+$black: #222222;
+$button-black: #222529;
+$button-border-black: #343b44;
+$pink: #d16cfc;
+$button-pink: rgba(177, 130, 251, 0.54);
+$button-border-pink: rgba(177, 130, 251, 0.54);
+$white: #ffffff;
+$dark-1: #222529;
+$dark-2: #282c32;
+$dark-3: #1c1e20;
+$dark-4: #202328;
+$mid-grey-1: #1c1e20;
+$mid-grey-2: #5c6a7e;
+$mid-grey-3: #24282d;
+$mid-grey-4: #515F73;
+$light-grey-1: #7f97a1;
+$purple-primary: #b182fb;
+$purple-secondary: #d16cfc;
+$pink: #f952fe;
+$input-text-light: #72849f;
+$input-border: #2d333d;
+$panel-background-color: #21252b;
+$button-group-border-grey: rgba(64, 72, 85, 0.75);
+$textual-traits-background-color: rgba(177, 130, 251, 0.2);
+$card-border-grey: rgba(92, 106, 126, 0.5);
+$card-background-grey: rgba(92, 106, 126, 0.5);
+
+// Fonts
+$font-family: SF Pro Display;
+
+// Metrics
+$border-radius-primary: 27px;
+$border-radius-secondary: 24px;
+$border-radius-tertiary: 5px;
+$border-radius-quaternary: 5px;
+$border-radius-quinary: 5px;
+$border-radius-quinary-circle: 27px;
+$input-border-radius: 25px;
+$basic-padding: 8px 20px;
+$basic-padding-xl: 20px 20px;
+$basic-padding-xs: 2px 20px;
+$textual-traits-border-radius: 10px;
+$card-border-radius: 8px;
+$default-padding: 15px;
+
+// Icons
+$search-icon: url("../public/images/search.svg") no-repeat $dark-4;
+$grid-icon: url("../../public/images/grid.svg") no-repeat $dark-4;
+$expand-icon: url("../../public/images/expand.svg") no-repeat $dark-4;
+$profile-icon: url("../../public/images/profile.svg") no-repeat $dark-4;
+$settings-icon: url("../../public/images/settings.svg") no-repeat $dark-4;
+$website-icon: url("../../public/images/website.svg") no-repeat $dark-4;
+$twitter-icon: url("../../public/images/twitter.svg") no-repeat $dark-4;
+$telegram-icon: url("../../public/images/telegram.svg") no-repeat $dark-4;
+$discord-icon: url("../../public/images/discord.svg") no-repeat $dark-4;
+$logout-icon: url('../../public/images/logout.svg') no-repeat center center/cover;
+$sell-icon: url('../../public/images/sell.svg') no-repeat;
+$transfer-icon: url('../../public/images/transfer.svg') no-repeat center center/cover;
+$arrow-down-icon: url("../../public/images/arrow-down.svg") no-repeat $dark-4;
+$arrow-up-icon: url("../../public/images/arrow-up.svg") no-repeat $dark-4;
+$activity-icon: url("../../public/images/activity.svg") no-repeat $dark-4;
+$love-icon: url("../../public/images/love.svg") center no-repeat $dark-4;
+$love-grey-icon: url("../../public/images/love-grey.svg") center no-repeat $dark-4;
+$ethereum-icon: url("../../public/images/ethereum.svg") center no-repeat $dark-4;
+
+.icon {
+    display: flex;
+    height: 20px;
+    width: 20px;
+  
+    &.grid {
+      background: $grid-icon;
+    }
+  
+    &.expand {
+      background: $expand-icon;
+    }
+  
+    &.profile {
+      background: $profile-icon;
+    }
+  
+    &.settings {
+      background: $settings-icon;
+    }
+  
+    &.website {
+      background: $website-icon;
+    }
+  
+    &.twitter {
+      background: $twitter-icon;
+    }
+  
+    &.telegram {
+      background: $telegram-icon;
+    }
+  
+    &.discord {
+      background: $discord-icon;
+    }
+  
+    &.arrow-up {
+      background: $arrow-up-icon;
+    }
+  
+    &.arrow-down {
+      background: $arrow-down-icon;
+    }
+  
+    &.activity {
+      background: $activity-icon;
+    }
+  
+    &.love {
+      background: $love-icon;
+    }
+  
+    &.love-grey {
+      background: $love-grey-icon;
+    }
+  
+    &.ethereum {
+      background: $ethereum-icon;
+    }
+  }
+  
+
+// Images
+$logo: url("../public/images/logo.svg") center no-repeat $dark-4;
+$astronaut-illustration: url("../assets/images/astronaut-illustration.svg") center no-repeat $dark-4;
+$dummy-card-image: url("../assets/images/skeleton.svg") center no-repeat $dark-4;
+$dummy-card-image2: url("../assets/images/trump.svg") center no-repeat $dark-4;
+
+:export {
+    dark-1: $dark-1;
+    dark-2: $dark-2;
+    dark-3: $dark-3;
+    mid-grey-4: $mid-grey-4;
+    mid-grey-2: $mid-grey-2;
+    light-grey-1: $light-grey-1;
+    purple-primary: $purple-primary;
+    purple-secondary: $purple-secondary;
+    pink: $pink;
+  }
