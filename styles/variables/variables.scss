@@ -54,14 +54,15 @@ $border-radius-quaternary: 5px;
 $border-radius-quinary: 5px;
 $border-radius-quinary-circle: 27px;
 $input-border-radius: 25px;
-$basic-padding: 10px 20px;
+$basic-padding: 8px 20px;
 $basic-padding-xl: 20px 20px;
+$basic-padding-xs: 2px 20px;
 $textual-traits-border-radius: 10px;
 $card-border-radius: 8px;
 $default-padding: 15px;
 
 // Icons
-$search-icon: url("../../public/images/search.svg") no-repeat $dark-4;
+$search-icon: url("../public/images/search.svg") no-repeat $dark-4;
 $grid-icon: url("../../public/images/grid.svg") no-repeat $dark-4;
 $expand-icon: url("../../public/images/expand.svg") no-repeat $dark-4;
 $profile-icon: url("../../public/images/profile.svg") no-repeat $dark-4;

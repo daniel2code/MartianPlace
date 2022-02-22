@@ -4,24 +4,23 @@ import navStyles from '../styles/Nav.module.scss'
 import Logo from './elements/Logo'
 import thelogo from '../public/images/head.svg'
 import theprofile from '../public/images/avatar.svg'
+import thesearch from '../public/images/search.svg'
 import Button from './elements/Button.js'
+import Input from './elements/Input'
 
-const Nav = () => {
+const Nav = (props) => {
+  const { usertoken } = props;
+
   return (
     <nav className={navStyles.nav}>
       <ul>
         <li>
           <Link href='/'>
-            <div>
-
-              {/* Logo component */}
-              <Logo title={'Moonshots'} image={thelogo}></Logo>
-
-            </div>
+            <Logo title={'Moonshots'} image={thelogo}></Logo>
           </Link>
         </li>
         <li>
-          <a className='text-[18px]'>Martianplace</a>
+          <Link href='/' className="text-[18px] cursor-default">Martianplace</Link>
         </li>
         <li><span>|</span></li>
         <li>
@@ -29,42 +28,29 @@ const Nav = () => {
         </li>
         <li>
           <Link href='/discover' className="nav-link">Discover</Link>
-        </li><li>
+        </li>
+        <li>
           <Link href='/create' className="nav-link">Create</Link>
         </li>
         <li>
-          <span>
-
-            search component
-
-          </span>
+          <Input leftIcon={{ src: thesearch, alt: 'icon' }} inputstyles="shadow-inner rounded-full px-2 py-1 w-96 border-none
+            focus:outline-none" placeHolder="Search digital collectables, art and more" title="Search" size="xs" />
         </li>
       </ul>
 
       <ul>
         <li>
-        <div className=''>
-      <button
-        type='button'
-        id="btnconnected"
-        title='ok'
-        className='border border-purple-primary rounded-full py-1.5 px-2 text-[14px]'
-        onClick={() =>{}}>Wallet connected
-      </button>
-    </div>
+          <Button
+            type='button'
+            id={ usertoken ? "btnconnected" : "btnconnect" }
+            title={ usertoken ? 'connected' : 'connect' }
+            buttonStyles='border border-purple-primary rounded-full py-1.5 px-2 text-[14px] hover:bg-purple-primary'
+            onClick={() => { }}
+            label={ usertoken ? "Wallet connected" : "Connect Wallet" }/>
         </li>
         <li>
-            {/* <Button
-                label="Wallet connected"
-                title="Wallet connected"
-                type="button"
-                buttonStyle="Primary"
-                onClick={() => { }}
-              /> */}
-        </li>
-        <li>
-          <a onClick={() => { }}>
-            <Image className="rounded-full" src={theprofile} alt={'Profile'}
+          <a onClick={() => { }} >
+            <Image className="rounded-full hover:rounded-lg" src={theprofile} alt={'Profile'}
               width={35} height={35} ></Image>
           </a>
         </li>

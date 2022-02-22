@@ -22,10 +22,9 @@ const Layout = ({ children }) => {
               </div>
 
               <div className={styles.iconsBox}>
-                <Link href=""><Image src={thetelegram} alt="icon" width={25} height={25} /></Link>
-                <Link href=""><Image src={theinsta} alt="icon" width={25} height={25} /></Link>
-                <Link href=""><Image src={thetwitter} alt="icon" width={25} height={25} /></Link>
-                {/* <Link href=""><img src="../public/images/github.svg" alt="icon" /></Link> */}
+                <Link href="#"><Image src={thetelegram} alt="icon" width={25} height={25} /></Link>
+                <Link href="#"><Image src={theinsta} alt="icon" width={25} height={25} /></Link>
+                <Link href="#"><Image src={thetwitter} alt="icon" width={25} height={25} /></Link>
               </div>
 
               <div className={styles.textBox}>
@@ -40,8 +39,7 @@ const Layout = ({ children }) => {
         </div>
         <div className={styles.backg}>
           <div className={styles.banner}>
-            <Image src={theprofile} alt={'children.banner'} layout="fill" objectFit='cover'></Image>
-            {/* {children.banner && <Image src={children.banner} alt={children.banner} layout="fill" objectFit='cover'></Image>} */}
+            {children.banner && <Image src={children.banner} alt={children.banner} layout="fill" objectFit='cover'></Image>}
           </div>
           <div className={styles.bottom}></div>
         </div>

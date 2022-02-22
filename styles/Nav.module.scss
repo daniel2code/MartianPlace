@@ -3,12 +3,12 @@
 
 .nav {
     // height: 50px;
-    padding: 15px 5px;
+    padding: 1.5% 2%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #ffffff;
-    position: fixed;
+    // position: fixed;
     width: 100%;
     background-color: rgba(40, 44, 50, 0.1);
 }
@@ -28,96 +28,3 @@
     color: $pink;
     text-decoration: underline;
 }
-
-// .header {
-//   align-items: center;
-//   background-color: $black;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   padding: 19px 0px;
-
-//   .logo {
-//     border-right: 1px solid $white;
-//     padding: 0px $default-padding;
-//   }
-
-  // .background-container {
-  //   width: fit-content;
-  // }
-
-  
-  // .background-container-secondary {
-  //   border: none;
-  //   border-radius: $border-radius-secondary;
-  //   background: $background-gradient;
-  //   background: $background-gradient-secondary;
-  //   padding: 1px;
-  // }
-
-  // .secondary {
-  //   background-color: $black;
-  //   border: none;
-  //   padding: 10px 20px;
-  //   border-radius: $border-radius-secondary;
-  //   color: $pink;
-  // }
-
-//   .buttons {
-//     align-items: center;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: flex-end;
-
-//     .button {
-//       margin: 0 $default-padding 0 0;
-//     }
-//   }
-
-//   .input-container {
-//     flex-grow: 1;
-//     margin-left: $default-padding;
-//     max-width: 469px;
-//   }
-// }
-
-// .background-container {
-//   font-family: SF Pro Display;
-//   width: fit-content;
-
-//   button {
-//     cursor: pointer;
-//   }
-
-//   &-primary {
-//     border: none;
-//     border-radius: $border-radius-primary;
-
-//     .primary {
-//       background: $background-gradient;
-//       background: $background-gradient-primary;
-//       border: 0;
-//       border-radius: $border-radius-primary;
-//       color: $white;
-//       margin: -1px;
-//       padding: 10px 20px;
-//     }
-//   }
-
-//   &-secondary {
-//     border: none;
-//     border-radius: $border-radius-secondary;
-//     background: $background-gradient;
-//     background: $background-gradient-secondary;
-//     padding: 1px;
-
-//     .secondary {
-//       background: $black;
-//       border: none;
-//       padding: 10px 20px;
-//       border-radius: $border-radius-secondary;
-//       color: $pink;
-//     }
-//   }
-
-// }

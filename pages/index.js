@@ -10,14 +10,11 @@ export default function Home() {
         <meta name="description" content={DESC}/>
         <meta name="keywords" content='Martian Fuel, entertainment, gaming, music, crypocurrency, blockchain' />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/head.ico" />
       </Head>
 
       <div className='flex flex-col justify-flex-start w-full'>
         <h1>Hello Welcome to Marketplace</h1>
-        {/* <button className='bg-blue-500'>
-        Welcome
-      </button> */}
       </div>
       
     </div>
