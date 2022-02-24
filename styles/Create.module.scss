@@ -1,0 +1,21 @@
+@import 'variables/variables';
+
+.element {
+  margin-top: 2.5%;
+  font-size: 17px;
+}
+.nftImage {
+  margin-left: 5%;
+}
+.inputBorder {
+  border: 1 $dark-1;
+}
+.inputWidth {
+  width: 99% !important;
+}
+.numberInputWidth {
+  width: 38%;
+}
+.inputWrapper {
+  padding-left: 3%;
+}

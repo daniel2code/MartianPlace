@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import navStyles from '../styles/Nav.module.scss'
@@ -9,14 +11,21 @@ import Button from './elements/Button.js'
 import Input from './elements/Input'
 
 const Nav = (props) => {
-  const { usertoken } = props;
+  const { onWallet } = props;
+  const [usertoken, setUserToken] = useState(null);
+
+  useEffect(() => {
+    //get usertoken and set it
+    // setUserToken()
+    setUserToken("fh")
+  })
 
   return (
-    <nav className={navStyles.nav}>
+    <nav className={navStyles.nav} onWallet={onWallet}>
       <ul>
         <li>
           <Link href='/'>
-            <Logo title={'Moonshots'} image={thelogo}></Logo>
+            <span><Logo title={'Moonshots'} image={thelogo}></Logo></span>
           </Link>
         </li>
         <li>
@@ -33,8 +42,9 @@ const Nav = (props) => {
           <Link href='/create' className="nav-link">Create</Link>
         </li>
         <li>
-          <Input leftIcon={{ src: thesearch, alt: 'icon' }} inputstyles="shadow-inner rounded-full px-2 py-1 w-96 border-none
-            focus:outline-none" placeHolder="Search digital collectables, art and more" title="Search" size="xs" />
+          <Input leftIcon={{ src: thesearch, alt: 'icon' }} inputstyles={`shadow-inner px-2 py-1 w-96 border-none
+            focus:outline-none bg-color-search-input-bg)]`} placeHolder="Search digital collectables, art and more" title="Search" size="xs" 
+            parentstyles={`ml-2 rounded-full border border-1 border-purple-primary bg-search-bg pl-3`} />
         </li>
       </ul>
 
@@ -43,16 +53,17 @@ const Nav = (props) => {
           <Button
             type='button'
             id={ usertoken ? "btnconnected" : "btnconnect" }
-            title={ usertoken ? 'connected' : 'connect' }
-            buttonStyles='border border-purple-primary rounded-full py-1.5 px-2 text-[14px] hover:bg-purple-primary'
-            onClick={() => { }}
+            buttonStyles='border border-purple-primary rounded-full py-1.5 px-2 text-[14px] hover:bg-background-gradient-btn'
+            onClick={onWallet}
             label={ usertoken ? "Wallet connected" : "Connect Wallet" }/>
         </li>
         <li>
+          <div className='pt-2'>
           <a onClick={() => { }} >
             <Image className="rounded-full hover:rounded-lg" src={theprofile} alt={'Profile'}
               width={35} height={35} ></Image>
           </a>
+          </div>
         </li>
       </ul>
     </nav>

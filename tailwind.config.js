@@ -37,7 +37,8 @@ module.exports = {
       'textual-traits-background-color': 'rgba(177, 130, 251, 0.2)',
       'card-border-grey': 'rgba(92, 106, 126, 0.5)',
       'card-background-grey': 'rgba(92, 106, 126, 0.5)',
-
+      'nft-input-bg': 'rgba(40, 44, 50, 0.3)',
+      'search-bg': 'rgba(0, 0, 0, 0.3)'
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -68,7 +69,8 @@ module.exports = {
           rgba(177, 130, 251, 1) 51%,
           rgba(209, 108, 252, 1) 75%,
           rgba(249, 82, 254, 1) 100%
-      )`
+      )`,
+      'background-gradient-btn': `linear-gradient(97.83deg, #7517F8 9.62%, #E423FF 114.65%)`
       }
     },
   },

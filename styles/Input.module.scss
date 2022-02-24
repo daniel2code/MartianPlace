@@ -1,32 +1,43 @@
 @import 'variables/variables';
 
-.darkbg{
-  background: rgba(0, 0, 0, 0.3);
-}
-
 .inputcontainer {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: $input-border-radius;
-  border: 1px solid $purple-primary;
   display: flex;
-  padding: 1% 3%;
-
-  &.xl {
-    border-radius: $border-radius-quaternary;
-    padding: $basic-padding-xl;
-  }
-
-  &.xs {
-    border-radius: $border-radius-quaternary;
-    padding: $basic-padding-xs;
-  }
+  padding: .8% 0%;
 
   input {
-    background: rgba(0, 0, 0, 0);
-    margin-left: 20px;
+    background: none;
   }
 
   .icon {
     display: inline-block;
   }
+
+  input[type=number] {
+    -webkit-appearance: textfield;
+       -moz-appearance: textfield;
+            appearance: textfield;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+  }
 }
+.fieldInputContainer {
+
+  input {
+
+    &::placeholder {
+      color: $white;
+      opacity: 1; 
+    }
+    
+    &:-ms-input-placeholder { 
+      color: $white;
+    }
+    
+    &::-ms-input-placeholder {
+      color: $white;
+    }
+  }
+}
+
