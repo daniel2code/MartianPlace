@@ -1,7 +1,7 @@
 import styles from '../../styles/Button.module.scss'
 
 export function Button(props) {
-  const { buttonStyles, id, label, name, title, type, leftIcon, rightIcon, rounded, onClick } = props;
+  const { buttonStyles, id, label, name, title, type, leftIcon, rightIcon, rounded, onClick, children } = props;
 
   return (
     <button
@@ -11,6 +11,7 @@ export function Button(props) {
       className={buttonStyles}
       onClick={onClick}>
         {label}
+        {children}
     </button>
   );
 

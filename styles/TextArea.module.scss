@@ -1,0 +1,16 @@
+@import 'variables/variables';
+
+.textAreaContainer {
+  display: flex;
+  padding: 1% 0 0 1%;
+
+  textarea {
+    background: none;
+    margin-left: 1%;
+    width: 99%;
+  }
+
+  .icon {
+    display: inline-block;
+  }
+}
