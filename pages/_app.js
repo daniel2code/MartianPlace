@@ -14,25 +14,27 @@ import bnbImg from '../public/images/bnb.svg';
 import menuImg from '../public/images/ic-dots.svg';
 import Button from '../components/elements/Button';
 
+import { store } from '../store/store'
+import { Provider, useDispatch } from "react-redux"
+
 function MyApp({ Component, pageProps }) {
   const [modalOpen, setModalOpen] = useState(false);
-
   const [usertoken, setUserToken] = useState(null);
-
-  // const modalRef = useRef(null);
   const modalRef1 = React.createRef();
   const modalRef2 = React.createRef();
+
+  const dispatch = useDispatch();
 
   const toggleModal = () => setModalOpen(!modalOpen);
 
   const connectWallet = () => {
-    setUserToken('')
+    dispatch(connectWallet())
     //set usertoken in asyncstorage
     toggleModal();
   }
 
   const disconnectWallet = () => {
-    setUserToken(null)
+    dispatch(disconnectWallet())
     //clear usertoken in asyncstorage
     toggleModal();
   }
@@ -81,7 +83,8 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <>
+    <Provider store={store}>
+      <>
       <Layout onWallet={toggleModal} usertoken={usertoken}>
         <Component {...pageProps} />
       </Layout>
@@ -194,7 +197,8 @@ function MyApp({ Component, pageProps }) {
               </div>
             )} />}
       </div>
-    </>
+      </>
+    </Provider>
   )
 }
 
