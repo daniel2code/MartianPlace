@@ -2,7 +2,7 @@ import styles from '../../styles/TextArea.module.scss'
 import Image from 'next/image'
 
 const TextArea = (props) => {
-  const { id, title, placeHolder, leftIcon, rightIcon, parentstyles, textAreaStyles, label, labelstyles, rows, cols, maxLength } = props;
+  const { id, title, placeHolder, leftIcon, rightIcon, parentstyles, textAreaStyles, label, labelstyles, rows, cols, maxLength, onChange, value } = props;
   return (
     <div className={``}>
       <div className='flex flex-row justify-between'>
@@ -12,7 +12,7 @@ const TextArea = (props) => {
       <div className={`${styles.textAreaContainer} ${parentstyles}`}>
         {leftIcon ? <Image src={leftIcon.src} alt={leftIcon.alt} width={20} height={20} className={styles.icon} /> : ''}
         <textarea className={textAreaStyles} id={id} aria-label={title}
-          placeholder={placeHolder} name={title} rows={rows} cols={cols} maxLength={maxLength}>
+          placeholder={placeHolder} name={title} rows={rows} cols={cols} maxLength={maxLength} onChange={(ev) => onChange(ev.target.value)} value={value}>
         </textarea>
         {rightIcon ? <Image src={rightIcon.src} alt={rightIcon.alt} width={20} height={20} className={styles.icon} /> : ''}
       </div>

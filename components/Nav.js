@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -9,19 +10,19 @@ import theprofile from '../public/images/avatar.svg'
 import thesearch from '../public/images/search.svg'
 import Button from './elements/Button.js'
 import Input from './elements/Input'
+import Search from './elements/Search'
 
 const Nav = (props) => {
   const { onWallet } = props;
-  const [usertoken, setUserToken] = useState(null);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    //get usertoken and set it
-    // setUserToken()
-    setUserToken("fh")
-  })
+    console.log('userToken: ', user.userToken);
+  }, [user])
 
   return (
-    <nav className={navStyles.nav} onWallet={onWallet}>
+    <nav className={navStyles.nav} >
       <ul>
         <li>
           <Link href='/'>
@@ -42,6 +43,7 @@ const Nav = (props) => {
           <Link href='/create' className="nav-link">Create</Link>
         </li>
         <li>
+        {/* <Search /> */}
           <Input leftIcon={{ src: thesearch, alt: 'icon' }} inputstyles={`shadow-inner px-2 py-1 w-96 border-none
             focus:outline-none bg-color-search-input-bg)]`} placeHolder="Search digital collectables, art and more" title="Search" size="xs" 
             parentstyles={`ml-2 rounded-full border border-1 border-purple-primary bg-search-bg pl-3`} />
@@ -52,10 +54,10 @@ const Nav = (props) => {
         <li>
           <Button
             type='button'
-            id={ usertoken ? "btnconnected" : "btnconnect" }
+            id={ user.userToken ? "btnconnected" : "btnconnect" }
             buttonStyles='border border-purple-primary rounded-full py-1.5 px-2 text-[14px] hover:bg-background-gradient-btn'
             onClick={onWallet}
-            label={ usertoken ? "Wallet connected" : "Connect Wallet" }/>
+            label={ user.userToken ? "Wallet connected" : "Connect Wallet" }/>
         </li>
         <li>
           <div className='pt-2'>
