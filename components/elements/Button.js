@@ -1,7 +1,7 @@
 import styles from '../../styles/Button.module.scss'
 
 export function Button(props) {
-  const { buttonStyles, id, label, name, title, type, leftIcon, rightIcon, rounded, onClick, children } = props;
+  const { buttonStyles, id, label, name, title, type, leftIcon, rightIcon, rounded, onClick, children, onMouseEnter, onMouseLeave } = props;
 
   return (
     <button
@@ -9,7 +9,9 @@ export function Button(props) {
       id={id}
       title={title}
       className={buttonStyles}
-      onClick={onClick}>
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}>
         {label}
         {children}
     </button>
