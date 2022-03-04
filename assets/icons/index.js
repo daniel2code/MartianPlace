@@ -1,11 +1,8 @@
-// folder for Icons
-import { ReactComponent as CaretDown } from "./caret-down.svg";
-import { ReactComponent as CaretUp } from "./caret-up.svg";
-import Loader from "./loader.svg";
-import alglogo from "./alg-logo.svg";
-import algorand from "./algorand-logo.svg";
-import dai from "./dai.svg";
-import eth from "./eth.svg";
-import usdc from "./usdc.svg";
-import wbtc from "./wbtc.svg";
-export { CaretUp, Loader, CaretDown, alglogo, wbtc, eth, dai, usdc, algorand };
+import arrowRight from './arrow-right.svg';
+import starCup from './star-cup.svg';
+import mask from './mask.svg';
+import arts from './ic-art.svg';
+import game from './game.svg';
+import film from './film.svg';
+import music from './music.svg';
+export { arrowRight, starCup, mask, arts, game, film, music };

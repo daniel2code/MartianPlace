@@ -1,4 +1,4 @@
-@import "variables/variables.scss";
+@import 'variables/variables.scss';
 
 .container {
   min-height: 100vh;
@@ -22,9 +22,9 @@
     width: 100%;
   }
 
-  .section {
-    padding: 6% 15% 0 15%;
-  }
+  // .section {
+  //   padding: 6% 2rem 0 2rem;
+  // }
 
   .backg {
     z-index: 1;
