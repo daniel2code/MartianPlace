@@ -7,7 +7,6 @@ import { connect, disconnect } from '../store/slices/userSlice'
 
 import Nav from './Nav'
 import styles from '../styles/Layout.module.scss'
-// import theprofile from '../public/images/avatar.svg'
 import thetelegram from '../public/images/telegram2.svg'
 import theinsta from '../public/images/insta2.svg'
 import thetwitter from '../public/images/twitter2.svg'
@@ -40,8 +39,10 @@ const Layout = ({ children }) => {
   useEffect(() => {
 
     if(message.message){
-      // alert('message here');
+      // alert('message here: ', message.message);
       setAlertOpen(true);
+    }else{
+      setAlertOpen(false)
     }
 
   }, [modalOpen, user, message]);
@@ -51,12 +52,12 @@ const Layout = ({ children }) => {
   const toggleAlert = () => setAlertOpen(!alertOpen);
 
   const onWallet = () => {
-    if (modalOpen) {
+    // if (modalOpen) {
 
-    }
-    else {
+    // }
+    // else {
       toggleModal()
-    }
+    // }
   }
 
   const connectWallet = () => {
@@ -229,7 +230,7 @@ const Layout = ({ children }) => {
               type='button'
               id="headerClose"
               buttonStyles='mr-2 text-xl'
-              onClick={() => dispatch(clearMessage())}>
+              onClick={toggleModal}>
               <h1 className='font-semibold text-input-text-light hover:text-purple-primary hover:pr-1'>x</h1>
             </Button>
           }
@@ -255,8 +256,9 @@ const Layout = ({ children }) => {
               </div>
             )} />}
 
-        {alertOpen && message.message ?
+        {alertOpen ?
           <div className='alert'>
+            okayyyy
             {/* Adding new alert here*/}
             {/* <Modal headerCloseBtn={
             <Button

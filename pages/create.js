@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { setMessage, clearMessage } from '../store/slices/messageSlice'
 
@@ -17,6 +17,7 @@ import Alert from '../components/alert';
 export default function Create() {
 
   const dispatch = useDispatch();
+  const message = useSelector((state) => state.message);
 
   const [image, setImage] = useState('');
   const [project, setProject] = useState('');
@@ -76,7 +77,11 @@ export default function Create() {
     }
 
     console.log('values: ', values)
+    if(!message.message){
     dispatch(setMessage({message: 'NFT Created'}))
+    }else{
+    dispatch(clearMessage())
+    }
     setIsLoading(false)
 
   }

@@ -50,8 +50,8 @@ body {
   @import "bootstrap/dist/css/bootstrap.css";
 
   position: fixed;
-  top: 300px;
-  right: 300px;
+  top: 50%;
+  right: 50%;
   z-index: 1;
   /* border-radius: 2px; */
   /* padding: .1% .1% 0 0; */
