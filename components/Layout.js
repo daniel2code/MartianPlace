@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { connect, disconnect } from '../store/slices/userSlice'
+import { connect, disconnect, switchNetwork } from '../store/slices/userSlice'
 
 import Nav from './Nav'
 import styles from '../styles/Layout.module.scss'
@@ -16,6 +16,7 @@ import userImg from '../public/images/ic-user-2.svg';
 import walletImg from '../public/images/wallet.svg';
 import copyImg from '../public/images/copy.svg';
 import bnbImg from '../public/images/bnb.svg';
+import ethImg from '../public/images/eth.svg';
 import menuImg from '../public/images/ic-dots.svg';
 import arrDownImg from '../public/images/arrow-down.svg';
 import Button from '../components/elements/Button';
@@ -32,16 +33,21 @@ const Layout = ({ children }) => {
   const [alertOpen, setAlertOpen] = useState(false);
 
   const [showDisconnectBtn, setShowDisconnectBtn] = useState(false);
+  const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
   // 
   const modalRef1 = React.createRef();
   const modalRef2 = React.createRef();
 
   useEffect(() => {
 
-    if(message.message){
+    if(user && !user.userNetwork){
+      dispatch(switchNetwork({userNetwork: 'BNB'}))
+    }
+
+    if (message.message) {
       // alert('message here: ', message.message);
       setAlertOpen(true);
-    }else{
+    } else {
       setAlertOpen(false)
     }
 
@@ -56,7 +62,7 @@ const Layout = ({ children }) => {
 
     // }
     // else {
-      toggleModal()
+    toggleModal()
     // }
   }
 
@@ -80,6 +86,20 @@ const Layout = ({ children }) => {
 
     alert("Under implementation")
 
+  }
+
+  const switchWNetwork = () => {
+
+    //Disconnect wallet, connect to wallet, get response or reload the page and connect again
+
+    var userN = user.userNetwork;
+    if (userN == 'BNB'){
+      userN = 'ETH'
+    }else{
+      userN = 'BNB'
+    }
+    dispatch(switchNetwork({ userNetwork: userN }))
+    // toggleModal();
   }
 
   const closeBtn = () => {
@@ -219,6 +239,23 @@ const Layout = ({ children }) => {
                       </Button>
                     </div>
                   </div>
+                </div>
+                <div className='flex flex-row py-2 px-5 border-t border-t-1 border-t-mid-grey-4 justify-center'>
+                <div className='mb-1'>
+                 <Button
+                  type='button'
+                  id="switchN"
+                  buttonStyles='float-right text-purple-secondary font-light hover:pr-1 pb-1 underline decoration-purple-secondary'
+                  onClick={switchWNetwork}
+                  onMouseEnter={() => setSwitchNetworkBtn(true)}
+                  onMouseLeave={() => setSwitchNetworkBtn(false)}>
+                    <div className='flex flex-row'>
+                    {switchNetworkBtn && <h5 className='self-center mr-1'>{`Switch Network`}</h5>}
+                    {user.userNetwork == "BNB" ? <Image src={ethImg} alt={'eth'} width={25} height={25}></Image>
+                    :<Image src={bnbImg} alt={'bnb'} width={25} height={25}></Image>}
+                  </div>
+                </Button>
+              </div>
                 </div>
               </div>
             )} />
