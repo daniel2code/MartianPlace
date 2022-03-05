@@ -264,7 +264,7 @@ const Layout = ({ children }) => {
               <h1 className='font-semibold text-input-text-light hover:text-purple-primary hover:pr-1'>x</h1>
             </Button>
           }
-            setModalOpen={toggleModal} modalOpen={modalOpen} parentStyles="w-80 rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
+            setModalOpen={toggleModal} modalOpen={modalOpen} parentStyles="md:w-80 w-full rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
             modalBody={(
               <div>
                 <div className='flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4'>
@@ -370,7 +370,7 @@ const Layout = ({ children }) => {
             setModalOpen={toggleModal} modalOpen={modalOpen} title="Connect Wallet"
             titleStyles="text-pink font-semibold justify-self-start" footer="How do I create a metamask wallet?"
             footerStyles="text-input-text-light justify-self-start"
-            parentStyles="py-5 px-4 w-80 rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
+            parentStyles="py-5 px-4 md:w-80 w-full rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
             modalBody={(
               <div className='flex flex-row py-2 px-2 my-5 justify-between rounded border border-1 border-input-text-light'>
                 <div className='flex flex-row'>

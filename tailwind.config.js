@@ -14,7 +14,7 @@ module.exports = {
       black: '#222222',
       'button-black': '#222529',
       'button-border-black': '#343b44',
-      pink: '#d16cfc',
+      // pink: '#d16cfc',
       'button-pink': 'rgba(177, 130, 251, 0.54)',
       'button-border-pink': 'rgba(177, 130, 251, 0.54)',
       white: '#ffffff',

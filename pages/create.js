@@ -17,6 +17,14 @@ import Alert from '../components/alert';
 import bnbImg from '../public/images/bnb.svg';
 import ethImg from '../public/images/eth.svg';
 
+import { create } from 'ipfs-http-client';
+import Web3 from 'web3';
+import { ethers } from 'ethers';
+
+import { nftaddress, nftmarketaddress } from '../config';
+
+import nftABI from '../nftABI.json';
+import marketABI from '../marketABI.json';
 
 export default function Create() {
 
@@ -81,25 +89,41 @@ export default function Create() {
     // toggleModal();
   }
 
-  const deleteNFT = () => {
+  const delistNFT = () => {
 
   }
 
-  const createNFT = () => {
+  const createNFT = async() => {
+
+    if(!nftName || !description || !priceInitial || !priceNow || !image) return
+
     setIsLoading(true)
+
+    //uploading image
+
+    // const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
+    // const added = await client.add(image.file, {
+    //   progress: (prog) => console.log(`received: ${prog}`)
+    // })
+    // // const url = `https://ipfs.infura.io/ipfs/${added.path}`
+
+    // const url = ``
+
     const values = {
       image: image,
-      project: project,
-      nftName: nftName,
+      // project: project,
+      name: nftName,
       description: description,
-      mintAmt: mintAmt,
-      royalties: royalties,
-      priceInitial: priceInitial,
-      priceNow: priceNow,
-      address: address,
+      // mintAmt: mintAmt,
+      // royalties: royalties,
+      // priceInitial: priceInitial,
+      // priceNow: priceNow,
+      address: user.address,
+      url: url
     }
 
     console.log('values: ', values)
+
     if (!message.message) {
       dispatch(setMessage({ message: 'NFT Created' }))
     } else {
@@ -111,14 +135,14 @@ export default function Create() {
 
   return (
     <>
-      <div className='mx-40 mt-20 mb-5'>
+      <div className='mx-5 md:mx-40 sm:mx-10 mt-20 mb-5'>
         <h1 className='text-[25px] font-bold'>Create New NFT</h1>
-        <div className={`${styles.element} flex flex-row`}>
+        <div className={`${styles.element} md:flex md:flex-row`}>
           <FileUploaderDND changeInputFile={setImageAction} otherstyles="justify-self-start"
             img={<Image src={imgPlaceholder} alt={'placeholder'} width={80} height={80}></Image>}
             img2={image} />
           {image ?
-            <div className={`${styles.nftImage}`}>
+            <div className={`${styles.nftImage} mt-5 text-center sm:mt-10 md:text-left`}>
               <Image src={image.file} alt={'nft image'} width={280} height={280}></Image> </div>
             : null}
         </div>
@@ -137,7 +161,7 @@ export default function Create() {
 
         <div className={styles.element}>
           <Dropdown
-            options={items}
+            options={[]}
             value={project}
             onChange={handleChange}
             inputstyles={`shadow-inner border-none focus:outline-none`}
@@ -182,22 +206,22 @@ export default function Create() {
 
         </div>
 
-        <div className={`${styles.element} flex flex-row`}>
-          <div className={`flex-1 mr-3`}>
+        <div className={`${styles.element} md:flex md:flex-row`}>
+          <div className={`md:flex-1 md:mr-3`}>
             <Input rightIcon={{ src: user.userNetwork == "BNB" ? bnbImg: ethImg, alt: 'icon' }} inputstyles={`shadow-inner border-none focus:outline-none ${styles.inputWidth} ${styles.inputWrapper}`} type="number" min="1"
-              placeHolder={user.userNetwork == "BNB" ? `0.00 BNB` :`0.00 ETH`} title="initial" parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg px-3 py-1`}
+              placeHolder={user.userNetwork == "BNB" ? `0.00 BNB` :`0.00 ETH`} title="initial" parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg px-3 py-1.5`}
               label="Initial Price" labelstyles="mb-2" value={priceInitial} onChange={setPriceInitial} />
           </div>
-          <div className={`flex-1 ml-3`}>
+          <div className={`md:flex-1 md:ml-3`}>
             <Input rightIcon={{ src: user.userNetwork == "BNB" ? bnbImg: ethImg, alt: 'icon' }} inputstyles={`shadow-inner border-none focus:outline-none ${styles.inputWidth} ${styles.inputWrapper}`} type="number" min="1"
-              placeHolder={user.userNetwork == "BNB" ? `0.00 BNB` :`0.00 ETH`} title="mintAmount" parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg px-3 py-1`}
+              placeHolder={user.userNetwork == "BNB" ? `0.00 BNB` :`0.00 ETH`} title="mintAmount" parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg px-3 py-1.5`}
               label="Buy now (optional)" labelstyles="mb-2" value={priceNow} onChange={setPriceNow} />
           </div>
         </div>
 
         <div className={styles.element}>
           <Input inputstyles={`shadow-inner border-none focus:outline-none ${styles.inputWidth} ${styles.inputWrapper}`} type="text"
-            placeHolder="e.g 0xbc...8976" title="nftName" parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg`}
+            placeHolder="e.g 0xbc...8976" title="nftName" parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg py-1.5`}
             label="Payout to address" labelstyles="mb-2" value={address} onChange={setAddress} />
         </div>
 
