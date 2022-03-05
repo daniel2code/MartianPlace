@@ -17,6 +17,7 @@ import Alert from '../components/alert';
 import bnbImg from '../public/images/bnb.svg';
 import ethImg from '../public/images/eth.svg';
 
+
 export default function Create() {
 
   const dispatch = useDispatch();
@@ -35,7 +36,6 @@ export default function Create() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
-
 
   const items = [
     {
@@ -167,7 +167,9 @@ export default function Create() {
               type='button'
               id="switchNP"
               buttonStyles='text-purple-secondary font-light hover:pr-1 pb-1 underline decoration-purple-secondary'
-              onClick={switchWNetwork}
+              onClick={() => {
+                // switchWNetwork()
+              }}
               onMouseEnter={() => setSwitchNetworkBtn(true)}
               onMouseLeave={() => setSwitchNetworkBtn(false)}>
               <div className='flex flex-row'>

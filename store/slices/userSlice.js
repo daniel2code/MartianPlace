@@ -4,7 +4,8 @@ const initialState = {
   address: null,
   isconnected: false,
   userToken: null,
-  userNetwork: null
+  userNetwork: null,
+  userBalance: null
 }
 
 export const userSlice = createSlice({
@@ -15,13 +16,15 @@ export const userSlice = createSlice({
       state.address = action.payload.address,
       state.isconnected = true,
       state.userToken = action.payload.userToken,
-      state.userNetwork = action.payload.userNetwork
+      state.userNetwork = action.payload.userNetwork,
+      state.userBalance = action.payload.userBalance
     },
     disconnect: (state) => {
       state.address = null,
       state.isconnected = false,
       state.userToken = null,
-      state.userNetwork = null
+      state.userNetwork = null,
+      state.userBalance = null
     },
     switchNetwork: (state, action) => {
       state.userNetwork = action.payload.userNetwork

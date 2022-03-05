@@ -12,8 +12,13 @@ import Button from './elements/Button.js'
 import Input from './elements/Input'
 import Search from './elements/Search'
 
+import { useWeb3React } from '@web3-react/core';
+
 const Nav = (props) => {
   const { onWallet } = props;
+
+  const { active } = useWeb3React()
+
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -57,7 +62,7 @@ const Nav = (props) => {
             id={ user.userToken ? "btnconnected" : "btnconnect" }
             buttonStyles='border border-purple-primary rounded-full py-1.5 px-2 text-[14px] hover:bg-background-gradient-btn'
             onClick={onWallet}
-            label={ user.userToken ? "Wallet connected" : "Connect Wallet" }/>
+            label={ active ? "Wallet connected" : "Connect Wallet" }/>
         </li>
         <li>
           <div className='pt-2'>
