@@ -4,7 +4,7 @@ import { character } from '../../../assets/images';
 
 const Card = ({ img, charName, description, moreDetail }) => {
   return (
-    <section className="border border-light-grey-2 bg-line-light md:p-6 p-2 rounded-xl mt-8">
+    <section className="border border-light-grey-2 bg-line-light md:p-6 p-2 rounded-xl mt-8 w-full">
       <div>
         <div>
           <h3 className="font-light mb-3">Game</h3>
