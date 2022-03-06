@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import { useDispatch, useSelector } from "react-redux";
 // import { addBanner, removeBanner } from '../store/slices/bannerSlice';
 
 const profile = () => {
   // const dispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(addBanner('profileB'))
+  // useEffect(() => {
+  //   // dispatch(addBanner('profileB'))
 
-    // return () => dispatch(removeBanner())
-  }, [])
+  //   // return () => dispatch(removeBanner())
+  // }, [])
 
   return (
     <div className='mx-5 md:mx-40 sm:mx-10 mt-20 mb-5'>
