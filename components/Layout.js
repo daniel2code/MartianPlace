@@ -130,15 +130,9 @@ const Layout = ({ children }) => {
 
   const disconnectWallet = async () => {
     try {
-      deactivate(injected)
-
-      //after the promise...
-      if (!active) {
-
-        //update dapp server logout expire token:
+      deactivate(injected).then(()=>{
         dispatch(disconnect())
-
-      }
+      })
     } catch (e) {
       console.log('disconnect error: ', e)
     }

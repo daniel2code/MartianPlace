@@ -82,7 +82,7 @@ const Nav = (props) => {
     <>
     <nav className={`${navStyles.nav} flex flex-wrap justify-between pt-3 lg:px-2`} >
       <ul className='flex'>
-        <li className='mr-2 lg:mr-0'>
+        <li className='m-2 lg:m-0'>
           <Link href='/'>
             <span><Logo title={'Moonshots'} image={thelogo}></Logo></span>
           </Link>
@@ -121,15 +121,15 @@ const Nav = (props) => {
               </span> */}
               </Button>
         </li>
-        <li className='lg:mt-2 lg:mx-3 mr-5'>
+        {active && <li className='lg:mt-2 lg:mx-3 mr-5'>
           <div className=''>
           <a onClick={() => { }} >
             <Image className="rounded-full hover:rounded-lg" src={theprofile} alt={'Profile'}
               width={35} height={35} ></Image>
           </a>
           </div>
-        </li>
-        <li className='lg:hidden mx-auto mt-1'>
+        </li>}
+        <li className='lg:hidden mr-2 mt-1'>
           <Button
             type='button'
             id={"mobilemenu"}
@@ -146,30 +146,30 @@ const Nav = (props) => {
         >
           <div className='w-full items-start  flex flex-col '>
             <Link href='/'>
-              <a className='w-full px-3 py-3 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white '>
+              <a className='border-b border-b-1 border-b-mid-grey-4 w-full px-3 py-4 text-white items-center justify-center hover:bg-green-600 hover:text-white '>
                 Home
               </a>
             </Link>
             <Link href='/about'>
-              <a className='w-full px-3 py-3 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
+              <a className='border-b border-b-1 border-b-mid-grey-4 w-full px-3 py-4 text-white items-center justify-center hover:bg-green-600 hover:text-white'>
                 About
               </a>
             </Link>
             <Link href='/discover'>
-              <a className='w-full px-3 py-3 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
+              <a className='border-b border-b-1 border-b-mid-grey-4 w-full px-3 py-4 text-white items-center justify-center hover:bg-green-600 hover:text-white'>
                 Discover
               </a>
             </Link>
             <Link href='/create'>
-              <a className='w-full px-3 py-3 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
+              <a className='border-b border-b-1 border-b-mid-grey-4 w-full px-3 py-4 text-white items-center justify-center hover:bg-green-600 hover:text-white'>
                 Create
               </a>
             </Link>
-            <div className='border-t-1 border-t-white'>
+            <div className='mt-9 w-full flex justify-center'>
             <Button
             type='button'
             id={ user.userToken ? "btnconnected" : "btnconnect" }
-            buttonStyles='border border-purple-primary rounded-full py-1.5 px-2 text-[14px] hover:bg-background-gradient-btn'
+            buttonStyles='w-80 border border-purple-primary rounded-full py-1.5 px-2 text-[14px] bg-background-gradient-btn'
             onClick={onWallet}
             ><span className=''>{ active ? "Wallet connected" : "Connect Wallet" }</span>
             {/* <span className="lg:hidden mb-2"><Image src={metamaskImg} alt={'wallet'}

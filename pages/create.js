@@ -109,6 +109,8 @@ export default function Create() {
 
     // const url = ``
 
+    //values for create_nft call
+
     const values = {
       image: image,
       // project: project,
