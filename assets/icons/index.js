@@ -9,7 +9,7 @@ import smallDp from './small-dp.svg';
 import penEdit from './pen-edit.svg';
 import binance from './binance.svg';
 import descIcon from './desc-about.svg';
-import blockcahin from './blockchain.svg';
+import blockchain from './blockchain.svg';
 import copy from './copy.svg';
 import trending from './trending.svg';
 import listing from './listing.svg';
@@ -28,7 +28,7 @@ export {
   penEdit,
   binance,
   descIcon,
-  blockcahin,
+  blockchain,
   copy,
   trending,
   listing,
@@ -37,14 +37,5 @@ export {
 };
 
 // import {
-//     smallDp,
-//     penEdit,
-//     binance,
-//     descIcon,
-//     blockchain,
-//     copy,
-//     trending,
-//     listing,
-//     sale,
-//     created,
+
 //   } from '../assets/icons';

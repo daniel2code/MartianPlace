@@ -117,9 +117,9 @@ const Profile = () => {
             <div className="">
               <select className="bg-transparent text-light-grey-1 border border-light-grey-2 px-5 py-2 rounded-xl">
                 <option value="">Select...</option>
-                <option value="">Enugu</option>
-                <option value="">Abia</option>
-                <option value="">Anambra</option>
+                <option value="">Bitcoin</option>
+                <option value="">Etherum</option>
+                <option value="">Algorand</option>
               </select>
             </div>
           </div>
