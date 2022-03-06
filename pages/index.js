@@ -26,7 +26,6 @@ export default function Home() {
       </Head>
 
       <div className="flex flex-col justify-flex-start w-full">
-        {/* <h1>Hello Welcome to Marketplace</h1> */}
         <Main />
         <CardList>
           <Card
