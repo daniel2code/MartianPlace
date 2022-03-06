@@ -6,7 +6,7 @@ const CardList = ({ children, icon, title }) => {
   return (
     <section className="md:px-40 mt-12 px-4">
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <div className="flex items-center justify-center">
               <Image src={icon || starCup} />

@@ -6,8 +6,8 @@ import { mask } from '../../../assets/icons';
 const Spotlight = () => {
   return (
     <section className="md:px-40 px-4 mt-12">
-      <div className="grid md:grid-cols-2 grid-cols-1">
-        <div className="w-96">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+        <div className="w-full">
           <ReactPlayer
             url="https://youtu.be/Pl8OlkkwRpc"
             controls
