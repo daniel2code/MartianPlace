@@ -35,7 +35,6 @@ export default function Home() {
           <Card />
         </CardList>
         <Spotlight />
-
         <CardList icon={film} title="Film">
           <Card />
           <Card />
@@ -49,7 +48,7 @@ export default function Home() {
           <Card />
         </CardList>
         <CardList icon={music} title="Music">
-          <Card />
+          <Card title="Music" />
           <Card />
           <Card />
           <Card />
