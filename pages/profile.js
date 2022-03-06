@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { addBanner, removeBanner } from '../store/slices/bannerSlice';
+import React, { useEffect } from 'react';
+// import { useDispatch, useSelector } from "react-redux";
+// import { addBanner, removeBanner } from '../store/slices/bannerSlice';
 
 const profile = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(addBanner('profileB'))
+    // dispatch(addBanner('profileB'))
 
-    return () => dispatch(removeBanner())
+    // return () => dispatch(removeBanner())
   }, [])
 
   return (
