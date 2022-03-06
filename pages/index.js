@@ -8,7 +8,7 @@ import CardList from '../components/widgets/card-list';
 import Spotlight from '../components/widgets/spotlight';
 import { DESC } from '../public/contants';
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -163,4 +163,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

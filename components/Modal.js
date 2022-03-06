@@ -1,13 +1,7 @@
 import React from 'react';
 import styles from '../styles/Modal.module.scss';
 import Image from 'next/image';
-import {
-  Button,
-  Modal as ModalComponent,
-  ModalFooter,
-  ModalHeader,
-  ModalBody,
-} from 'reactstrap';
+import { Modal as ModalComponent, ModalFooter, ModalBody } from 'reactstrap';
 
 const Modal = React.forwardRef(function Modal(props, ref) {
   const {
