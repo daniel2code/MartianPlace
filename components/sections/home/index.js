@@ -17,7 +17,7 @@ const Main = () => {
             Buy, sell and discover rare digital NFT art, cards and collectibles
           </p>
           <div className="flex mt-12">
-            <button className="bg-pink rounded-[50px] px-10 py-3">
+            <button className="bg-pink rounded-[50px] px-10 py-3 bg-gradient-to-r from-button-border-pink to-pink">
               Discover
             </button>
             <button className="rounded-[50px] px-10 py-3 ml-4 border border-pink">

@@ -52,7 +52,7 @@ const Spotlight = () => {
             </div>
           </div>
           <div>
-            <button className="bg-pink w-[176px] py-2 rounded-[50px]">
+            <button className="bg-gradient-to-r from-button-border-pink to-pink w-[176px] py-2 rounded-[50px]">
               Check Project
             </button>
           </div>
