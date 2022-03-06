@@ -27,7 +27,6 @@ module.exports = {
       'mid-grey-light': '#515F73',
       'mid-grey-2': '#5c6a7e',
       'mid-grey-3': '#24282d',
-      'light-grey-2': '#2D333D',
       'mid-grey-4': '#515F73',
       'light-grey-1': '#7f97a1',
       'purple-primary': '#b182fb',
@@ -42,7 +41,6 @@ module.exports = {
       'card-background-grey': 'rgba(92, 106, 126, 0.5)',
       'nft-input-bg': 'rgba(40, 44, 50, 0.3)',
       'search-bg': 'rgba(0, 0, 0, 0.3)',
-      transparent: 'transparent',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

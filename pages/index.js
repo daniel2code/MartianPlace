@@ -55,6 +55,7 @@ export default function Home() {
           />
         </CardList>
         <Spotlight />
+
         <CardList icon={film} title="Film">
           <Card
             charName="Cyberpunkez"
