@@ -24,6 +24,7 @@ const Modal = React.forwardRef(function Modal(props, ref) {
     bodyStyles,
     headerCloseBtn,
     footerCloseBtn,
+    headerBody,
   } = props;
   return (
     <ModalComponent
