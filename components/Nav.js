@@ -74,10 +74,6 @@ const Nav = (props) => {
     // console.log('userToken: ', user.userToken);
   }, [user, openMenu])
 
-  // const handleOpenMenu = () => {
-  //   setOpenMenu((props) => !props);
-  // };
-
   return (
     <>
     <nav className={`${navStyles.nav} flex flex-wrap justify-between pt-3 lg:px-2`} >
@@ -172,9 +168,6 @@ const Nav = (props) => {
             buttonStyles='w-80 border border-purple-primary rounded-full py-1.5 px-2 text-[14px] bg-background-gradient-btn'
             onClick={onWallet}
             ><span className=''>{ active ? "Wallet connected" : "Connect Wallet" }</span>
-            {/* <span className="lg:hidden mb-2"><Image src={metamaskImg} alt={'wallet'}
-              width={35} height={35} ></Image>
-              </span> */}
               </Button>
             </div>
           </div>
