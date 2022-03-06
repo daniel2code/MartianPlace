@@ -29,36 +29,136 @@ export default function Home() {
         {/* <h1>Hello Welcome to Marketplace</h1> */}
         <Main />
         <CardList>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
         </CardList>
         <Spotlight />
 
         <CardList icon={film} title="Film">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
         </CardList>
         <CardList icon={game} title="Game">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
         </CardList>
         <CardList icon={music} title="Music">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
         </CardList>
         <CardList icon={arts} title="Arts">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
         </CardList>
         <About />
       </div>
