@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <section>
       <div className="grid grid-col-1 md:grid-cols-3 gap-0 md:gap-8 px-3 md:px-16">
-        <div className="md:col-span-1 col-span-full">
+        <div className="md:col-span-1 col-span-2 mb-4 md:mb-0 m-auto">
           <div className="w-full md:w-auto">
             <Card title="Movie" />
           </div>
@@ -108,7 +108,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="px-16">
+      <div className="px-3 md:px-16 overflow-scroll w-screen md:w-auto">
         <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg mt-4">
           <div className="flex items-center justify-between px-8 mb-6">
             <div className="flex items-center">
@@ -117,15 +117,15 @@ const Profile = () => {
             <div className="">
               <select className="bg-transparent text-light-grey-1 border border-light-grey-2 px-5 py-2 rounded-xl">
                 <option value="">Select...</option>
-                <option value="">Enugu</option>
-                <option value="">Abia</option>
-                <option value="">Anambra</option>
+                <option value="">Bitcoin</option>
+                <option value="">Etherum</option>
+                <option value="">Algorand</option>
               </select>
             </div>
           </div>
 
           <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center">
+            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
               <div>Type</div>
               <div>From</div>
               <div>Price</div>
@@ -134,7 +134,7 @@ const Profile = () => {
             </div>
           </ListItem>
           <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center">
+            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base ">
               <div className="flex items-center">
                 <Image src={listing} />
                 <span className="ml-4">Listing</span>
@@ -155,7 +155,7 @@ const Profile = () => {
             </div>
           </ListItem>
           <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center">
+            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
               <div className="flex items-center">
                 <Image src={sale} />
                 <span className="ml-4">Sale</span>
@@ -170,7 +170,7 @@ const Profile = () => {
                 <span className="text-light-grey-1 ml-2">($385.05)</span>
               </div>
               <div>
-                <div className="flex items-center">
+                <div className="flex items-center justify-center md:justify-start flex-wrap">
                   <Image src={smallDp} />
                   <span className="ml-4 text-pink">Mr Harry</span>
                 </div>
@@ -181,7 +181,7 @@ const Profile = () => {
             </div>
           </ListItem>
           <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center">
+            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
               <div className="flex items-center">
                 <Image src={listing} />
                 <span className="ml-4">Listing</span>
@@ -202,7 +202,7 @@ const Profile = () => {
             </div>
           </ListItem>
           <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center">
+            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
               <div className="flex items-center">
                 <Image src={listing} />
                 <span className="ml-4">Listing</span>
@@ -223,7 +223,7 @@ const Profile = () => {
             </div>
           </ListItem>
           <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center">
+            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
               <div className="flex items-center">
                 <Image src={created} />
                 <span className="ml-4">Created</span>
