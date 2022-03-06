@@ -1,7 +1,7 @@
-import Head from 'next/head';
-// import Image from 'next/image';
-// import styles from '../styles/Home.module.css';
-// import { DESC } from '../public/contants';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
+
+// import styles from '../styles/Discover.module.css';
 
 export default function Discover() {
 
@@ -10,6 +10,10 @@ export default function Discover() {
   const buyNft = (nft) => {
 
   }
+
+  useEffect(() => {
+
+  })
 
   // if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
   return (

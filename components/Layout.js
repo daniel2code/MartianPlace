@@ -20,6 +20,8 @@ import bnbImg from '../public/images/bnb.svg';
 import ethImg from '../public/images/eth.svg';
 import menuImg from '../public/images/ic-dots.svg';
 import arrDownImg from '../public/images/arrow-down.svg';
+import profileB from '../public/images/profileB.svg'
+import bshadow from '../public/images/bshadow.svg'
 import Button from '../components/elements/Button';
 import { clearMessage } from '../store/slices/messageSlice';
 import { shortWallet, toFixed5 } from '../helpers/convertString';
@@ -42,6 +44,7 @@ const Layout = ({ children }) => {
 
   const user = useSelector((state) => state.user);
   const message = useSelector((state) => state.message);
+  const banner = useSelector((state) => state.banner);
 
   const dispatch = useDispatch();
 
@@ -85,7 +88,7 @@ const Layout = ({ children }) => {
       setAlertOpen(false)
     }
 
-  }, [modalOpen, user, message, active, account, usdBalance]);
+  }, [modalOpen, user, message, active, account, usdBalance, banner]);
 
   // useEffect(() => {
 
@@ -130,7 +133,7 @@ const Layout = ({ children }) => {
 
   const disconnectWallet = async () => {
     try {
-      deactivate(injected).then(()=>{
+      deactivate(injected).then(() => {
         dispatch(disconnect())
       })
     } catch (e) {
@@ -206,6 +209,16 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className={[styles.container].join(' ')}>
+        <div className={styles.hero}>
+          {/* {banner.src ? 
+          banner.src == "profileB" ?  */}
+          {/* <Image src={profileB} alt={'banner'} layout="fill" objectFit='cover'></Image> */}
+           {/* : null
+          : null} */}
+        </div>
+        {/* <div className={styles.shadow}>
+          <Image src={bshadow} alt={'banner'} layout="fill" objectFit='cover'></Image>
+        </div> */}
         <div className={styles.content}>
           <Nav onWallet={onWallet} />
           <main className={[styles.main].join(' ')}>
@@ -216,12 +229,6 @@ const Layout = ({ children }) => {
 
           </main>
         </div>
-        {/* <div className={styles.backg}>
-          <div className={styles.banner}>
-            {children.banner && <Image src={children.banner} alt={children.banner} layout="fill" objectFit='cover'></Image>}
-          </div>
-          <div className={styles.bottom}></div>
-        </div> */}
       </div>
       <div className={styles.footerWrapper}>
         <footer className={styles.footer}>
