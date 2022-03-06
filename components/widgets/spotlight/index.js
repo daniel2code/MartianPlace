@@ -6,8 +6,8 @@ import { mask } from '../../../assets/icons';
 const Spotlight = () => {
   return (
     <section className="md:px-40 px-4 mt-12">
-      <div className="grid md:grid-cols-2 grid-cols-1">
-        <div className="w-96">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+        <div className="w-full">
           <ReactPlayer
             url="https://youtu.be/Pl8OlkkwRpc"
             controls
@@ -20,11 +20,11 @@ const Spotlight = () => {
           </div>
           <div className="">
             <div className="flex items-start md:items-center mt-8 mb-8 flex-wrap flex-col md:flex-row">
-              <div className="flex items-center justify-start mb-8 md:mb-0 ml-6 md:ml-0">
-                <div className="flex items-center justify-center md:mb-0 mb-4">
+              <div className="flex items-center justify-start mb-8 md:mb-0 ml-0">
+                <div className="flex items-center justify-center mb-0 md:ml-0">
                   <Image src={mask} />
                 </div>
-                <div className="md:ml-5 ml-0">
+                <div className="ml-5">
                   <h5 className="text-sm text-pink">Asuf</h5>
                   <h6 className="text-sm">Film maker on Netflix</h6>
                 </div>
