@@ -9,11 +9,6 @@ import {
   ModalBody,
 } from 'reactstrap';
 
-// const WrappedComponent = React.forwardRef(
-//   function myFunction(props, ref) {
-//     return <LogProps {...props} forwardedRef={ref} />;
-//   }
-// );
 const Modal = React.forwardRef(function Modal(props, ref) {
   const {
     id,
