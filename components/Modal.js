@@ -33,12 +33,17 @@ const Modal = React.forwardRef(function Modal(props, ref) {
       isOpen={modalOpen}
       className={parentStyles}
     >
-      <div
-        className={`${styles.modalheader} flex flex-row justify-between text-center`}
-      >
-        <h5 className={titleStyles}>{title}</h5>
-        {headerCloseBtn}
-      </div>
+      {headerBody ? (
+        headerBody
+      ) : (
+        <div
+          className={`${styles.modalheader} flex flex-row justify-between text-center`}
+        >
+          <h5 className={titleStyles}>{title}</h5>
+          {headerCloseBtn}
+        </div>
+      )}
+
       <ModalBody>
         <div className={`${styles.modalbody} ${bodyStyles}`}>{modalBody}</div>
       </ModalBody>

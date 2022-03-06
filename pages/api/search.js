@@ -2,15 +2,12 @@
 
 // const posts = process.env.NODE_ENV === 'production' ? require('../../cache/data').posts : getSortedPostsData()
 
-const posts = require('../../cache/data').posts;
+const posts = require('../../cache/data').posts
 
-const Search = (req, res) => {
-  const results = req.query.q
-    ? posts.filter(post => post.title.toLowerCase().includes(req.query.q))
-    : [];
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify({ results }));
-};
-
-export default Search;
+export default (req, res) => {
+  const results = req.query.q ?
+    posts.filter(post => post.title.toLowerCase().includes(req.query.q)) : []
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'application/json')
+  res.end(JSON.stringify({ results }))
+}

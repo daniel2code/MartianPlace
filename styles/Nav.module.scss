@@ -3,28 +3,37 @@
 
 .nav {
     // height: 50px;
-    padding: .8% 2%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #ffffff;
+    // padding: .8% 2%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // color: #ffffff;
     // position: fixed;
     width: 100%;
     background-color: rgba(40, 44, 50, 0.1);
 }
 
 .nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     list-style: none;
 }
 
 .nav ul li a {
-    margin: 5px 15px;
+    // margin: 5px 15px;
+}
+
+.nav ul li a:hover {
+    color: $pink;
 }
 
 .nav ul li a:active, .nav ul li a:focus {
     color: $pink;
     text-decoration: underline;
+}
+
+.nav div a:active, .nav div a:focus {
+    background-color: rgba(249, 82, 254, 0.5);
+    // text-decoration: underline;
 }
