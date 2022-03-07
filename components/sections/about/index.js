@@ -30,7 +30,7 @@ const About = () => {
         </div>
 
         <div>
-          <Image src={space} />
+          <Image src={space} alt="Martian Space Illustration" />
         </div>
       </div>
     </section>
