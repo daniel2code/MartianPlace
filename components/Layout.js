@@ -95,17 +95,6 @@ const Layout = ({ children }) => {
     }
   }, [modalOpen, user, message, active, account, usdBalance, banner]);
 
-  // useEffect(() => {
-
-  //   const intervalId = setInterval(() => {
-  //     if (user.userBalance) {
-  //       getUsdBal()
-  //     }
-  //   }, 5000);
-
-  //   return () => clearInterval(intervalId);
-  // }, [])
-
   const toggleModal = () => setModalOpen(!modalOpen);
 
   const toggleAlert = () => setAlertOpen(!alertOpen);

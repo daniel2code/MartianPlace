@@ -15,20 +15,9 @@ import trending from './trending.svg';
 import listing from './listing.svg';
 import sale from './sale.svg';
 import created from './created.svg';
-import twitter from './twitter.svg';
-import instagram from './instagram.svg';
-import discord from './discord.svg';
-import github from './github.svg';
-import telegram from './telegram.svg';
-import marketplace from './marketplace.svg';
 
 export {
   arrowRight,
-  instagram,
-  twitter,
-  discord,
-  telegram,
-  github,
   starCup,
   mask,
   arts,
@@ -45,9 +34,4 @@ export {
   listing,
   sale,
   created,
-  marketplace,
 };
-
-// import {
-
-//   } from '../assets/icons';
