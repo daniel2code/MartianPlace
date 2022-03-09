@@ -18,7 +18,7 @@ import Search from './elements/Search';
 
 import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
-import { nftaddress } from '../config';
+import { nftaddress, nftmarketaddress } from '../config';
 import nftABI from '../nftABI.json';
 import marketABI from '../marketABI.json';
 import axios from 'axios';
@@ -39,40 +39,46 @@ const Nav = props => {
     setOpenMenu(!openMenu);
   };
 
-  const loadNFTs = async () => {
-    setLoading(true);
-    const provider = new ethers.providers.JsonRpcProvider();
-    const tokenContract = new ethers.Contract(nftaddress, nftABI.abi, provider);
-    const marketContract = new ethers.Contract(
-      nftmarketaddress,
-      marketABI.abi,
-      provider
-    );
+  const loadNFTs = async() => {
+    setLoading(true)
+    // const provider = new ethers.providers.JsonRpcProvider()
+    // const tokenContract = new ethers.Contract(nftaddress, nftABI, provider)
+    // const marketContract = new ethers.Contract(nftmarketaddress, marketABI, provider)
+
+    //get signer
+    window.ethereum.enable()
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+    const signer = provider.getSigner()
+
+    let marketContract = new ethers.Contract(nftmarketaddress, marketABI, signer)
+
 
     //call market items from the market contract
-    const data = await marketContract.fetchMarketItems();
+    const data = await marketContract.fetchMarketItems()
 
-    const items = await Promise.all(
-      data.map(async i => {
-        const tokenUri = await tokenContract.tokenUri(i.tokenid);
-        const meta = await axios.get(tokenUri);
-        let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
-        let item = {
-          price,
-          tokenId: i.tokenId.toNumber(),
-          seller: i.seller,
-          owner: i.owner,
-          image: meta.data.image,
-          name: meta.data.name,
-          description: meta.data.description,
-        };
-        return item;
-      })
-    );
+    console.log("data: ", data)
 
-    setNfts(items);
-    setLoading(false);
-  };
+    const items = await Promise.all(data.map(async i => {
+      // const tokenUri = await tokenContract.tokenUri(i.tokenid)
+      // const meta = await axios.get(tokenUri)
+      // let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+      // let item = {
+      //   price,
+      //   tokenId: i.tokenId.toNumber(),
+      //   seller: i.seller,
+      //   owner: i.owner,
+      //   image: meta.data.image,
+      //   name: meta.data.name,
+      //   description: meta.data.description,
+      // }
+      // return item
+    }))
+
+    setNfts(items)
+    setLoading(false)
+
+  }
 
   useEffect(() => {
     // loadNFTs()
@@ -117,6 +123,7 @@ const Nav = props => {
             focus:outline-none bg-color-search-input-bg)]`}
               placeHolder="Search digital collectables, art and more"
               title="Search"
+              onChange={()=>{}}
               size="xs"
               parentstyles={`lg:ml-2 rounded-full border border-1 border-purple-primary bg-search-bg lg:pl-3 pl-2`}
             />
@@ -142,7 +149,7 @@ const Nav = props => {
           {active && (
             <li className="lg:mt-2 lg:mx-3 mr-5">
               <div className="">
-                <a>
+                <a onClick={() => { }} >
                   <Image
                     className="rounded-full hover:rounded-lg"
                     src={theprofile}

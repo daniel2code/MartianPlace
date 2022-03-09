@@ -75,28 +75,22 @@ body {
 }
 
 .alert {
-  @import "bootstrap/dist/css/bootstrap.css";
-
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  z-index: 1;
-  /* border-radius: 2px; */
-  /* padding: .1% .1% 0 0; */
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
-.alert:before {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
-}
-
-.alert-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
+.alert-content {
+  margin: auto;
+  border: 1px solid #888;
+  width: 50%;
+  height: 50%;
 }
 
 a {
