@@ -1,10 +1,11 @@
-import React from 'react';
-import styles from '../styles/About.module.scss';
-import spaceImg from '../public/images/space.svg';
-import Image from 'next/image';
+import React from "react";
+import styles from "../styles/About.module.scss";
+import spaceImg from "../public/images/space.svg";
+import Image from "next/image";
+
 const About = () => {
   return (
-    <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5 flex flex-col">
+    <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5 flex flex-col relative">
       <h1 className="text-[25px] font-bold">About Martianplace</h1>
       <div className={`${styles.element}`}>
         <p className={`${styles.subTitle} text-pink`}>
