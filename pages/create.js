@@ -13,7 +13,6 @@ import Input from '../components/elements/Input';
 import TextArea from '../components/elements/TextArea';
 import Dropdown from '../components/elements/DropDown';
 import Button from '../components/elements/Button';
-import Alert from '../components/alert';
 import bnbImg from '../public/images/bnb.svg';
 import ethImg from '../public/images/eth.svg';
 
@@ -30,7 +29,6 @@ export default function Create() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const message = useSelector((state) => state.message);
 
   const [image, setImage] = useState('');
   const [project, setProject] = useState('');
@@ -95,7 +93,7 @@ export default function Create() {
 
   const createNFT = async() => {
 
-    if(!nftName || !description || !priceInitial || !priceNow || !image) return
+    // if(!nftName || !description || !priceInitial || !priceNow || !image) return
 
     setIsLoading(true)
 
@@ -111,26 +109,35 @@ export default function Create() {
 
     //values for create_nft call
 
-    const values = {
-      image: image,
-      // project: project,
-      name: nftName,
-      description: description,
-      // mintAmt: mintAmt,
-      // royalties: royalties,
-      // priceInitial: priceInitial,
-      // priceNow: priceNow,
-      address: user.address,
-      url: url
-    }
+    // const values = {
+    //   image: image,
+    //   // project: project,
+    //   name: nftName,
+    //   description: description,
+    //   // mintAmt: mintAmt,
+    //   // royalties: royalties,
+    //   // priceInitial: priceInitial,
+    //   // priceNow: priceNow,
+    //   address: user.address,
+    //   url: url
+    // }
 
-    console.log('values: ', values)
+    // console.log('values: ', values)
 
-    if (!message.message) {
-      dispatch(setMessage({ message: 'NFT Created' }))
-    } else {
-      dispatch(clearMessage())
-    }
+    
+
+    // if (!message.message) {
+      dispatch(setMessage(
+        { message: 'NFT Created',
+        description: 'Congratulations your NFT has been successfully created on Martian Place.',
+        buttons: JSON.stringify([
+          {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
+          {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+        ])}))
+    // } else {
+    //   dispatch(clearMessage())
+    // }
+    
     setIsLoading(false)
 
   }

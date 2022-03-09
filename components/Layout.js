@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 
-import { connect, disconnect, switchNetwork } from '../store/slices/userSlice';
+import { connect, disconnect, switchNetwork } from '../store/slices/userSlice'
 
 import Nav from './Nav';
 import styles from '../styles/Layout.module.scss';
@@ -31,6 +31,8 @@ import { useWeb3React } from '@web3-react/core';
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 import Footer from './widgets/footer';
+import Alert from '../components/elements/modal/Modal'
+import Router from 'next/router';
 
 // declare const window: Window &
 //   typeof globalThis & {
@@ -49,6 +51,7 @@ const Layout = ({ children }) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
+  const [alertActions, setAlertActions] = useState([]);
 
   const [showDisconnectBtn, setShowDisconnectBtn] = useState(false);
   const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
@@ -89,6 +92,7 @@ const Layout = ({ children }) => {
 
     if (message.message) {
       // alert('message here: ', message.message);
+      console.log("message: ", JSON.parse(message.buttons))
       setAlertOpen(true);
     } else {
       setAlertOpen(false);
@@ -213,7 +217,8 @@ const Layout = ({ children }) => {
           </main>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
+      <>
       <div className="modal">
         {/* {user.userToken ? */}
         {active ? (
@@ -417,94 +422,20 @@ const Layout = ({ children }) => {
           />
         )}
 
-        {alertOpen ? (
-          <div className="alert">
-            okayyyy
-            {/* Adding new alert here*/}
-            {/* <Modal headerCloseBtn={
-            <Button
-              type='button'
-              id="headerClose"
-              buttonStyles='mr-4 text-xl'
-              onClick={toggleAlert}>
-              <h1 className='font-semibold text-input-text-light hover:text-purple-primary hover:pr-1'>x</h1>
-            </Button>
-          }
-            setModalOpen={toggleAlert} modalOpen={alertOpen} parentStyles="w-80 rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
-            modalBody={(
-              <div>
-                <div className='flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4'>
-                  <Image src={userImg} alt={'user'} width={14} height={14}></Image>
-                  <h5 className='text-white ml-3 font-medium'>{`My Profile2`}</h5>
-                </div>
-                <div className='flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4 justify-between'>
-                  <div className='flex flex-row'>
-                    <Image src={walletImg} alt={'wallet'} width={18} height={18}></Image>
-                    <h5 className='text-white ml-3 font-medium'>{`My Wallet2`}</h5>
-                  </div>
-                  <div className='flex flex-row'>
-                    <div>
-                      <Button
-                        type='button'
-                        id="disconnectW"
-                        buttonStyles='text-purple-secondary mr-1 font-light hover:pr-1 pb-1 hover:underline decoration-purple-secondary'
-                        onClick={disconnectWallet}
-                        onMouseEnter={() => setShowDisconnectBtn(true)}
-                        onMouseLeave={() => setShowDisconnectBtn(false)}>
-                        <h5>{showDisconnectBtn ? `Disconnect` : `0xb1f..fe14ed`}</h5>
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        type='button'
-                        id="copy"
-                        buttonStyles='hover:pl-1'
-                        onClick={copyWallet}>
-                        <Image src={copyImg} alt={'copy'} width={15} height={15}></Image>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className='text-center m-5'>
-                  <span className='text-input-text-light'>Total Balance</span>
-                  <h1 className='font-bold text-white font-[20px]'>3.485 BNB</h1>
-                  <span className='text-input-text-light font-[17px]'>$1248.56</span>
-
-                  <div className='mt-5 mb-6'>
-                    <Button
-                      type='button'
-                      id={`addFunds`}
-                      buttonStyles='border border-purple-primary rounded-full w-36 text-white py-2 text-[14px] hover:bg-purple-primary'
-                      onClick={() => { }}
-                      label={`Add funds`} />
-                  </div>
-                </div>
-                <div className='flex flex-row py-1 px-2 m-5 justify-between rounded-md border border-1 border-input-text-light'>
-                  <div className='flex flex-row'>
-                    <Image src={bnbImg} alt={'bnb'} width={15} height={15}></Image>
-                    <h5 className='text-white ml-2 self-center'>{`BNB`}</h5>
-                  </div>
-                  <div className='flex flex-row'>
-                    <div className='text-sm'>
-                      <div><h6 className='text-white'>0.0163</h6></div>
-                      <div><h6 className='text-input-text-light'>$38.05</h6></div>
-                    </div>
-                    <div className='self-center ml-2'>
-                      <Button
-                        type='button'
-                        id="walletmenu"
-                        buttonStyles='hover:pl-1'
-                        onClick={dropMenu}>
-                        <Image src={menuImg} alt={'menu'} width={15} height={15}></Image>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )} /> */}
-          </div>
-        ) : null}
       </div>
+      
+        {alertOpen ? (
+        <div className='alert'>
+         <Alert
+         modalOpen={true}
+         modalTitle={message.message}
+         modalText={message.description}
+         closeAction={() => setAlertOpen(false)}
+         btns={message.buttons}
+       />
+      </div>
+      ) : null}
+      </>
     </>
   );
 };
