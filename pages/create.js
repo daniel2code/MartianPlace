@@ -140,7 +140,15 @@ export default function Create() {
 
     console.log("props: ", props)
 
-    if (!nftName || !description || !image) return
+    if (!nftName || !description || !image || !address || !priceNow) {
+      dispatch(setMessage(
+        { message: 'Missing Information!',
+        description: `The nft name, image and receipient's address are required.`,
+        buttons: JSON.stringify([
+          {name: "OK", action: 'close', fullcolor: true, lg: false},
+        ])}))
+      return
+    }
     // if(!nftName || !description || !priceInitial || !priceNow || !image || !properties) return
 
 
@@ -182,8 +190,8 @@ export default function Create() {
       // console.log("after contract: ", contract)
       console.log("after marketplace: ", marketPlace)
       console.log("connected user addr: ", address)
-      const marketItems = await marketPlace.fetchItemsCreated(address)
-      console.log("Market items: ", marketItems)
+      // const marketItems = await marketPlace.fetchItemsCreated(address)
+      // console.log("Market items: ", marketItems)
 
       // const getData = await marketPlace.
       let transition = await contract.createToken(`ipfs://${result2.path}/`, {from: address})
@@ -191,13 +199,13 @@ export default function Create() {
       
       if (transition.hash) {
 
-        // dispatch(setMessage(
-        //   { message: 'NFT Created',
-        //   description: 'Congratulations your NFT has been successfully created on Martian Place.',
-        //   buttons: JSON.stringify([
-        //     {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
-        //     {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-        //   ])}))
+        dispatch(setMessage(
+          { message: 'NFT Created',
+          description: 'Congratulations your NFT has been successfully created on Martian Place.',
+          buttons: JSON.stringify([
+            {name: "List NFT", action: 'close', fullcolor: true, lg: true},
+            // {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+          ])}))
         
         contract.filters.Transfer()
         contract.on("Transfer", async (from, to, amount, event) => {
@@ -210,21 +218,21 @@ export default function Create() {
           listingPrice = listingPrice.toString()
           console.log("listingPrice: ", listingPrice)
 
-          transition = await marketPlace.createMarketItem(
+          let transition2 = await marketPlace.createMarketItem(
             nftaddress, tokenId, price, { value: listingPrice }
           )
-          transition = await marketPlace.createMarketSale(
+          transition2 = await marketPlace.createMarketSale(
             nftaddress, tokenId, { value: listingPrice }
           )
           
-          if(transition.hash){
-            // dispatch(setMessage(
-            //   { message: 'NFT Listed',
-            //   description: 'Congratulations your NFT has been successfully listed on Martian Place.',
-            //   buttons: JSON.stringify([
-            //     {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
-            //     {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-            //   ])}))
+          if(transition2.hash){
+            dispatch(setMessage(
+              { message: 'NFT Listed',
+              description: 'Congratulations your NFT has been successfully listed on Martian Place.',
+              buttons: JSON.stringify([
+                {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
+                {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+              ])}))
             setIsLoading(false)
 
             //reset form
@@ -236,14 +244,14 @@ export default function Create() {
       }
     } catch (error) {
       console.error("Create NFT error: ", error);
-      // dispatch(setMessage(
-      //   { message: 'Failed to Create NFT',
-      //   description: JSON.parse(error),
-      //   buttons: JSON.stringify([
-      //     {name: "Try again", action: 'close', fullcolor: true, lg: true},
-      //     {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-      //   ])}
-      //   ))
+      dispatch(setMessage(
+        { message: 'Failed to Create NFT',
+        description: '',
+        buttons: JSON.stringify([
+          {name: "Try again", action: 'close', fullcolor: true, lg: true},
+          {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+        ])}
+        ))
       setIsLoading(false)
 
     }

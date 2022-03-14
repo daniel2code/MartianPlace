@@ -164,6 +164,7 @@ const Layout = ({ children }) => {
       buttons: JSON.stringify([
         {name: "OK", action: 'close', fullcolor: true, lg: false},
       ])}))
+      toggleModal()
   };
 
   const dropMenu = () => {
