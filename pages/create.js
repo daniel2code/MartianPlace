@@ -177,23 +177,27 @@ export default function Create() {
       const signer = provider.getSigner()
       console.log("after signer: ")
 
-
       let contract = new ethers.Contract(nftaddress, nftABI, signer)
-      console.log("after contract: ")
+      const marketPlace = new ethers.Contract(nftmarketaddress, marketABI, signer)
+      // console.log("after contract: ", contract)
+      console.log("after marketplace: ", marketPlace)
+      console.log("connected user addr: ", address)
+      const marketItems = await marketPlace.fetchItemsCreated(address)
+      console.log("Market items: ", marketItems)
 
-      let transition = await contract.createToken(`ipfs://${result2.path}/`)
+      // const getData = await marketPlace.
+      let transition = await contract.createToken(`ipfs://${result2.path}/`, {from: address})
       console.log("transition: ", transition)
-
-
+      
       if (transition.hash) {
 
-        dispatch(setMessage(
-          { message: 'NFT Created',
-          description: 'Congratulations your NFT has been successfully created on Martian Place.',
-          buttons: JSON.stringify([
-            {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
-            {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-          ])}))
+        // dispatch(setMessage(
+        //   { message: 'NFT Created',
+        //   description: 'Congratulations your NFT has been successfully created on Martian Place.',
+        //   buttons: JSON.stringify([
+        //     {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
+        //     {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+        //   ])}))
         
         contract.filters.Transfer()
         contract.on("Transfer", async (from, to, amount, event) => {
@@ -202,24 +206,25 @@ export default function Create() {
 
           const price = ethers.utils.parseUnits(priceNow, 'ether')
 
-          contract = new ethers.Contract(nftmarketaddress, marketABI, signer)
-
-          let listingPrice = await contract.getListingPrice()
+          let listingPrice = await marketPlace.getListingPrice()
           listingPrice = listingPrice.toString()
           console.log("listingPrice: ", listingPrice)
 
-          transition = await contract.createMarketItem(
+          transition = await marketPlace.createMarketItem(
             nftaddress, tokenId, price, { value: listingPrice }
+          )
+          transition = await marketPlace.createMarketSale(
+            nftaddress, tokenId, { value: listingPrice }
           )
           
           if(transition.hash){
-            dispatch(setMessage(
-              { message: 'NFT Listed',
-              description: 'Congratulations your NFT has been successfully listed on Martian Place.',
-              buttons: JSON.stringify([
-                {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
-                {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-              ])}))
+            // dispatch(setMessage(
+            //   { message: 'NFT Listed',
+            //   description: 'Congratulations your NFT has been successfully listed on Martian Place.',
+            //   buttons: JSON.stringify([
+            //     {name: "View NFT", action: 'route', routepath: '/', fullcolor: true, lg: true},
+            //     {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+            //   ])}))
             setIsLoading(false)
 
             //reset form
