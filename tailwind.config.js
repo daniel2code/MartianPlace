@@ -32,6 +32,7 @@ module.exports = {
       'light-grey-2': '#2D333D',
       'purple-primary': '#b182fb',
       'purple-secondary': '#d16cfc',
+      'transparent-black': 'rgba(0, 0, 0, .75)',
       pink: '#f952fe',
       'input-text-light': '#72849f',
       'input-border': '#2d333d',

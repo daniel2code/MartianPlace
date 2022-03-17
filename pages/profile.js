@@ -1,255 +1,159 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
 import {
-  smallDp,
-  penEdit,
-  binance,
-  descIcon,
   blockchain,
   copy,
-  trending,
-  listing,
-  sale,
-  created,
+  descIcon,
+  film,
+  game,
+  mask,
+  penEdit,
 } from '../assets/icons';
-import Card from '../components/elements/card';
-import ListItem from '../components/elements/list-item';
-
+import { imgUploadIcon } from '../public/assets/icons';
+import Card, { NftCard } from '../components/elements/card';
+import { asufProfile } from '../public/assets/images';
+import CardList from '../components/widgets/card-list';
+import ProfileDivider from '../components/elements/profile-divider';
 const Profile = () => {
   return (
     <section>
-      <div className="grid grid-col-1 md:grid-cols-3 gap-0 md:gap-8 px-3 md:px-16">
-        <div className="md:col-span-1 col-span-2 mb-4 md:mb-0 m-auto">
-          <div className="w-full md:w-auto">
-            <Card title="Movie" />
-          </div>
-          <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 mt-4">
-            <div className="flex items-center">
-              <Image src={blockchain} /> <span className="ml-8">Details</span>
+      <section className="flex items-center justify-between px-4 lg:px-40 mt-16">
+        <div>
+          <h3 className="text-[2.5rem] font-bold">Asurf</h3>
+        </div>
+        <div className="flex items-center">
+          <button className="text-sm px-4 py-2 rounded-md bg-transparent-black flex items-center ml-2">
+            <span>Edit Cover Photo</span>
+            <span className="ml-1 ">
+              <Image
+                src={imgUploadIcon}
+                className="flex items-center justify-center"
+              />
+            </span>
+          </button>
+          <button className="text-sm p-4 rounded-md bg-transparent-black ml-4 px-4 py-2">
+            <span>Edit Profile</span>
+            <span className="ml-1 ">
+              <Image
+                src={penEdit}
+                className="flex items-center justify-center"
+              />
+            </span>
+          </button>
+        </div>
+      </section>
+      <section className="grid grid-col-1 lg:grid-cols-3 gap-5 px-4 lg:px-40 mt-8">
+        <div>
+          <div className="md:col-span-1 col-span- mb-4 md:mb-0 m-auto">
+            <div className="w-full md:w-auto ">
+              <Image src={asufProfile} clas3sName="rounded-lg" />
             </div>
-            <div className="flex items-center justify-between mt-8">
-              <div className="text-sm font-light">Contact Address</div>
-              <div className="text-sm font-light flex items-center">
-                <span className="text-pink">0x4579f...75be5e</span>
-                <span className="ml-3 flex items-center justify-center">
-                  <Image src={copy} />
-                </span>
+            <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 mt-4">
+              <div className="flex items-center">
+                <Image src={blockchain} /> <span className="ml-8">Details</span>
               </div>
-            </div>
-            <div className="flex items-center justify-between mt-8">
-              <div className="text-sm font-light">Token ID</div>
-              <div className="text-sm font-light flex items-center">
-                <span className="">5626497123734</span>
+              <div className="flex items-center justify-between mt-8">
+                <div className="text-sm font-light">Region</div>
+                <div className="text-sm font-light flex items-center">
+                  <span className="text-light-grey-1">Africa</span>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center justify-between mt-8">
-              <div className="text-sm font-light">Minted</div>
-              <div className="text-sm font-light text-pink flex items-center">
-                <span className="">4</span>
-                <span className="ml-1 mr-1">of</span>
-                <span>20</span>
+              <div className="flex items-center justify-between mt-8">
+                <div className="text-sm font-light">Occupation</div>
+                <div className="text-sm font-light flex items-center">
+                  <span className="text-light-grey-1">Movie Producer</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between mt-8">
+                <div className="text-sm font-light">Genre</div>
+                <div className="text-sm font-light flex items-center">
+                  <span className="text-light-grey-1">Romance, Comedy</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div className="col-span-2">
-          <small className="text-base font-light">
-            Created By <span className="text-pink">Asuf</span>
-          </small>
-          <div>
-            <h2 className="text-[44px] font-bold">Mama Africa #4</h2>
-          </div>
-          <div className="flex items-center">
-            <div>
-              <Image src={smallDp} />
-            </div>
-            <div className="text-sm ml-4">
-              Created By <span className="text-pink">MarianLion</span>
-            </div>
-          </div>
-          <div className="flex items-end justify-between ">
-            <div></div>
-            <div className="flex items-center hover:border hover:border-white transition-all duration-500 ease-linear px-4">
-              Details
-              <span className="ml-6">
-                <Image src={penEdit} />
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center justify-between mt-8 py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
+          <div className="flex items-start py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
             <div className="flex items-center">
-              <Image src={binance} />
-              <span className="ml-6">12,5 BNB</span>
-            </div>
-            <div>
-              <button className="w-[140px] bg-gradient-to-r from-button-border-pink to-pink py-3 px-8 rounded-full">
-                Buy Now
-              </button>
+              <div className="flex items-center justify-center">
+                <Image src={mask} />
+              </div>
+              <div className="ml-5">
+                <h5 className="text-sm text-pink">Asuf</h5>
+                <h6 className="text-sm">Film maker on Netflix</h6>
+              </div>
             </div>
           </div>
-          <div className="flex items-start mt-8 py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
-            <div className="flex items-center">
-              <Image src={descIcon} height={50} width={50} />
-            </div>
+          <div className="flex items-start mt-3 py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
             <div className="ml-6">
-              <h4>Description</h4>
-              <p className="text-base font-light mt-3 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Learn more about the
-                project
-              </p>
-              <p className="text-base font-light">
-                Learn More about
-                <span className="text-pink"> &nbsp;the project</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="px-3 md:px-16 overflow-scroll w-screen md:w-auto">
-        <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg mt-4">
-          <div className="flex items-center justify-between px-8 mb-6">
-            <div className="flex items-center">
-              <Image src={trending} /> <div className="ml-4">Trending</div>
-            </div>
-            <div className="">
-              <select className="bg-transparent text-light-grey-1 border border-light-grey-2 px-5 py-2 rounded-xl">
-                <option value="">Select...</option>
-                <option value="">Bitcoin</option>
-                <option value="">Etherum</option>
-                <option value="">Algorand</option>
-              </select>
-            </div>
-          </div>
+              <div className="flex items-center">
+                <Image src={descIcon} />
+                <h4 className="ml-4">About</h4>
+              </div>
 
-          <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
-              <div>Type</div>
-              <div>From</div>
-              <div>Price</div>
-              <div>To</div>
-              <div>Date</div>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base ">
-              <div className="flex items-center">
-                <Image src={listing} />
-                <span className="ml-4">Listing</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={smallDp} />
-                <span className="ml-4">BitCollector</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={binance} />
-                <span className="ml-4 font-bold text-white">0.35 </span>
-                <span className="text-light-grey-1 ml-2">($385.05)</span>
-              </div>
+              <p className="text-base font-light mt-3 mb-6">
+                Asurf Oluseyi is an award-winning filmmaker, who learn his trade
+                watching YouTube videos and practicing with training manuals. He
+                was featured on Google African Connected Campaign which run
+                across Africa and CNN respectively as an inspiration to young
+                Africans taking advantage of internet in learning their skills
+                and building careers for themselves.
+              </p>
+              <p className="text-base font-light mt-3 mb-6">
+                He has trained over many individuals on the "Art of Filmaking
+                and Editing" and has successfully build one of the biggest
+                independent production house in Nigeria, "Asurf Films" He has
+                produced and directed hundreds of video contents both in UK, USA
+                and Nigeria, with credits for contents on local and cable TV
+                channels with Awards to his work.
+              </p>
+              <p className="text-base font-light mt-3 mb-6">
+                He has produced and directed 2 short films Hell or High Water
+                (Won Best Short Film at IFAB, International Film Awards, Berlin
+                2016 and got 7 International Selections) and A Day with Death,
+                which got 10 International Selections, and Won Best Short Film
+                at AMVCA 2016.
+              </p>
               <div></div>
-              <div>
-                <span className="text-light-grey-1">2 Secs Ago</span>
-              </div>
             </div>
-          </ListItem>
-          <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
-              <div className="flex items-center">
-                <Image src={sale} />
-                <span className="ml-4">Sale</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={smallDp} />
-                <span className="ml-4">premium_nfts</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={binance} />
-                <span className="ml-4 font-bold text-white">0.35 </span>
-                <span className="text-light-grey-1 ml-2">($385.05)</span>
-              </div>
-              <div>
-                <div className="flex items-center justify-center md:justify-start flex-wrap">
-                  <Image src={smallDp} />
-                  <span className="ml-4 text-pink">Mr Harry</span>
-                </div>
-              </div>
-              <div>
-                <span className="text-light-grey-1">2 Secs Ago</span>
-              </div>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
-              <div className="flex items-center">
-                <Image src={listing} />
-                <span className="ml-4">Listing</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={smallDp} />
-                <span className="ml-4">DrBurry</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={binance} />
-                <span className="ml-4 font-bold text-white">0.35 </span>
-                <span className="text-light-grey-1 ml-2">($385.05)</span>
-              </div>
-              <div></div>
-              <div>
-                <span className="text-light-grey-1">2 Secs Ago</span>
-              </div>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
-              <div className="flex items-center">
-                <Image src={listing} />
-                <span className="ml-4">Listing</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={smallDp} />
-                <span className="ml-4">NFThodler</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={binance} />
-                <span className="ml-4 font-bold text-white">0.35 </span>
-                <span className="text-light-grey-1 ml-2">($385.05)</span>
-              </div>
-              <div></div>
-              <div>
-                <span className="text-light-grey-1">2 Secs Ago</span>
-              </div>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="grid grid-cols-5 justify-between items-center text-xs md:text-base">
-              <div className="flex items-center">
-                <Image src={created} />
-                <span className="ml-4">Created</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={smallDp} />
-                <span className="ml-4">CryptoBull</span>
-              </div>
-              <div className="flex items-center">
-                <Image src={binance} />
-                <span className="ml-4 font-bold text-white">0.35 </span>
-                <span className="text-light-grey-1 ml-2">($385.05)</span>
-              </div>
-              <div>
-                <div className="flex items-center">
-                  <Image src={smallDp} />
-                  <span className="ml-4 text-pink">Mr Harry</span>
-                </div>
-              </div>
-              <div>
-                <span className="text-light-grey-1">2 Secs Ago</span>
-              </div>
-            </div>
-          </ListItem>
+          </div>
         </div>
-      </div>
+      </section>
+      <section>
+        <div className="px-4 lg:px-40 mt-6">
+          <ProfileDivider title="Projects" />
+        </div>
+        <div className="grid lg:grid-cols-4 grid-cols-1 gap-4 lg:px-40 px-4">
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+          <Card
+            charName="Cyberpunkez"
+            title="Game"
+            moreDetail="9 available NFT’s"
+            description="In Night City, a mercenary known as V navigates a dystopian society"
+          />
+        </div>
+        <div className="px-4 lg:px-40 mt-6">
+          <ProfileDivider />
+        </div>
+        <div className="grid lg:grid-cols-4 grid-cols-1 lg:px-40 px-4 gap-4">
+          <NftCard />
+          <NftCard />
+          <NftCard />
+          <NftCard />
+        </div>
+      </section>
     </section>
   );
 };
