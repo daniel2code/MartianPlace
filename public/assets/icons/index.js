@@ -15,9 +15,11 @@ import trending from './trending.svg';
 import listing from './listing.svg';
 import sale from './sale.svg';
 import created from './created.svg';
+import imgUploadIcon from './img-upload-icon.svg';
 
 export {
   arrowRight,
+  imgUploadIcon,
   starCup,
   mask,
   arts,
