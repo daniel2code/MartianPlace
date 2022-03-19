@@ -23,7 +23,7 @@ import arrDownImg from '../public/images/arrow-down.svg';
 import profileB from '../public/images/profileB.svg';
 import bshadow from '../public/images/bshadow.svg';
 import Button from '../components/elements/Button';
-import { clearMessage } from '../store/slices/messageSlice';
+import { clearMessage, setMessage } from '../store/slices/messageSlice';
 import { shortWallet, toFixed5 } from '../helpers/convertString';
 
 import { injected } from './wallet/connectors';
@@ -31,6 +31,7 @@ import { useWeb3React } from '@web3-react/core';
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 import Footer from './widgets/footer';
+import Alert from '../components/elements/modal/Modal';
 
 // declare const window: Window &
 //   typeof globalThis & {
@@ -97,8 +98,6 @@ const Layout = ({ children }) => {
 
   const toggleModal = () => setModalOpen(!modalOpen);
 
-  const toggleAlert = () => setAlertOpen(!alertOpen);
-
   const onWallet = () => {
     // if (modalOpen) {
 
@@ -135,10 +134,11 @@ const Layout = ({ children }) => {
 
   const getBalance = async address => {
     console.log('try get bal from ', address);
-
+    window.ethereum.enable()
     if (typeof window.ethereum !== 'undefined') {
       console.log('window eth: ');
       // Instance web3 with the provided information
+      // window.ethereum.enable()
       var web3 = new Web3(window.ethereum);
       try {
         // Request account access
@@ -158,11 +158,22 @@ const Layout = ({ children }) => {
 
   const copyWallet = () => {
     navigator.clipboard.writeText(account);
-    alert('Copied!');
+    dispatch(setMessage(
+      { message: 'Copied!',
+      description: '',
+      buttons: JSON.stringify([
+        {name: "OK", action: 'close', fullcolor: true, lg: false},
+      ])}))
+      toggleModal()
   };
 
   const dropMenu = () => {
-    alert('Under implementation');
+    dispatch(setMessage(
+      { message: 'Under implementation!',
+      description: '',
+      buttons: JSON.stringify([
+        {name: "OK", action: 'close', fullcolor: true, lg: false},
+      ])}))
   };
 
   const switchWNetwork = () => {
@@ -213,7 +224,8 @@ const Layout = ({ children }) => {
           </main>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
+      <>
       <div className="modal">
         {/* {user.userToken ? */}
         {active ? (
@@ -416,95 +428,20 @@ const Layout = ({ children }) => {
             }
           />
         )}
-
-        {alertOpen ? (
-          <div className="alert">
-            okayyyy
-            {/* Adding new alert here*/}
-            {/* <Modal headerCloseBtn={
-            <Button
-              type='button'
-              id="headerClose"
-              buttonStyles='mr-4 text-xl'
-              onClick={toggleAlert}>
-              <h1 className='font-semibold text-input-text-light hover:text-purple-primary hover:pr-1'>x</h1>
-            </Button>
-          }
-            setModalOpen={toggleAlert} modalOpen={alertOpen} parentStyles="w-80 rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
-            modalBody={(
-              <div>
-                <div className='flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4'>
-                  <Image src={userImg} alt={'user'} width={14} height={14}></Image>
-                  <h5 className='text-white ml-3 font-medium'>{`My Profile2`}</h5>
-                </div>
-                <div className='flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4 justify-between'>
-                  <div className='flex flex-row'>
-                    <Image src={walletImg} alt={'wallet'} width={18} height={18}></Image>
-                    <h5 className='text-white ml-3 font-medium'>{`My Wallet2`}</h5>
-                  </div>
-                  <div className='flex flex-row'>
-                    <div>
-                      <Button
-                        type='button'
-                        id="disconnectW"
-                        buttonStyles='text-purple-secondary mr-1 font-light hover:pr-1 pb-1 hover:underline decoration-purple-secondary'
-                        onClick={disconnectWallet}
-                        onMouseEnter={() => setShowDisconnectBtn(true)}
-                        onMouseLeave={() => setShowDisconnectBtn(false)}>
-                        <h5>{showDisconnectBtn ? `Disconnect` : `0xb1f..fe14ed`}</h5>
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        type='button'
-                        id="copy"
-                        buttonStyles='hover:pl-1'
-                        onClick={copyWallet}>
-                        <Image src={copyImg} alt={'copy'} width={15} height={15}></Image>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className='text-center m-5'>
-                  <span className='text-input-text-light'>Total Balance</span>
-                  <h1 className='font-bold text-white font-[20px]'>3.485 BNB</h1>
-                  <span className='text-input-text-light font-[17px]'>$1248.56</span>
-
-                  <div className='mt-5 mb-6'>
-                    <Button
-                      type='button'
-                      id={`addFunds`}
-                      buttonStyles='border border-purple-primary rounded-full w-36 text-white py-2 text-[14px] hover:bg-purple-primary'
-                      onClick={() => { }}
-                      label={`Add funds`} />
-                  </div>
-                </div>
-                <div className='flex flex-row py-1 px-2 m-5 justify-between rounded-md border border-1 border-input-text-light'>
-                  <div className='flex flex-row'>
-                    <Image src={bnbImg} alt={'bnb'} width={15} height={15}></Image>
-                    <h5 className='text-white ml-2 self-center'>{`BNB`}</h5>
-                  </div>
-                  <div className='flex flex-row'>
-                    <div className='text-sm'>
-                      <div><h6 className='text-white'>0.0163</h6></div>
-                      <div><h6 className='text-input-text-light'>$38.05</h6></div>
-                    </div>
-                    <div className='self-center ml-2'>
-                      <Button
-                        type='button'
-                        id="walletmenu"
-                        buttonStyles='hover:pl-1'
-                        onClick={dropMenu}>
-                        <Image src={menuImg} alt={'menu'} width={15} height={15}></Image>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )} /> */}
-          </div>
-        ) : null}
       </div>
+      {alertOpen ? (
+        <div className='alert'>
+         <Alert
+         modalOpen={true}
+         modalTitle={message.message}
+         modalText={message.description}
+         closeAction={() => {dispatch(clearMessage());setAlertOpen(false)}}
+         btns={message.buttons}
+         size={message.size}
+       />
+      </div>
+      ) : null}
+      </>
     </>
   );
 };

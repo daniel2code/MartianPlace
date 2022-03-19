@@ -9,11 +9,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $white;
 
   .modalBox {
     position: fixed;
-    width: 700px;
-    padding: 20px;
+    
+    padding: 2%;
     border-radius: 8px;
     border: 1px solid #39434e;
     background-color: #161c1e;
@@ -30,22 +31,16 @@
     .text {
       font-size: 15px;
     }
+  }
+}
 
-    .btn1 {
-      background: linear-gradient(97.83deg, #7517f8 9.62%, #e423ff 114.65%);
-      width: 50%;
-      height: 41px;
-      border-radius: 27px;
-      font-size: 15px;
-    }
-
-    .btn2 {
-      background: transparent;
-      border: 1px solid #7517f8;
-      width: 30%;
-      height: 41px;
-      border-radius: 27px;
-      font-size: 15px;
+@media screen and (max-width: 900px) {
+  .backgroundContainer {
+    width: 100%;
+    .modalBox {
+      position: fixed;
+      width: 80%;
+      padding: 6% 4%;
     }
   }
 }
