@@ -92,27 +92,19 @@ const Profile = () => {
               </div>
 
               <p className="text-base font-light mt-3 mb-6">
-                Asurf Oluseyi is an award-winning filmmaker, who learn his trade
-                watching YouTube videos and practicing with training manuals. He
-                was featured on Google African Connected Campaign which run
-                across Africa and CNN respectively as an inspiration to young
-                Africans taking advantage of internet in learning their skills
-                and building careers for themselves.
+                {
+                  'Asurf Oluseyi is an award-winning filmmaker, who learn his trade watching YouTube videos and practicing with training manuals. He was featured on Google African Connected Campaign which run across Africa and CNN respectively as an inspiration to young Africans taking advantage of internet in learning their skills and building careers for themselves.'
+                }
               </p>
               <p className="text-base font-light mt-3 mb-6">
-                He has trained over many individuals on the "Art of Filmaking
-                and Editing" and has successfully build one of the biggest
-                independent production house in Nigeria, "Asurf Films" He has
-                produced and directed hundreds of video contents both in UK, USA
-                and Nigeria, with credits for contents on local and cable TV
-                channels with Awards to his work.
+                {
+                  'He has trained over many individuals on the "Art of Filmaking and Editing" and has successfully build one of the biggest independent production house in Nigeria, "Asurf Films" He has produced and directed hundreds of video contents both in UK, USA and Nigeria, with credits for contents on local and cable TV channels with Awards to his work.'
+                }
               </p>
               <p className="text-base font-light mt-3 mb-6">
-                He has produced and directed 2 short films Hell or High Water
-                (Won Best Short Film at IFAB, International Film Awards, Berlin
-                2016 and got 7 International Selections) and A Day with Death,
-                which got 10 International Selections, and Won Best Short Film
-                at AMVCA 2016.
+                {
+                  'He has produced and directed 2 short films Hell or High Water (Won Best Short Film at IFAB, International Film Awards, Berlin 2016 and got 7 International Selections) and A Day with Death, which got 10 International Selections, and Won Best Short Film at AMVCA 2016.'
+                }
               </p>
               <div></div>
             </div>
