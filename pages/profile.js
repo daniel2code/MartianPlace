@@ -22,7 +22,7 @@ const Profile = () => {
           <h3 className="text-[2.5rem] font-bold">Asurf</h3>
         </div>
         <div className="flex items-center">
-          <button className="text-sm px-4 py-2 rounded-md bg-transparent-black flex items-center ml-2">
+          <button className="text-xs lg:text-sm px-4 py-2 rounded-md bg-transparent-black flex items-center ml-2">
             <span>Edit Cover Photo</span>
             <span className="ml-1 ">
               <Image
@@ -31,7 +31,7 @@ const Profile = () => {
               />
             </span>
           </button>
-          <button className="text-sm p-4 rounded-md bg-transparent-black ml-4 px-4 py-2">
+          <button className="text-xs lg:text-sm p-4 rounded-md bg-transparent-black ml-4 px-4 py-2">
             <span>Edit Profile</span>
             <span className="ml-1 ">
               <Image
@@ -43,37 +43,36 @@ const Profile = () => {
         </div>
       </section>
       <section className="grid grid-col-1 lg:grid-cols-3 gap-5 px-4 lg:px-40 mt-8">
-        <div>
-          <div className="md:col-span-1 col-span- mb-4 md:mb-0 m-auto">
-            <div className="w-full md:w-auto ">
-              <Image src={asufProfile} clas3sName="rounded-lg" />
+        <div className="lg:col-span-1 col-span-3 mb-4 md:mb-0 m-auto">
+          <div className="w-full md:w-auto ">
+            <Image src={asufProfile} clas3sName="rounded-lg" />
+          </div>
+          <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 mt-4">
+            <div className="flex items-center">
+              <Image src={blockchain} /> <span className="ml-8">Details</span>
             </div>
-            <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 mt-4">
-              <div className="flex items-center">
-                <Image src={blockchain} /> <span className="ml-8">Details</span>
+            <div className="flex items-center justify-between mt-8">
+              <div className="text-sm font-light">Region</div>
+              <div className="text-sm font-light flex items-center">
+                <span className="text-light-grey-1">Africa</span>
               </div>
-              <div className="flex items-center justify-between mt-8">
-                <div className="text-sm font-light">Region</div>
-                <div className="text-sm font-light flex items-center">
-                  <span className="text-light-grey-1">Africa</span>
-                </div>
+            </div>
+            <div className="flex items-center justify-between mt-8">
+              <div className="text-sm font-light">Occupation</div>
+              <div className="text-sm font-light flex items-center">
+                <span className="text-light-grey-1">Movie Producer</span>
               </div>
-              <div className="flex items-center justify-between mt-8">
-                <div className="text-sm font-light">Occupation</div>
-                <div className="text-sm font-light flex items-center">
-                  <span className="text-light-grey-1">Movie Producer</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between mt-8">
-                <div className="text-sm font-light">Genre</div>
-                <div className="text-sm font-light flex items-center">
-                  <span className="text-light-grey-1">Romance, Comedy</span>
-                </div>
+            </div>
+            <div className="flex items-center justify-between mt-8">
+              <div className="text-sm font-light">Genre</div>
+              <div className="text-sm font-light flex items-center">
+                <span className="text-light-grey-1">Romance, Comedy</span>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-span-2">
+
+        <div className="lg:col-span-2 col-span-3">
           <div className="flex items-start py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
             <div className="flex items-center">
               <div className="flex items-center justify-center">
