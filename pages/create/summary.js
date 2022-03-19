@@ -18,13 +18,13 @@ const summaryDetails = [
 
 const Index = () => {
   return (
-    <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5">
-      <h1 className="text-[40px] font-bold">Summary new NFT</h1>
-      <div className="flex sm:flex-col md:flex-row gap-x-12 mt-5">
-        <div className="flex sm:basis-full md:basis-4/12 flex-col">
+    <div className="mx-2 md:mx-40 mx-10 mt-20 mb-5">
+      <h1 className="md:text-[40px] text-[30px] font-bold">Summary new NFT</h1>
+      <div className="flex flex-col md:flex-row gap-x-12 mt-5">
+        <div className="flex basis-full md:basis-4/12 flex-col">
           <Image src={NFTImage} alt="nft visual description" />
         </div>
-        <div className="flex sm:basic-full md:basis-8/12 md:flex-col">
+        <div className="flex basic-full md:basis-8/12 flex-col">
           <h2 className="text-[25px] font-bold">Mama Africa</h2>
           <p className="py-3">
             A romantic comedy about a single dad who falls in love with the
@@ -45,7 +45,7 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex sm:flex-col md:flex-row my-20">
+      <div className="flex flex-col md:flex-row my-20">
         <button
           className="rounded-[50px] px-10 py-1 border border-pink sm:w-full md:w-2/12"
           onClick={() => Router.back()}
@@ -53,7 +53,7 @@ const Index = () => {
           Back
         </button>
         <button
-          className="bg-pink rounded-[50px] ml-4 px-10 py-1 sm:w-full md:w-4/12"
+          className="bg-pink rounded-[50px] mt-5 md:ml-4 px-10 py-1 w-full md:w-4/12"
           style={{
             background:
               "linear-gradient(97.83deg, #7517F8 9.62%, #E423FF 114.65%)",
