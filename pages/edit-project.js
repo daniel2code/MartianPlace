@@ -448,10 +448,7 @@ const EditProject = () => {
         <div className="mt-12">
           <ProfileDivider title="Donation" />
         </div>
-        <p
-          className="text-sm mt-4
-            "
-        >
+        <p className="text-sm mt-4">
           Do you want people to donate to your project besides buying your NFT?
         </p>
         <div className={`${styles.element} md:my-4 flex items-center`}>
