@@ -45,7 +45,7 @@ const Profile = () => {
       <section className="grid grid-col-1 lg:grid-cols-3 gap-5 px-4 lg:px-40 mt-8">
         <div className="lg:col-span-1 col-span-3 mb-4 md:mb-0 m-auto">
           <div className="w-full md:w-auto ">
-            <Image src={asufProfile} clas3sName="rounded-lg" />
+            <Image src={asufProfile} className="rounded-lg" />
           </div>
           <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 mt-4">
             <div className="flex items-center">

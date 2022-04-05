@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../../styles/FileUploaderDND.module.scss'
-import imgPlaceholder from '../../public/images/pic.svg'
-import { Ring } from 'react-awesome-spinners'
+import styles from '../../styles/FileUploaderDND.module.scss';
+import imgPlaceholder from '../../public/images/pic.svg';
+import { Ring } from 'react-awesome-spinners';
 
-import { create, CID, IPFSHTTPClient } from "ipfs-http-client";
+import { create, CID, IPFSHTTPClient } from 'ipfs-http-client';
 // import fs from 'fs'
 
 // const ipfsClient = require('ipfs-http-client')
@@ -13,13 +13,13 @@ import { create, CID, IPFSHTTPClient } from "ipfs-http-client";
 // const path = require('path');
 
 export default function FileUploaderDND(props) {
-  const [buffer, setBuffer] = useState(null)
+  const [buffer, setBuffer] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const state = {
     inDropZone: false,
     fileList: [],
-    imgPath: null
+    imgPath: null,
   };
 
   const reducer = (state, action) => {
@@ -29,7 +29,7 @@ export default function FileUploaderDND(props) {
       case 'AddToList':
         return { ...state, fileList: state.fileList.concat(action.files) };
       case 'AddToImgPath':
-      return { ...state, imgPath: action.imgPath };
+        return { ...state, imgPath: action.imgPath };
       default:
         return state;
     }
@@ -37,25 +37,25 @@ export default function FileUploaderDND(props) {
 
   const [data, dispatch] = React.useReducer(reducer, state);
 
-  const handleDragEnter = (event) => {
-    setIsLoading(true)
+  const handleDragEnter = event => {
+    setIsLoading(true);
     event.preventDefault();
     dispatch({ type: 'AddToDropZone', inDropZone: true });
   };
 
-  const handleDragOver = (event) => {
-    setIsLoading(true)
+  const handleDragOver = event => {
+    setIsLoading(true);
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
     dispatch({ type: 'AddToDropZone', inDropZone: true });
   };
 
-  const handleDrop = (event) => {
-    setIsLoading(true)
+  const handleDrop = event => {
+    setIsLoading(true);
     event.preventDefault();
 
     let files = [...event.dataTransfer.files];
-    getImgPath(files[0])
+    getImgPath(files[0]);
 
     let files_with_preview = [];
 
@@ -67,22 +67,19 @@ export default function FileUploaderDND(props) {
     if (files) {
       dispatch({ type: 'AddToList', files });
       dispatch({ type: 'AddToDropZone', inDropZone: false });
-    }
-    else{
-      setIsLoading(false)
-
+    } else {
+      setIsLoading(false);
     }
   };
 
-  const uploadToClient = (event) => {
-
+  const uploadToClient = event => {
     if (event.target.files && event.target.files[0]) {
-      setIsLoading(true)
+      setIsLoading(true);
 
       const i = event.target.files[0];
-      console.log("image i:", i)
+      console.log('image i:', i);
 
-      getImgPath(i)
+      getImgPath(i);
 
       let files = [...event.target.files];
       let files_with_preview = [];
@@ -95,61 +92,55 @@ export default function FileUploaderDND(props) {
       if (files) {
         dispatch({ type: 'AddToList', files });
         dispatch({ type: 'AddToDropZone', inDropZone: false });
-      } 
-      else{
-        setIsLoading(false)
+      } else {
+        setIsLoading(false);
       }
     }
   };
 
-  const getImgPath = (i) => {
-    const reader = new window.FileReader()
-    reader.readAsArrayBuffer(i)
+  const getImgPath = i => {
+    const reader = new window.FileReader();
+    reader.readAsArrayBuffer(i);
 
     reader.onloadend = async () => {
-      setBuffer(Buffer(reader.result))
-      console.log('buffer', Buffer(reader.result))
+      setBuffer(Buffer(reader.result));
+      console.log('buffer', Buffer(reader.result));
       let ipfs = undefined;
-        try {
-          console.log('buffer not null', Buffer(reader.result))
+      try {
+        console.log('buffer not null', Buffer(reader.result));
 
-          ipfs = create({
-            url: "https://ipfs.infura.io:5001/api/v0",
+        ipfs = create({
+          url: 'https://ipfs.infura.io:5001/api/v0',
+        });
 
-          });
+        await ipfs.add(Buffer(reader.result)).then(res => {
+          console.log('result: ', res);
 
-          await ipfs.add(Buffer(reader.result)).then( res =>{
-            console.log("result: ", res)
+          dispatch({ type: 'AddToImgPath', imgPath: res.path });
+          setIsLoading(false);
+        });
 
-            dispatch({ type: 'AddToImgPath', imgPath: res.path });
-            setIsLoading(false)
+        // const metadata = {
+        //   "name": "",
+        //   "description":"",
+        //   "image":`ipfs://shshshw`,
+        //   "properties": [
 
-          });        
+        //   ]
+        // }
 
-          // const metadata = {
-          //   "name": "",
-          //   "description":"",
-          //   "image":`ipfs://shshshw`,
-          //   "properties": [
-      
-          //   ] 
-          // }
-      
-          // const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
-          // console.log("result: ", result2)
-          
-        } catch (error) {
-          console.error("IPFS error ", error);
-          setIsLoading(false)
-          ipfs = undefined;
-        }
-    }
-
-  }
+        // const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
+        // console.log("result: ", result2)
+      } catch (error) {
+        console.error('IPFS error ', error);
+        setIsLoading(false);
+        ipfs = undefined;
+      }
+    };
+  };
 
   useEffect(() => {
-
-    if(data.imgPath){
+    if (data.imgPath) {
       const latestImage = data.fileList[data.fileList.length - 1];
       let blob = latestImage.preview;
       let name = latestImage.name;
@@ -164,47 +155,57 @@ export default function FileUploaderDND(props) {
           name: name,
           file: base64data,
           width: img.width,
-          height: img.height
-        }
-        props.changeInputFile({imgPath: data.imgPath, image: image})
+          height: img.height,
+        };
+        props.changeInputFile({ imgPath: data.imgPath, image: image });
       };
     }
   }, [data]);
 
   return (
-    <div className='flex flex-row'>
-
+    <div className="flex flex-col">
       <div
         id="fileuploaderdnd-container"
         className={`fileuploaderdnd-container ${styles.outline} ${props.otherstyles} rounded items-stretch text-center self-center`}
-        onDrop={(event) => handleDrop(event)}
-        onDragOver={(event) => handleDragOver(event)}
-        onDragEnter={(event) => handleDragEnter(event)}
+        onDrop={event => handleDrop(event)}
+        onDragOver={event => handleDragOver(event)}
+        onDragEnter={event => handleDragEnter(event)}
       >
         <div className={`fileuploaderdnd-container-button`}>
           <div className={`fileuploaderdnd-container-text`}>
             <div className="mx-9">
-              <div className="mb-4 mt-5">
-                {props.img}
-              </div>
-              <h1 className='text-[18px] font-bold'>{`Drag & Drop`}</h1>
-
+              <div className="mb-4 mt-5">{props.img}</div>
+              <h1 className="text-[18px] font-bold">{`Drag & Drop`}</h1>
             </div>
           </div>
         </div>
-        <span className={'text-[17px]'}>or {' '}
-          <input type="file" id="actual-btn" onChange={uploadToClient} accept=".png, .jpg, .jpeg" hidden />
-          <label htmlFor="actual-btn" className='hover:text-underline text-pink'>{props.img2 ? "update" : "browse"}</label>
-          {' '} {props.img2 ? "from" : "on"} your device</span>
-
+        <span className={'text-[17px]'}>
+          or{' '}
+          <input
+            type="file"
+            id="actual-btn"
+            onChange={uploadToClient}
+            accept=".png, .jpg, .jpeg"
+            hidden
+          />
+          <label
+            htmlFor="actual-btn"
+            className="hover:text-underline text-pink"
+          >
+            {props.img2 ? 'update' : 'browse'}
+          </label>{' '}
+          {props.img2 ? 'from' : 'on'} your device
+        </span>
       </div>
 
-      <div className='px-4 py-8'>
+      <div className="px-4 py-8">
         <span className={'text-[17px]'}>{`PNG, GIF, WEBP, MP4 or MP3`} </span>
         <br />
         <span className={'text-[17px]'}>{`Max 100mb`} </span>
         <br />
-        {isLoading && !props.img2 ? <Ring size={80} color={'#fafafa'} sizeUnit={'px'} /> : null}
+        {isLoading && !props.img2 ? (
+          <Ring size={80} color={'#fafafa'} sizeUnit={'px'} />
+        ) : null}
       </div>
     </div>
   );
