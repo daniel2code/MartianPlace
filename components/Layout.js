@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 
-import { connect, disconnect, switchNetwork } from '../store/slices/userSlice';
+import { connect, disconnect, switchNetwork } from '../store/slices/userSlice'
 
 import Nav from './Nav';
 import styles from '../styles/Layout.module.scss';
@@ -31,7 +31,8 @@ import { useWeb3React } from '@web3-react/core';
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 import Footer from './widgets/footer';
-import Alert from '../components/elements/modal/Modal';
+import Alert from '../components/elements/modal/Modal'
+import Router from 'next/router';
 
 // declare const window: Window &
 //   typeof globalThis & {
@@ -50,6 +51,7 @@ const Layout = ({ children }) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
+  const [alertActions, setAlertActions] = useState([]);
 
   const [showDisconnectBtn, setShowDisconnectBtn] = useState(false);
   const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
@@ -90,6 +92,7 @@ const Layout = ({ children }) => {
 
     if (message.message) {
       // alert('message here: ', message.message);
+      console.log("message: ", JSON.parse(message.buttons))
       setAlertOpen(true);
     } else {
       setAlertOpen(false);
@@ -428,16 +431,17 @@ const Layout = ({ children }) => {
             }
           />
         )}
+
       </div>
-      {alertOpen ? (
+      
+        {alertOpen ? (
         <div className='alert'>
          <Alert
          modalOpen={true}
          modalTitle={message.message}
          modalText={message.description}
-         closeAction={() => {dispatch(clearMessage());setAlertOpen(false)}}
+         closeAction={() => setAlertOpen(false)}
          btns={message.buttons}
-         size={message.size}
        />
       </div>
       ) : null}
