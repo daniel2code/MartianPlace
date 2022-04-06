@@ -16,9 +16,33 @@ import listing from './listing.svg';
 import sale from './sale.svg';
 import created from './created.svg';
 import imgUploadIcon from './img-upload-icon.svg';
+<<<<<<< Updated upstream
 
 export {
   arrowRight,
+=======
+import instagram from './instagram.svg';
+import discord from './discord.svg';
+import marketplace from './marketplace.svg';
+import github from './github.svg';
+import discordDark from './discord-dark.svg';
+import instagramDark from './instagram-dark.svg';
+import spotifyDark from './spotify-dark.svg';
+import telegramDark from './telegram-dark.svg';
+import twitterDark from './twitter-dark.svg';
+
+export {
+  arrowRight,
+  discordDark,
+  instagramDark,
+  twitterDark,
+  spotifyDark,
+  telegramDark,
+  github,
+  instagram,
+  discord,
+  marketplace,
+>>>>>>> Stashed changes
   imgUploadIcon,
   starCup,
   mask,

@@ -35,7 +35,6 @@ export default function Create() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const message = useSelector((state) => state.message);
 
   const [image, setImage] = useState("");
   const [url, setUrl] = useState(null);
