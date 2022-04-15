@@ -24,7 +24,7 @@ import marketABI from '../marketABI.json';
 import axios from 'axios';
 
 const Nav = props => {
-  const { onWallet } = props;
+  const { onWallet, selectCreateAction } = props;
 
   const { active } = useWeb3React();
 
@@ -113,7 +113,17 @@ const Nav = props => {
             <Link href="/discover">Discover</Link>
           </li>
           <li className="hidden lg:block mt-2 mx-3">
-            <Link href="/create">Create</Link>
+            <Link href={"/"}>
+            <Button
+                type="button"
+                id="btnAcions"
+                // buttonStyles="mr-4 text-xl"
+                onClick={selectCreateAction}
+              >
+                <h1 className='hover:text-pink' >
+                  create
+                </h1>
+              </Button></Link>
           </li>
           <li>
             {/* <Search /> */}
@@ -138,8 +148,8 @@ const Nav = props => {
               buttonStyles="lg:border lg:border-purple-primary lg:rounded-full lg:py-1.5 lg:px-2 lg:text-[14px] lg:hover:bg-background-gradient-btn"
               onClick={onWallet}
             >
-              <span className="hidden lg:block">
-                {active ? 'Wallet connected' : 'Connect Wallet'}
+              <span className="hidden lg:block w-36">
+                {active ? 'Logout' : 'Connect Wallet'}
               </span>
               {/* <span className="lg:hidden mb-2"><Image src={metamaskImg} alt={'wallet'}
               width={35} height={35} ></Image>
@@ -215,7 +225,7 @@ const Nav = props => {
                 onClick={onWallet}
               >
                 <span className="">
-                  {active ? 'Wallet connected' : 'Connect Wallet'}
+                  {active ? 'Logout' : 'Connect Wallet'}
                 </span>
               </Button>
             </div>

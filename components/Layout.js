@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 
-import { connect, disconnect, switchNetwork } from '../store/slices/userSlice'
+import { connect, disconnect, switchNetwork } from '../store/slices/userSlice';
 
 import Nav from './Nav';
 import styles from '../styles/Layout.module.scss';
@@ -31,7 +31,7 @@ import { useWeb3React } from '@web3-react/core';
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 import Footer from './widgets/footer';
-import Alert from '../components/elements/modal/Modal'
+import Alert from '../components/elements/modal/Modal';
 import Router from 'next/router';
 
 // declare const window: Window &
@@ -39,6 +39,33 @@ import Router from 'next/router';
 //     ethereum: any;
 //   };
 // export const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+// export const selectCreateAction = () => {
+//   const dispatch = useDispatch()
+//   dispatch(
+//     setMessage({
+//       message: "none",
+//       description:
+//         "none",
+//       buttons: JSON.stringify([
+//         {
+//           name: "Create a Project",
+//           action: "route",
+//           routepath: "/project",
+//           fullcolor: true,
+//           lg: true,
+//         },
+//         {
+//           name: "Create an NFT",
+//           action: "route",
+//           routepath: "/create",
+//           fullcolor: true,
+//           lg: true,
+//         },
+//       ]),
+//     })
+//   );
+// }
 
 const Layout = ({ children }) => {
   const { active, account, activate, deactivate } = useWeb3React();
@@ -51,7 +78,6 @@ const Layout = ({ children }) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
-  const [alertActions, setAlertActions] = useState([]);
 
   const [showDisconnectBtn, setShowDisconnectBtn] = useState(false);
   const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
@@ -92,7 +118,6 @@ const Layout = ({ children }) => {
 
     if (message.message) {
       // alert('message here: ', message.message);
-      console.log("message: ", JSON.parse(message.buttons))
       setAlertOpen(true);
     } else {
       setAlertOpen(false);
@@ -115,6 +140,7 @@ const Layout = ({ children }) => {
       await activate(injected)
         .then(() => {
           //update dapp server get response token:
+          // console.log("address to save: ", account)
           dispatch(connect({ address: account, userToken: 'fh' }));
         })
         .catch(er => console.log('activate err: ', er));
@@ -136,10 +162,10 @@ const Layout = ({ children }) => {
   };
 
   const getBalance = async address => {
-    console.log('try get bal from ', address);
+    // console.log('try get bal from ', address);
     window.ethereum.enable()
     if (typeof window.ethereum !== 'undefined') {
-      console.log('window eth: ');
+      // console.log('window eth: ');
       // Instance web3 with the provided information
       // window.ethereum.enable()
       var web3 = new Web3(window.ethereum);
@@ -207,6 +233,33 @@ const Layout = ({ children }) => {
     </div>;
   };
 
+  const selectCreateAction = () => {
+    // const dispatch = useDispatch()
+    dispatch(
+      setMessage({
+        message: "none",
+        description:
+          "none",
+        buttons: JSON.stringify([
+          {
+            name: "Create a Project",
+            action: "route",
+            routepath: "/project",
+            fullcolor: true,
+            lg: true,
+          },
+          {
+            name: "Create an NFT",
+            action: "route",
+            routepath: "/create",
+            fullcolor: true,
+            lg: true,
+          },
+        ]),
+      })
+    );
+  }
+
   return (
     <>
       <div className={[styles.container].join(' ')}>
@@ -221,7 +274,7 @@ const Layout = ({ children }) => {
           <Image src={bshadow} alt={'banner'} layout="fill" objectFit='cover'></Image>
         </div> */}
         <div className={styles.content}>
-          <Nav onWallet={onWallet} />
+          <Nav onWallet={onWallet} selectCreateAction={() => {selectCreateAction(dispatch)}}/>
           <main className={[styles.main].join(' ')}>
             <section className={styles.section}>{children}</section>
           </main>
@@ -251,6 +304,11 @@ const Layout = ({ children }) => {
             parentStyles="md:w-80 w-full rounded-md border border-1 border-mid-grey-4 bg-[#222529]"
             modalBody={
               <div>
+                <Button
+                type="button"
+                id="goToProfile"
+                buttonStyles="w-full"
+                onClick={() => { toggleModal(); Router.push("/profile");}}>
                 <div className="flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4">
                   <Image
                     src={userImg}
@@ -258,8 +316,24 @@ const Layout = ({ children }) => {
                     width={14}
                     height={14}
                   ></Image>
-                  <h5 className="text-white ml-3 font-medium">{`My Profile`}</h5>
+                  <h5 className="text-white ml-3 font-medium">{`Profile`}</h5>
                 </div>
+                </Button>
+                <Button
+                type="button"
+                id="goToVault"
+                buttonStyles="w-full"
+                onClick={() => { toggleModal(); Router.push("/vault");}}>
+                <div className="flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4">
+                  <Image
+                    src={userImg}
+                    alt={'user'}
+                    width={14}
+                    height={14}
+                  ></Image>
+                  <h5 className="text-white ml-3 font-medium">{`Vault`}</h5>
+                </div>
+                </Button>
                 <div className="flex flex-row py-2 px-5 border-b border-b-1 border-b-mid-grey-4 justify-between">
                   <div className="flex flex-row">
                     <Image
@@ -268,7 +342,7 @@ const Layout = ({ children }) => {
                       width={18}
                       height={18}
                     ></Image>
-                    <h5 className="text-white ml-3 font-medium">{`My Wallet`}</h5>
+                    <h5 className="text-white ml-3 font-medium">{`Wallet`}</h5>
                   </div>
                   <div className="flex flex-row">
                     <div>
@@ -276,14 +350,14 @@ const Layout = ({ children }) => {
                         type="button"
                         id="disconnectW"
                         buttonStyles="text-purple-secondary mr-1 font-light hover:pr-1 pb-1 hover:underline decoration-purple-secondary"
-                        onClick={disconnectWallet}
+                        onClick={() => { toggleModal(); disconnectWallet()}}
                         onMouseEnter={() => setShowDisconnectBtn(true)}
                         onMouseLeave={() => setShowDisconnectBtn(false)}
                       >
                         <h5>
-                          {showDisconnectBtn
-                            ? `Disconnect`
-                            : shortWallet(account)}
+                          {
+                          // showDisconnectBtn ? `Disconnect` : 
+                            shortWallet(account)}
                         </h5>
                       </Button>
                     </div>
@@ -347,7 +421,7 @@ const Layout = ({ children }) => {
                     </div>
                   </div>
                 </div> */}
-                <div className="flex flex-row py-2 px-5 border-t border-t-1 border-t-mid-grey-4 justify-center">
+                {/* <div className="flex flex-row py-2 px-5 border-t border-t-1 border-t-mid-grey-4 justify-center">
                   <div className="mb-1">
                     <Button
                       type="button"
@@ -381,7 +455,20 @@ const Layout = ({ children }) => {
                       </div>
                     </Button>
                   </div>
-                </div>
+                </div> */}
+                <div className='text-center'>
+                      <Button
+                        type="button"
+                        id="disconnectW"
+                        buttonStyles="text-purple-secondary mr-1 font-light hover:pr-1 pb-1 hover:underline decoration-purple-secondary"
+                        onClick={() => { toggleModal(); disconnectWallet()}}
+                        onMouseEnter={() => setShowDisconnectBtn(true)}
+                        onMouseLeave={() => setShowDisconnectBtn(false)}
+                      >
+                        <h5>Disconnect
+                        </h5>
+                      </Button>
+                    </div>
               </div>
             }
           />
@@ -431,17 +518,17 @@ const Layout = ({ children }) => {
             }
           />
         )}
-
       </div>
-      
-        {alertOpen ? (
+      {alertOpen ? (
         <div className='alert'>
          <Alert
          modalOpen={true}
-         modalTitle={message.message}
-         modalText={message.description}
-         closeAction={() => setAlertOpen(false)}
-         btns={message.buttons}
+         message={message}
+        //  modalTitle={message.message}
+        //  modalText={message.description}
+         closeAction={() => {dispatch(clearMessage());setAlertOpen(false)}}
+        //  btns={message.buttons}
+        //  size={message.size}
        />
       </div>
       ) : null}
