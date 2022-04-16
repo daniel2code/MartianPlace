@@ -20,7 +20,7 @@ import { create } from "ipfs-http-client";
 import Web3 from "web3";
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core";
-
+import {getContractData, listingPrice, fetchUserNFT, fetchItems, fetchAllItemsCreated} from "../web3/readdata";
 import { nftaddress, nftmarketaddress } from "../config";
 
 import nftABI from "../nftABI.json";
@@ -139,6 +139,12 @@ export default function Create() {
     // toggleModal();
   };
 
+  // const getReadData = async (address) => { 
+  //   const instance = await fetchAllItemsCreated(address);
+  //   // const priceM = await instance.marketPlace.getListingPrice()
+  //   console.log("Declare contract from new web3.", instance)
+  // }
+
   const delistNFT = () => {};
 
   const confirmCreate = async () => {
@@ -181,7 +187,7 @@ export default function Create() {
       };
 
       console.log("metadata obj: ", metadata);
-
+      
       const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
       console.log("result2: ", result2);
       setUrl(result2.path);
@@ -189,99 +195,100 @@ export default function Create() {
 
       //get signer
       // window.ethereum.enable()
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      console.log("after provider....: ");
+      // const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // console.log("after provider....: ");
 
-      const signer = provider.getSigner();
-      console.log("after signer: ");
-
-      let contract = new ethers.Contract(nftaddress, nftABI, signer);
-      const marketPlace = new ethers.Contract(
-        nftmarketaddress,
-        marketABI,
-        signer
-      );
+      // const signer = provider.getSigner();
+      // console.log("after signer: ");
+      // console.log(address, ": connected wallet address: ")
+      // await getReadData(address)
+      // let contract = new ethers.Contract(nftaddress, nftABI, signer);
+      // const marketPlace = new ethers.Contract(
+      //   nftmarketaddress,
+      //   marketABI,
+      //   signer
+      // );
       // console.log("after contract: ", contract)
-      console.log("after marketplace: ", marketPlace);
-      console.log("connected user addr: ", address);
+      // console.log("after marketplace: ", marketPlace);
+      // console.log("connected user addr: ", address);
       // const marketItems = await marketPlace.fetchItemsCreated(address)
       // console.log("Market items: ", marketItems)
 
       // const getData = await marketPlace.
-      let transition = await contract.createToken(`ipfs://${result2.path}/`, {
-        from: address,
-      });
-      console.log("transition: ", transition);
+      // let transition = await contract.createToken(`ipfs://${result2.path}/`, {
+      //   from: address,
+      // });
+      // console.log("transition: ", transition);
 
-      if (transition.hash) {
-        dispatch(
-          setMessage({
-            message: "NFT Created",
-            description:
-              "Congratulations your NFT has been successfully created on Martian Place.",
-            buttons: JSON.stringify([
-              { name: "List NFT", action: "close", fullcolor: true, lg: true },
-              // {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-            ]),
-          })
-        );
+      // if (transition.hash) {
+        // dispatch(
+        //   setMessage({
+        //     message: "NFT Created",
+        //     description:
+        //       "Congratulations your NFT has been successfully created on Martian Place.",
+        //     buttons: JSON.stringify([
+        //       { name: "List NFT", action: "close", fullcolor: true, lg: true },
+        //       // {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+        //     ]),
+        //   })
+        // );
 
-        contract.filters.Transfer();
-        contract.on("Transfer", async (from, to, amount, event) => {
-          let tokenId = event.args.tokenId.toNumber();
-          console.log("tokenId: ", tokenId);
+        // contract.filters.Transfer();
+        // contract.on("Transfer", async (from, to, amount, event) => {
+        //   let tokenId = event.args.tokenId.toNumber();
+        //   console.log("tokenId: ", tokenId);
 
-          const price = ethers.utils.parseUnits(priceNow, "ether");
+        //   const price = ethers.utils.parseUnits(priceNow, "ether");
 
-          let listingPrice = await marketPlace.getListingPrice();
-          listingPrice = listingPrice.toString();
-          console.log("listingPrice: ", listingPrice);
+        //   let listingPrice = await marketPlace.getListingPrice();
+        //   listingPrice = listingPrice.toString();
+        //   console.log("listingPrice: ", listingPrice);
 
-          let transition2 = await marketPlace.createMarketItem(
-            nftaddress,
-            tokenId,
-            price,
-            { value: listingPrice }
-          );
-          transition2 = await marketPlace.createMarketSale(
-            nftaddress,
-            tokenId,
-            { value: listingPrice }
-          );
+        //   let transition2 = await marketPlace.createMarketItem(
+        //     nftaddress,
+        //     tokenId,
+        //     price,
+        //     { value: listingPrice }
+        //   );
+        //   transition2 = await marketPlace.createMarketSale(
+        //     nftaddress,
+        //     tokenId,
+        //     { value: listingPrice }
+        //   );
 
-          if (transition2.hash) {
-            dispatch(
-              setMessage({
-                message: "NFT Listed",
-                description:
-                  "Congratulations your NFT has been successfully listed on Martian Place.",
-                buttons: JSON.stringify([
-                  {
-                    name: "View NFT",
-                    action: "route",
-                    routepath: "/",
-                    fullcolor: true,
-                    lg: true,
-                  },
-                  {
-                    name: "Cancel",
-                    action: "route",
-                    routepath: "/",
-                    fullcolor: false,
-                    lg: false,
-                  },
-                ]),
-              })
-            );
-            setIsLoading(false);
+        //   if (transition2.hash) {
+        //     dispatch(
+        //       setMessage({
+        //         message: "NFT Listed",
+        //         description:
+        //           "Congratulations your NFT has been successfully listed on Martian Place.",
+        //         buttons: JSON.stringify([
+        //           {
+        //             name: "View NFT",
+        //             action: "route",
+        //             routepath: "/",
+        //             fullcolor: true,
+        //             lg: true,
+        //           },
+        //           {
+        //             name: "Cancel",
+        //             action: "route",
+        //             routepath: "/",
+        //             fullcolor: false,
+        //             lg: false,
+        //           },
+        //         ]),
+        //       })
+        //     );
+        //     setIsLoading(false);
 
-            //reset form
-            setUrl(null);
+        //     //reset form
+        //     setUrl(null);
 
-            // Router.push('/')
-          }
-        });
-      }
+        //     // Router.push('/')
+        //   }
+        // });
+      // }
     } catch (error) {
       console.error("Create NFT error: ", error);
       dispatch(
