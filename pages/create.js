@@ -21,10 +21,7 @@ import Web3 from "web3";
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core";
 import {getContractData, listingPrice, fetchUserNFT, fetchItems, fetchAllItemsCreated} from "../web3/readdata";
-import { nftaddress, nftmarketaddress } from "../config";
 
-import nftABI from "../nftABI.json";
-import marketABI from "../marketABI.json";
 
 import { Ring } from "react-awesome-spinners";
 import Router from "next/router";
