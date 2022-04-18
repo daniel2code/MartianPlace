@@ -4,7 +4,7 @@ import addresses from "../config/addresses.json";
 
 export const createMarket = async (tokenID, price, royaltyFee, royaltyAddress) => { 
     const contractInstance = await getContractData();
-    const listingPrice = await listingPrice();
+    const listedPrice = await listingPrice();
     const marketAddress = addresses.BSC.nftaddress;
     const marketItems = contractInstance.marketPlace.createMarketItem(
         marketAddress,
@@ -12,7 +12,7 @@ export const createMarket = async (tokenID, price, royaltyFee, royaltyAddress) =
         price,
         royaltyFee,
         royaltyAddress,
-        {value: listingPrice}
+        {value: listedPrice}
     )
     return marketItems;
 }

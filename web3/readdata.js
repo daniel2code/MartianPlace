@@ -34,11 +34,11 @@ export const listingPrice = async () => {
     return convertedListingPrice;
 }
 
-export const fetchUserNFT = async (address) => { 
-    const contractInstance = await getContractData();
-    const gettingUserNFTs = await contractInstance.marketPlace.fetchMyNFTs(address);
-    return gettingUserNFTs;
-}
+// export const fetchUserNFT = async (address) => { 
+//     const contractInstance = await getContractData();
+//     const gettingUserNFTs = await contractInstance.marketPlace.fetchMyNFTs(address);
+//     return gettingUserNFTs;
+// }
 
 export const fetchAllItemsCreated = async (address) => { 
     const contractInstance = await getContractData();
