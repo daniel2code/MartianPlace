@@ -114,7 +114,7 @@ const Nav = props => {
             <Link href="/discover">Discover</Link>
           </li>
           <li className="hidden lg:block mt-2 mx-3">
-            <Link href={"/"}>
+            {/* <Link href={"#"}> */}
             <Button
                 type="button"
                 id="btnAcions"
@@ -124,7 +124,8 @@ const Nav = props => {
                 <h1 className='hover:text-pink' >
                   create
                 </h1>
-              </Button></Link>
+              </Button>
+              {/* </Link> */}
           </li>
           <li>
             {/* <Search /> */}

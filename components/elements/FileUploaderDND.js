@@ -4,6 +4,9 @@ import imgPlaceholder from '../../public/images/pic.svg';
 import { Ring } from 'react-awesome-spinners';
 
 import { create, CID, IPFSHTTPClient } from 'ipfs-http-client';
+import { useDispatch } from 'react-redux';
+import { setMessage } from "../../store/slices/messageSlice";
+
 // import fs from 'fs'
 
 // const ipfsClient = require('ipfs-http-client')
@@ -133,6 +136,22 @@ export default function FileUploaderDND(props) {
         // console.log("result: ", result2)
       } catch (error) {
         console.error('IPFS error ', error);
+        useDispatch(
+          setMessage({
+            message: "Failed to upload media",
+            description: "Check your Network and Try again",
+            buttons: JSON.stringify([
+              { name: "Try again", action: "close", fullcolor: true, lg: true },
+              {
+                name: "Cancel",
+                action: "route",
+                routepath: "/",
+                fullcolor: false,
+                lg: false,
+              },
+            ]),
+          })
+        );
         setIsLoading(false);
         ipfs = undefined;
       }
