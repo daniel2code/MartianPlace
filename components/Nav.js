@@ -30,7 +30,7 @@ const Nav = props => {
   const { active } = useWeb3React();
 
   const user = useSelector(state => state.user);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(false);
