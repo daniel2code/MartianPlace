@@ -27,10 +27,11 @@ import Router from "next/router";
       //  />
 
 export default function Alert({
-  modalTitle,
-  modalText,
+  message,
+  // modalTitle,
+  // modalText,
   closeAction,
-  btns,
+  // btns,
 }) {
 
   return (
@@ -39,12 +40,12 @@ export default function Alert({
         <div className={`flex justify-end ${styles.imgBox}`}>
           <button onClick={closeAction}> <Image src={CloseIcon} /> </button>
         </div>
-        <h1 className={styles.modalTitle}>{modalTitle}</h1>
-        <p className={styles.modalText}>{modalText}</p>
+        {message.message !== "none" && <h1 className={styles.modalTitle}>{message.message}</h1>}
+        {message.description !== "none" && <p className={styles.modalText}>{message.description}</p>}
 
-        <div className={`${styles.btnBox} flex mt-7`}>
+        <div className={`flex ${message.message !== "none" ? "" : "flex-col space-y-8 mb-10 mx-40"} mt-7`}>
 
-          {btns && JSON.parse(btns).map((btn, index) => {
+          {message.buttons && JSON.parse(message.buttons).map((btn, index) => {
 
             return (
             
