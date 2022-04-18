@@ -1,0 +1,15 @@
+
+{
+    "BSC": {
+        "nftaddress": "0xfc45C00f750d67d1671a56533A17fD193AbDd8Fa",
+        "nftmarketaddress" : "0xD83aD8A4148234e176EBec4021CE9D1F95874ca4"
+    },
+    "ETH": {
+        "nftaddress": "0xfc45C00f750d67d1671a56533A17fD193AbDd8Fa",
+        "nftmarketaddress" : "0xD83aD8A4148234e176EBec4021CE9D1F95874ca4"
+    },
+    "Polygon": {
+        "nftaddress": "0xfc45C00f750d67d1671a56533A17fD193AbDd8Fa",
+        "nftmarketaddress" : "0xD83aD8A4148234e176EBec4021CE9D1F95874ca4"
+    }
+}
