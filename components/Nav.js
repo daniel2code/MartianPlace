@@ -17,11 +17,12 @@ import Input from './elements/Input';
 import Search from './elements/Search';
 
 import { useWeb3React } from '@web3-react/core';
-import { ethers } from 'ethers';
-import { nftaddress, nftmarketaddress } from '../config';
-import nftABI from '../nftABI.json';
-import marketABI from '../marketABI.json';
-import axios from 'axios';
+// import { ethers } from 'ethers';
+// import { nftaddress, nftmarketaddress } from '../config';
+// import nftABI from '../nftABI.json';
+// import marketABI from '../marketABI.json';
+// import axios from 'axios';
+import { fetchItems } from  '../web3/readdata'
 
 const Nav = props => {
   const { onWallet } = props;
@@ -46,16 +47,16 @@ const Nav = props => {
     // const marketContract = new ethers.Contract(nftmarketaddress, marketABI, provider)
 
     //get signer
-    window.ethereum.enable()
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    // window.ethereum.enable()
+    // const provider = new ethers.providers.Web3Provider(window.ethereum)
 
-    const signer = provider.getSigner()
+    // const signer = provider.getSigner()
 
-    let marketContract = new ethers.Contract(nftmarketaddress, marketABI, signer)
+    // let marketContract = new ethers.Contract(nftmarketaddress, marketABI, signer)
 
 
     //call market items from the market contract
-    const data = await marketContract.fetchMarketItems()
+    const data = await fetchItems()
 
     console.log("data: ", data)
 
