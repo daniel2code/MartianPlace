@@ -6,7 +6,6 @@ import { setMessage, clearMessage } from "../store/slices/messageSlice";
 import { switchNetwork } from "../store/slices/userSlice";
 
 import styles from "../styles/Create.module.scss";
-// import { DESC } from '../public/contants';
 import imgPlaceholder from "../public/images/pic.svg";
 import FileUploaderDND from "../components/elements/FileUploaderDND";
 import Input from "../components/elements/Input";
@@ -26,6 +25,7 @@ import {getContractData, listingPrice, fetchUserNFT, fetchItems, fetchAllItemsCr
 import { Ring } from "react-awesome-spinners";
 import Router from "next/router";
 import { connectWallet } from "../components/Layout";
+import { createNewToken } from "../web3/writeData";
 
 export default function Create() {
   const { active } = useWeb3React();
@@ -76,16 +76,13 @@ export default function Create() {
 
   function handleChangeInput(i, value, name, theFields, setTheFields) {
     const values = [...theFields];
-    // console.log(theFields);
 
     values[i][name] = value;
     setTheFields(values);
-    // console.log(fields);
   }
 
   function handleAdd(theFields, setTheFields) {
     const values = [...theFields];
-    // values.push({ value: null });
     values.push({
       Type: "",
       Value: "",
@@ -163,13 +160,12 @@ export default function Create() {
       );
       return;
     }
-    // if(!nftName || !description || !priceInitial || !priceNow || !image || !properties) return
 
     setIsLoading(true);
     let ipfs = undefined;
     //uploading image
     try {
-      console.log("imgpath not null", image.imgPath);
+      // console.log("imgpath not null", image.imgPath);
 
       ipfs = create({
         url: "https://ipfs.infura.io:5001/api/v0",
@@ -182,12 +178,12 @@ export default function Create() {
         properties: props,
       };
 
-      console.log("metadata obj: ", metadata);
+      // console.log("metadata obj: ", metadata);
       
       const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
-      console.log("result2: ", result2);
+      // console.log("result2: ", result2);
       setUrl(result2.path);
-      ipfs = undefined;
+      // ipfs = undefined;
 
       //get signer
       // window.ethereum.enable()
@@ -198,6 +194,7 @@ export default function Create() {
       // console.log("after signer: ");
       // console.log(address, ": connected wallet address: ")
       // await getReadData(address)
+
       // let contract = new ethers.Contract(nftaddress, nftABI, signer);
       // const marketPlace = new ethers.Contract(
       //   nftmarketaddress,
@@ -211,6 +208,17 @@ export default function Create() {
       // console.log("Market items: ", marketItems)
 
       // const getData = await marketPlace.
+
+      //create token
+      // const nftTokenId = await createNewToken(`ipfs://${result2.path}/`, {
+      //   from: address,
+      // })
+
+      const nftTokenId = await createNewToken(`ipfs://${result2.path}/`)
+
+      console.log("nftTokenId: ", nftTokenId);
+
+
       // let transition = await contract.createToken(`ipfs://${result2.path}/`, {
       //   from: address,
       // });

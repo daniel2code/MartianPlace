@@ -526,7 +526,7 @@ const Layout = ({ children }) => {
          message={message}
         //  modalTitle={message.message}
         //  modalText={message.description}
-         closeAction={() => {dispatch(clearMessage());setAlertOpen(false)}}
+         closeAction={() => {dispatch(clearMessage());setAlertOpen(false);}}
         //  btns={message.buttons}
         //  size={message.size}
        />

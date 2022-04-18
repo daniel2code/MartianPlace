@@ -38,7 +38,7 @@ export default function Alert({
     <div className={styles.backgroundContainer}>
       <div className={`${styles.modalBox}`}>
         <div className={`flex justify-end ${styles.imgBox}`}>
-          <button onClick={closeAction}> <Image src={CloseIcon} /> </button>
+          <button onClick={()=> closeAction()}> <Image src={CloseIcon} /> </button>
         </div>
         {message.message !== "none" && <h1 className={styles.modalTitle}>{message.message}</h1>}
         {message.description !== "none" && <p className={styles.modalText}>{message.description}</p>}
