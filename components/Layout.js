@@ -79,8 +79,6 @@ const Layout = ({ children }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
 
-  const [showDisconnectBtn, setShowDisconnectBtn] = useState(false);
-  const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
   const [usdBalance, setUsdBalance] = useState(null);
   //
   const modalRef1 = React.createRef();
@@ -350,13 +348,10 @@ const Layout = ({ children }) => {
                         type="button"
                         id="disconnectW"
                         buttonStyles="text-purple-secondary mr-1 font-light hover:pr-1 pb-1 hover:underline decoration-purple-secondary"
-                        onClick={() => { toggleModal(); disconnectWallet()}}
-                        onMouseEnter={() => setShowDisconnectBtn(true)}
-                        onMouseLeave={() => setShowDisconnectBtn(false)}
+                        onClick={() => { toggleModal(); copyWallet()}}
                       >
                         <h5>
                           {
-                          // showDisconnectBtn ? `Disconnect` : 
                             shortWallet(account)}
                         </h5>
                       </Button>
@@ -462,8 +457,6 @@ const Layout = ({ children }) => {
                         id="disconnectW"
                         buttonStyles="text-purple-secondary mr-1 font-light hover:pr-1 pb-1 hover:underline decoration-purple-secondary"
                         onClick={() => { toggleModal(); disconnectWallet()}}
-                        onMouseEnter={() => setShowDisconnectBtn(true)}
-                        onMouseLeave={() => setShowDisconnectBtn(false)}
                       >
                         <h5>Disconnect
                         </h5>

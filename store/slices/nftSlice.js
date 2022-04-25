@@ -1,30 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
+  imageURL: null,
+  project: null,
   name: null,
   description: null,
-  img: null,
-  isconnected: false,
-  userToken: null
+  mintAmt: null,
+  royalties: null,
+  priceInitial: null,
+  priceNow: null,
+  address: null,
+  mintAsPublic: null
 }
 
-export const userSlice = createSlice({
+export const nftSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    connect: (state, action) => {
+    addNFT: (state, action) => {
+      state.imageURL = action.payload.imageURL,
+      state.project = action.payload.project,
       state.name = action.payload.name,
-      state.isconnected = true,
-      state.userToken = action.payload.userToken
+      state.description = action.payload.description,
+      state.mintAmt = action.payload.mintAmt,
+      state.royalties = action.payload.royalties,
+      state.priceInitial = action.payload.priceInitial,
+      state.priceNow = action.payload.priceNow,
+      state.address = action.payload.address,
+      state.mintAsPublic = action.payload.mintAsPublic
     },
-    disconnect: (state) => {
+    removeNFT: (state) => {
+      state.imageURL = null,
+      state.project = null,
       state.name = null,
-      state.isconnected = false,
-      state.userToken = null
+      state.description = null,
+      state.mintAmt = null,
+      state.royalties = null,
+      state.priceInitial = null,
+      state.priceNow = null,
+      state.address = null,
+      state.mintAsPublic = null
     }
   }
 })
 
-export const {connect, disconnect} = userSlice.actions;
+export const { addNFT, removeNFT } = nftSlice.actions;
 
-export default userSlice.reducer
+export default nftSlice.reducer

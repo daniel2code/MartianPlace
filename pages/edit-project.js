@@ -1,12 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setMessage, clearMessage } from '../store/slices/messageSlice';
 import { switchNetwork } from '../store/slices/userSlice';
 
 import styles from '../styles/Create.module.scss';
-// import { DESC } from '../public/contants';
 import imgPlaceholder from '../public/images/pic.svg';
 import FileUploaderDND from '../components/elements/FileUploaderDND';
 import Input from '../components/elements/Input';
@@ -17,32 +15,18 @@ import bnbImg from '../public/images/bnb.svg';
 import ethImg from '../public/images/eth.svg';
 import {
   discordDark,
-  instagram,
   instagramDark,
   telegramDark,
   twitterDark,
 } from '../public/assets/icons';
-import { create } from 'ipfs-http-client';
-import Web3 from 'web3';
-import { ethers } from 'ethers';
-import { useWeb3React } from '@web3-react/core';
-
-import { nftaddress, nftmarketaddress } from '../config';
-
-import nftABI from '../nftABI.json';
-import marketABI from '../marketABI.json';
 
 import { Ring } from 'react-awesome-spinners';
-import Router from 'next/router';
-import { connectWallet } from '../components/Layout';
 import ProfileDivider from '../components/elements/profile-divider';
 
 const EditProject = () => {
-  const { active } = useWeb3React();
 
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  const message = useSelector(state => state.message);
 
   const [image, setImage] = useState('');
   const [url, setUrl] = useState(null);
@@ -50,7 +34,6 @@ const EditProject = () => {
   const [project, setProject] = useState('');
   const [nftName, setNftName] = useState('');
   const [description, setDescription] = useState('');
-  const [mintAmt, setMintAmt] = useState('');
   const [royalties, setRoyalties] = useState('');
   const [priceInitial, setPriceInitial] = useState('');
   const [priceNow, setPriceNow] = useState('');
@@ -59,23 +42,7 @@ const EditProject = () => {
   const [showProperties, setShowProperties] = useState(true);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
   const [buffer, setBuffer] = useState(null);
-
-  const items = [
-    {
-      label: 'January',
-      value: 'january',
-    },
-    {
-      label: 'February',
-      value: 'february',
-    },
-    {
-      label: 'March',
-      value: 'march',
-    },
-  ];
 
   const handleChange = event => {
     setProject(event.target.value);
@@ -84,31 +51,6 @@ const EditProject = () => {
     console.log(img);
     setImage(img);
   };
-
-  function handleChangeInput(i, value, name, theFields, setTheFields) {
-    const values = [...theFields];
-    // console.log(theFields);
-
-    values[i][name] = value;
-    setTheFields(values);
-    // console.log(fields);
-  }
-
-  function handleAdd(theFields, setTheFields) {
-    const values = [...theFields];
-    // values.push({ value: null });
-    values.push({
-      Type: '',
-      Value: '',
-    });
-    setTheFields(values);
-  }
-
-  function handleRemove(i, theFields, setTheFields) {
-    const values = [...theFields];
-    values.splice(i, 1);
-    setTheFields(values);
-  }
 
   useEffect(() => {
     if (user && user.address) {
@@ -132,203 +74,6 @@ const EditProject = () => {
     address,
     url,
   ]);
-
-  const delistNFT = () => {};
-
-  const confirmCreate = async () => {
-    let props = [];
-    properties.forEach(x => {
-      props.push({ type: x.Type, value: x.Value });
-    });
-
-    console.log('props: ', props);
-
-    if (!nftName || !description || !image || !address || !priceNow) {
-      dispatch(
-        setMessage({
-          message: 'Missing Information!',
-          description: `The nft name, image and receipient's address are required.`,
-          buttons: JSON.stringify([
-            { name: 'OK', action: 'close', fullcolor: true, lg: false },
-          ]),
-        })
-      );
-      return;
-    }
-    // if(!nftName || !description || !priceInitial || !priceNow || !image || !properties) return
-
-    setIsLoading(true);
-    let ipfs = undefined;
-    //uploading image
-    try {
-      console.log('imgpath not null', image.imgPath);
-
-      ipfs = create({
-        url: 'https://ipfs.infura.io:5001/api/v0',
-      });
-
-      const metadata = {
-        name: nftName,
-        description: description,
-        image: `https://ipfs.infura.io/ipfs/${image.imgPath}`,
-        properties: props,
-      };
-
-      console.log('metadata obj: ', metadata);
-
-      const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
-      console.log('result2: ', result2);
-      setUrl(result2.path);
-      ipfs = undefined;
-
-      //get signer
-      // window.ethereum.enable()
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      console.log('after provider....: ');
-
-      const signer = provider.getSigner();
-      console.log('after signer: ');
-
-      let contract = new ethers.Contract(nftaddress, nftABI, signer);
-      const marketPlace = new ethers.Contract(
-        nftmarketaddress,
-        marketABI,
-        signer
-      );
-      // console.log("after contract: ", contract)
-      console.log('after marketplace: ', marketPlace);
-      console.log('connected user addr: ', address);
-      // const marketItems = await marketPlace.fetchItemsCreated(address)
-      // console.log("Market items: ", marketItems)
-
-      // const getData = await marketPlace.
-      let transition = await contract.createToken(`ipfs://${result2.path}/`, {
-        from: address,
-      });
-      console.log('transition: ', transition);
-
-      if (transition.hash) {
-        dispatch(
-          setMessage({
-            message: 'NFT Created',
-            description:
-              'Congratulations your NFT has been successfully created on Martian Place.',
-            buttons: JSON.stringify([
-              { name: 'List NFT', action: 'close', fullcolor: true, lg: true },
-              // {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-            ]),
-          })
-        );
-
-        contract.filters.Transfer();
-        contract.on('Transfer', async (from, to, amount, event) => {
-          let tokenId = event.args.tokenId.toNumber();
-          console.log('tokenId: ', tokenId);
-
-          const price = ethers.utils.parseUnits(priceNow, 'ether');
-
-          let listingPrice = await marketPlace.getListingPrice();
-          listingPrice = listingPrice.toString();
-          console.log('listingPrice: ', listingPrice);
-
-          let transition2 = await marketPlace.createMarketItem(
-            nftaddress,
-            tokenId,
-            price,
-            { value: listingPrice }
-          );
-          transition2 = await marketPlace.createMarketSale(
-            nftaddress,
-            tokenId,
-            { value: listingPrice }
-          );
-
-          if (transition2.hash) {
-            dispatch(
-              setMessage({
-                message: 'NFT Listed',
-                description:
-                  'Congratulations your NFT has been successfully listed on Martian Place.',
-                buttons: JSON.stringify([
-                  {
-                    name: 'View NFT',
-                    action: 'route',
-                    routepath: '/',
-                    fullcolor: true,
-                    lg: true,
-                  },
-                  {
-                    name: 'Cancel',
-                    action: 'route',
-                    routepath: '/',
-                    fullcolor: false,
-                    lg: false,
-                  },
-                ]),
-              })
-            );
-            setIsLoading(false);
-
-            //reset form
-            setUrl(null);
-
-            // Router.push('/')
-          }
-        });
-      }
-    } catch (error) {
-      console.error('Create NFT error: ', error);
-      dispatch(
-        setMessage({
-          message: 'Failed to Create NFT',
-          description: '',
-          buttons: JSON.stringify([
-            { name: 'Try again', action: 'close', fullcolor: true, lg: true },
-            {
-              name: 'Cancel',
-              action: 'route',
-              routepath: '/',
-              fullcolor: false,
-              lg: false,
-            },
-          ]),
-        })
-      );
-      setIsLoading(false);
-    }
-  };
-
-  const createNFT = async () => {
-    const values = {
-      image: image.image,
-      project: project,
-      name: nftName,
-      description: description,
-      mintAmt: mintAmt,
-      royalties: royalties,
-      priceInitial: priceInitial,
-      priceNow: priceNow,
-      address: address,
-      properties: properties,
-    };
-
-    console.log('values: ', values);
-
-    if (!active) {
-      dispatch(
-        setMessage({
-          message: 'Connect Wallet to continue.',
-          size: 'small',
-          description: '',
-          buttons: JSON.stringify([
-            { name: 'OK', action: 'close', fullcolor: true, lg: false },
-          ]),
-        })
-      );
-    } else {
-      confirmCreate();
-    }
-  };
 
   return (
     <>
