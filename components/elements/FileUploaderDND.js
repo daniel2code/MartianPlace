@@ -18,6 +18,7 @@ import { setMessage } from "../../store/slices/messageSlice";
 export default function FileUploaderDND(props) {
   const [buffer, setBuffer] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  // const dispatch2 = useDispatch();
 
   const state = {
     inDropZone: false,
@@ -136,7 +137,7 @@ export default function FileUploaderDND(props) {
         // console.log("result: ", result2)
       } catch (error) {
         console.error('IPFS error ', error);
-        useDispatch(
+        dispatch(
           setMessage({
             message: "Failed to upload media",
             description: "Check your Network and Try again",

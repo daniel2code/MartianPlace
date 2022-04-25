@@ -19,11 +19,11 @@ import { create } from "ipfs-http-client";
 import Web3 from "web3";
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core";
-import {getContractData, listingPrice, fetchUserNFT, fetchItems, fetchAllItemsCreated} from "../web3/readdata";
+import { getContractData, listingPrice, fetchUserNFT, fetchItems, fetchAllItemsCreated } from "../web3/readdata";
 
 
 import { Ring } from "react-awesome-spinners";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { connectWallet } from "../components/Layout";
 import { createNewToken } from "../web3/writeData";
 
@@ -32,6 +32,7 @@ export default function Create() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const nft = useSelector((state) => state.nft);
 
   const [image, setImage] = useState("");
   const [url, setUrl] = useState(null);
@@ -46,10 +47,13 @@ export default function Create() {
   const [address, setAddress] = useState("");
   const [properties, setProperties] = useState([]);
   const [showProperties, setShowProperties] = useState(true);
+  const [mintAsPublic, setMintAsPublic] = useState("public");
 
   const [isLoading, setIsLoading] = useState(false);
   const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
   const [buffer, setBuffer] = useState(null);
+
+  const router = useRouter()
 
   const items = [
     {
@@ -69,6 +73,11 @@ export default function Create() {
   const handleChange = (event) => {
     setProject(event.target.value);
   };
+
+  const handleRadioChange = (event) => {
+    setMintAsPublic(event.target.value)
+  }
+
   const setImageAction = (img) => {
     console.log(img);
     setImage(img);
@@ -97,12 +106,24 @@ export default function Create() {
   }
 
   useEffect(() => {
-    if (user && user.address) {
-      setAddress(user.address);
-    }
+    if (user && user.address) { setAddress(user.address); }
     if (user && !user.userNetwork) {
       dispatch(switchNetwork({ userNetwork: "BNB" }));
     }
+
+    if (nft) {
+      if (nft.address) { setAddress(nft.address); }
+      if (nft.description) { setDescription(nft.description); }
+      if (nft.name) { setNftName(nft.name); }
+      if (nft.royalties) { setRoyalties(nft.royalties); }
+      if (nft.project) { setProject(nft.project); }
+      if (nft.priceInitial) { setPriceInitial(nft.priceInitial); }
+      if (nft.priceNow) { setPriceNow(nft.priceNow); }
+      if (nft.mintAsPublic) { setMintAsPublic(nft.mintAsPublic); }
+      if (nft.imageURL) { setUrl(nft.imageURL); }
+      if (nft.mintAmt) { setMintAmt(nft.mintAmt); }
+    }
+
   }, [
     image,
     user,
@@ -117,6 +138,9 @@ export default function Create() {
     priceNow,
     address,
     url,
+    mintAsPublic,
+    router.query,
+    nft
   ]);
 
   const switchWNetwork = () => {
@@ -138,7 +162,7 @@ export default function Create() {
   //   console.log("Declare contract from new web3.", instance)
   // }
 
-  const delistNFT = () => {};
+  const delistNFT = () => { };
 
   const confirmCreate = async () => {
     let props = [];
@@ -146,24 +170,33 @@ export default function Create() {
       props.push({ type: x.Type, value: x.Value });
     });
 
-    console.log("props: ", props);
+    // console.log("props: ", props);
 
-    if (!nftName || !description || !image || !address || !priceNow) {
-      dispatch(
-        setMessage({
-          message: "Missing Information!",
-          description: `The nft name, image and receipient's address are required.`,
-          buttons: JSON.stringify([
-            { name: "OK", action: "close", fullcolor: true, lg: false },
-          ]),
-        })
-      );
-      return;
-    }
+    // console.log("nft info: ", nftName + " " + description + " " + image + " " + address + " " + priceNow);
+    // const requiredFields = [{name: 'nft image', val: image}, {name: 'name of NFT', val: nftName},
+    // {name: 'description', val: description}, {name: 'buy now price', val: priceNow}, {name: 'address', val: address}]
 
-    setIsLoading(true);
+    // let validFields = true;
+
+    // requiredFields.forEach(element => {
+    //   if( element.val == '' || element.val == null){
+    //     dispatch(
+    //       setMessage({
+    //         message: "Missing Information!",
+    //         description: `The ${element.name} is required.`,
+    //         buttons: JSON.stringify([
+    //           { name: "OK", action: "close", fullcolor: true, lg: false },
+    //         ]),
+    //       })
+    //     );
+    //     validFields = false;
+    //     return
+    //   }
+    // });
+
+    // setIsLoading(true);
     let ipfs = undefined;
-    //uploading image
+    // uploading image
     try {
       // console.log("imgpath not null", image.imgPath);
 
@@ -179,7 +212,7 @@ export default function Create() {
       };
 
       // console.log("metadata obj: ", metadata);
-      
+
       const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
       // console.log("result2: ", result2);
       setUrl(result2.path);
@@ -209,14 +242,36 @@ export default function Create() {
 
       // const getData = await marketPlace.
 
+      //go to summary page:
+      // if(validFields){
+      const values = {
+        imageURL: result2.path,
+        project: project,
+        name: nftName,
+        description: description,
+        mintAmt: mintAmt,
+        royalties: royalties,
+        priceInitial: priceInitial,
+        priceNow: priceNow,
+        address: address,
+        mintAsPublic: mintAsPublic
+      };
+
+      // console.log("values: ", values);
+
+      router.push({
+        pathname: '/create/summary',
+        query: values
+      }, '/create/summary');
+      // }
       //create token
       // const nftTokenId = await createNewToken(`ipfs://${result2.path}/`, {
       //   from: address,
       // })
 
-      const nftTokenId = await createNewToken(`ipfs://${result2.path}/`)
+      // const nftTokenId = await createNewToken(`ipfs://${result2.path}/`)
 
-      console.log("nftTokenId: ", nftTokenId);
+      // console.log("nftTokenId: ", nftTokenId);
 
 
       // let transition = await contract.createToken(`ipfs://${result2.path}/`, {
@@ -225,76 +280,76 @@ export default function Create() {
       // console.log("transition: ", transition);
 
       // if (transition.hash) {
-        // dispatch(
-        //   setMessage({
-        //     message: "NFT Created",
-        //     description:
-        //       "Congratulations your NFT has been successfully created on Martian Place.",
-        //     buttons: JSON.stringify([
-        //       { name: "List NFT", action: "close", fullcolor: true, lg: true },
-        //       // {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
-        //     ]),
-        //   })
-        // );
+      // dispatch(
+      //   setMessage({
+      //     message: "NFT Created",
+      //     description:
+      //       "Congratulations your NFT has been successfully created on Martian Place.",
+      //     buttons: JSON.stringify([
+      //       { name: "List NFT", action: "close", fullcolor: true, lg: true },
+      //       // {name: "Cancel", action: 'route', routepath: '/', fullcolor: false, lg: false}
+      //     ]),
+      //   })
+      // );
 
-        // contract.filters.Transfer();
-        // contract.on("Transfer", async (from, to, amount, event) => {
-        //   let tokenId = event.args.tokenId.toNumber();
-        //   console.log("tokenId: ", tokenId);
+      // contract.filters.Transfer();
+      // contract.on("Transfer", async (from, to, amount, event) => {
+      //   let tokenId = event.args.tokenId.toNumber();
+      //   console.log("tokenId: ", tokenId);
 
-        //   const price = ethers.utils.parseUnits(priceNow, "ether");
+      //   const price = ethers.utils.parseUnits(priceNow, "ether");
 
-        //   let listingPrice = await marketPlace.getListingPrice();
-        //   listingPrice = listingPrice.toString();
-        //   console.log("listingPrice: ", listingPrice);
+      //   let listingPrice = await marketPlace.getListingPrice();
+      //   listingPrice = listingPrice.toString();
+      //   console.log("listingPrice: ", listingPrice);
 
-        //   let transition2 = await marketPlace.createMarketItem(
-        //     nftaddress,
-        //     tokenId,
-        //     price,
-        //     { value: listingPrice }
-        //   );
-        //   transition2 = await marketPlace.createMarketSale(
-        //     nftaddress,
-        //     tokenId,
-        //     { value: listingPrice }
-        //   );
+      //   let transition2 = await marketPlace.createMarketItem(
+      //     nftaddress,
+      //     tokenId,
+      //     price,
+      //     { value: listingPrice }
+      //   );
+      //   transition2 = await marketPlace.createMarketSale(
+      //     nftaddress,
+      //     tokenId,
+      //     { value: listingPrice }
+      //   );
 
-        //   if (transition2.hash) {
-        //     dispatch(
-        //       setMessage({
-        //         message: "NFT Listed",
-        //         description:
-        //           "Congratulations your NFT has been successfully listed on Martian Place.",
-        //         buttons: JSON.stringify([
-        //           {
-        //             name: "View NFT",
-        //             action: "route",
-        //             routepath: "/",
-        //             fullcolor: true,
-        //             lg: true,
-        //           },
-        //           {
-        //             name: "Cancel",
-        //             action: "route",
-        //             routepath: "/",
-        //             fullcolor: false,
-        //             lg: false,
-        //           },
-        //         ]),
-        //       })
-        //     );
-        //     setIsLoading(false);
+      //   if (transition2.hash) {
+      //     dispatch(
+      //       setMessage({
+      //         message: "NFT Listed",
+      //         description:
+      //           "Congratulations your NFT has been successfully listed on Martian Place.",
+      //         buttons: JSON.stringify([
+      //           {
+      //             name: "View NFT",
+      //             action: "route",
+      //             routepath: "/",
+      //             fullcolor: true,
+      //             lg: true,
+      //           },
+      //           {
+      //             name: "Cancel",
+      //             action: "route",
+      //             routepath: "/",
+      //             fullcolor: false,
+      //             lg: false,
+      //           },
+      //         ]),
+      //       })
+      //     );
+      //     setIsLoading(false);
 
-        //     //reset form
-        //     setUrl(null);
+      //     //reset form
+      //     setUrl(null);
 
-        //     // Router.push('/')
-        //   }
-        // });
+      //     // Router.push('/')
+      //   }
+      // });
       // }
     } catch (error) {
-      console.error("Create NFT error: ", error);
+      console.error("Create NFT, uploading error: ", error);
       dispatch(
         setMessage({
           message: "Failed to Create NFT",
@@ -311,25 +366,11 @@ export default function Create() {
           ]),
         })
       );
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
   const createNFT = async () => {
-    const values = {
-      image: image.image,
-      project: project,
-      name: nftName,
-      description: description,
-      mintAmt: mintAmt,
-      royalties: royalties,
-      priceInitial: priceInitial,
-      priceNow: priceNow,
-      address: address,
-      properties: properties,
-    };
-
-    console.log("values: ", values);
 
     if (!active) {
       dispatch(
@@ -454,14 +495,18 @@ export default function Create() {
 
         <div className={`${styles.element} mt-10 md:my-10`}>
           <div className="flex items-center">
-            <Input type="radio" />
+            <input type="radio" value="private"
+              onChange={handleRadioChange}
+              checked={mintAsPublic == "private"} />
             <p className="text-[15px] ml-4">
               Private, only visable for you in your wallet
             </p>
           </div>
 
           <div className="flex items-center mt-5">
-            <Input type="radio" />
+            <input type="radio" value="public"
+              onChange={handleRadioChange}
+              checked={mintAsPublic == "public"} />
             <p className="text-[15px] ml-4">
               Public, other people can see and buy your NFT
             </p>
@@ -597,11 +642,10 @@ export default function Create() {
             />
           </div>
           <div
-            className={`${
-              showProperties
+            className={`${showProperties
                 ? "visible md:grid md:grid-cols-2 md:gap-6 mt-8 md:mt-4"
                 : "hidden"
-            }`}
+              }`}
           >
             {properties.map((field, idx) => {
               return (
@@ -692,7 +736,7 @@ export default function Create() {
             id={`delete`}
             title={`delete`}
             buttonStyles="border border-purple-primary rounded-full py-2 px-2 w-40 text-[14px] hover:bg-purple-primary"
-            onClick={() => {}}
+            onClick={() => { }}
             label={`Delete`}
           />
         </div>

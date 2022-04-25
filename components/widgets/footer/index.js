@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { discord, marketplace, twitter } from '../../../assets/icons';
 
-const Footer = React.forwardRef(() => {
+const Footer = () => {
   return (
     <footer className="flex items-center justify-between text-white font-light py-6 md:mx-40 mx-3 border-t-2 border-light-grey-2">
       <div>@ 2022 Martianplace</div>
@@ -30,6 +30,6 @@ const Footer = React.forwardRef(() => {
       </div>
     </footer>
   );
-});
+};
 
 export default Footer;
