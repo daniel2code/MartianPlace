@@ -9,6 +9,7 @@ import CardList from '../components/widgets/card-list';
 import Spotlight from '../components/widgets/spotlight';
 import { DESC } from '../public/contants';
 import { filmNft, artNft, musicNft, trendingNft, gameNft } from '../store/data';
+import Test from './test';
 
 const Home = () => {
   return (

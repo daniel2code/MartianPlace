@@ -354,3 +354,11 @@ a {
       url("../public/fonts/source-sans-pro-v18-latin-900italic.svg#SourceSansPro")
       format("svg"); /* Legacy iOS */
 }
+
+
+
+.text-center{
+  text-align: center;
+  color:rgba(228, 35, 255, 1);
+  padding:10px 20px 10px 40px;
+}
