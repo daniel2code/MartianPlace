@@ -27,7 +27,18 @@ import spotifyDark from './spotify-dark.svg';
 import telegramDark from './telegram-dark.svg';
 import twitterDark from './twitter-dark.svg';
 
+import champion from './champion-white.svg';
+import musicWhite from './music-white.svg';
+import gameWhite from './game-white.svg';
+import filmWhite from './film-white.svg';
+import artsWhite from './arts-white.svg';
+
 export {
+  champion,
+  musicWhite,
+  gameWhite,
+  filmWhite,
+  artsWhite,
   arrowRight,
   discordDark,
   instagramDark,

@@ -1,47 +1,202 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux"
-
-// import styles from '../styles/Discover.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { arts, film, game, music } from '../assets/icons';
+import Card from '../components/elements/card';
+import TabGroup from '../components/elements/tab/tab-group';
+import CardList from '../components/widgets/card-list';
+import { artNft, filmNft, gameNft, musicNft } from '../store/data';
 
 export default function Discover() {
+  const buyNft = nft => {};
 
-  // const [nfts, setNfts] = useState([]) 
+  useEffect(() => {});
+  const [activeTab, setActiveTab] = useState('all');
 
-  const buyNft = (nft) => {
-
-  }
-
-  useEffect(() => {
-
-  })
-
-  // if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
-  return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: '1600px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            // nfts.map((nft, i) => (
-              // <div key={i} className="border shadow rounded-xl overflow-hidden">
-              <div className="border shadow rounded-xl overflow-hidden" hidden>
-                <img  />
-                <div className="p-4">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold">{'nft.name'}</p>
-                  <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{'nft.description'}</p>
+  const renderAllNfts = () => {
+    return (
+      <>
+        <CardList>
+          {gameNft &&
+            gameNft.map(
+              ({ charName, title, moreDetail, description, url, id }) => (
+                <Link href={`/nfts/film/${id}`} key={id}>
+                  <div>
+                    <Card
+                      charName={charName}
+                      title={title}
+                      moreDetail={moreDetail}
+                      description={description}
+                      img={url}
+                    />
                   </div>
+                </Link>
+              )
+            )}
+        </CardList>{' '}
+        <CardList>
+          {filmNft &&
+            filmNft.map(
+              ({ charName, title, moreDetail, description, url, id }) => (
+                <Link href={`/nfts/film/${id}`} key={id}>
+                  <div>
+                    <Card
+                      charName={charName}
+                      title={title}
+                      moreDetail={moreDetail}
+                      description={description}
+                      img={url}
+                    />
+                  </div>
+                </Link>
+              )
+            )}
+        </CardList>
+        <CardList>
+          {artNft &&
+            artNft.map(
+              ({ charName, title, moreDetail, description, url, id }) => (
+                <Link href={`/nfts/arts/${id}`} key={id}>
+                  <div>
+                    <Card
+                      charName={charName}
+                      title={title}
+                      moreDetail={moreDetail}
+                      description={description}
+                      img={url}
+                    />
+                  </div>
+                </Link>
+              )
+            )}
+        </CardList>
+        <CardList>
+          {musicNft &&
+            musicNft.map(
+              ({ charName, title, moreDetail, description, url, id }) => (
+                <Link href={`/nfts/film/${id}`} key={id}>
+                  <div>
+                    <Card
+                      charName={charName}
+                      title={title}
+                      moreDetail={moreDetail}
+                      description={description}
+                      img={url}
+                    />
+                  </div>
+                </Link>
+              )
+            )}
+        </CardList>
+      </>
+    );
+  };
+  const renderFilmNfts = () => {
+    return (
+      <CardList>
+        {filmNft &&
+          filmNft.map(
+            ({ charName, title, moreDetail, description, url, id }) => (
+              <Link href={`/nfts/film/${id}`} key={id}>
+                <div>
+                  <Card
+                    charName={charName}
+                    title={title}
+                    moreDetail={moreDetail}
+                    description={description}
+                    img={url}
+                  />
                 </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">{'nft.price'} ETH</p>
-                  <button className="mt-4 w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => {
-                    // buyNft(nft)
-                    }}>Buy</button>
+              </Link>
+            )
+          )}
+      </CardList>
+    );
+  };
+
+  const renderArtNfts = () => {
+    return (
+      <CardList>
+        {artNft &&
+          artNft.map(
+            ({ charName, title, moreDetail, description, url, id }) => (
+              <Link href={`/nfts/arts/${id}`} key={id}>
+                <div>
+                  <Card
+                    charName={charName}
+                    title={title}
+                    moreDetail={moreDetail}
+                    description={description}
+                    img={url}
+                  />
                 </div>
-              </div>
-            // ))
-          }
-        </div>
+              </Link>
+            )
+          )}
+      </CardList>
+    );
+  };
+
+  const renderMusicNfts = () => {
+    return (
+      <CardList>
+        {musicNft &&
+          musicNft.map(
+            ({ charName, title, moreDetail, description, url, id }) => (
+              <Link href={`/nfts/film/${id}`} key={id}>
+                <div>
+                  <Card
+                    charName={charName}
+                    title={title}
+                    moreDetail={moreDetail}
+                    description={description}
+                    img={url}
+                  />
+                </div>
+              </Link>
+            )
+          )}
+      </CardList>
+    );
+  };
+
+  const renderGameNfts = () => {
+    return (
+      <CardList>
+        {gameNft &&
+          gameNft.map(
+            ({ charName, title, moreDetail, description, url, id }) => (
+              <Link href={`/nfts/film/${id}`} key={id}>
+                <div>
+                  <Card
+                    charName={charName}
+                    title={title}
+                    moreDetail={moreDetail}
+                    description={description}
+                    img={url}
+                  />
+                </div>
+              </Link>
+            )
+          )}
+      </CardList>
+    );
+  };
+
+  return (
+    <section className="px-4 mt-12 lg:px-32">
+      <h1 className="text-3xl">Discover</h1>
+      <div className="mt-12">
+        <TabGroup active={activeTab} setActive={setActiveTab} />
       </div>
-    </div>
-  )
+
+      <section>
+        {activeTab === 'all' && renderAllNfts()}
+        {activeTab === 'game' && renderGameNfts()}
+        {activeTab === 'film' && renderFilmNfts()}
+        {activeTab === 'music' && renderMusicNfts()}
+        {activeTab === 'arts' && renderArtNfts()}
+      </section>
+    </section>
+  );
 }
