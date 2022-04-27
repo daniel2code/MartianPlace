@@ -48,6 +48,8 @@ export default function Create() {
   const [properties, setProperties] = useState([]);
   const [showProperties, setShowProperties] = useState(true);
   const [mintAsPublic, setMintAsPublic] = useState("public");
+  const [metadataURL, setMetadataURL] = useState("");
+  const [imageURL, setImageURL] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [switchNetworkBtn, setSwitchNetworkBtn] = useState(false);
@@ -79,7 +81,7 @@ export default function Create() {
   }
 
   const setImageAction = (img) => {
-    console.log(img);
+    // console.log(img);
     setImage(img);
   };
 
@@ -120,8 +122,9 @@ export default function Create() {
       if (nft.priceInitial) { setPriceInitial(nft.priceInitial); }
       if (nft.priceNow) { setPriceNow(nft.priceNow); }
       if (nft.mintAsPublic) { setMintAsPublic(nft.mintAsPublic); }
-      if (nft.imageURL) { setUrl(nft.imageURL); }
+      if (nft.imageURL) { setImageURL(nft.imageURL); }
       if (nft.mintAmt) { setMintAmt(nft.mintAmt); }
+      if (nft.metadataURL) { setMetadataURL(nft.metadataURL); }
     }
 
   }, [
@@ -245,7 +248,9 @@ export default function Create() {
       //go to summary page:
       // if(validFields){
       const values = {
-        imageURL: result2.path,
+        metadataURL: result2.path,
+        // imageURL: `https://ipfs.infura.io/ipfs/${image.imgPath}`,
+        imageURL: image.image.file,
         project: project,
         name: nftName,
         description: description,
@@ -256,9 +261,13 @@ export default function Create() {
         address: address,
         mintAsPublic: mintAsPublic
       };
+      
+      // await fetchImage(result2.path)
 
-      // console.log("values: ", values);
+      console.log("values: ", values);
 
+      console.log("routing..")
+      setIsLoading(false)
       router.push({
         pathname: '/create/summary',
         query: values
@@ -366,13 +375,31 @@ export default function Create() {
           ]),
         })
       );
-      // setIsLoading(false);
+      setIsLoading(false);
     }
   };
 
-  const createNFT = async () => {
+  const fetchImage = async(imageURL) => {
+    // const data = await fetch("https://bafybeidyp5tc6vfjsis7rziok4o6j6ckjajpug4wceavcyujm6bsiqqk4m.ipfs.dweb.link/")
+    // const json = await data.json()
+    // console.log(data)
+    var metadata = `https://ipfs.io/ipfs/${imageURL}`
+    // console.log("metadata url: ",  metadata)
 
+    // var name = metadata.name
+    // console.log("name", name)
+
+    const theJSONData = await fetch(metadata);
+    console.log("metadata for img: ",  theJSONData)
+
+    const json = await theJSONData.json()
+    console.log(json.image)
+  }
+
+  const createNFT = async () => {
+    setIsLoading(true)
     if (!active) {
+      setIsLoading(false)
       dispatch(
         setMessage({
           message: "Connect Wallet to continue.",
@@ -412,6 +439,18 @@ export default function Create() {
             >
               <Image
                 src={image.image.file}
+                alt={"nft image"}
+                width={280}
+                height={280}
+              ></Image>{" "}
+            </div>
+          ) : null}
+          {nft && imageURL && !image ? (
+            <div
+              className={`${styles.nftImage} mt-10 md:mt-5 text-center sm:mt-10 md:text-left`}
+            >
+              <Image
+                src={ imageURL}
                 alt={"nft image"}
                 width={280}
                 height={280}
@@ -517,7 +556,7 @@ export default function Create() {
           className={`${styles.element} mt-12 md:mt-8 border-b border-b-1 border-b-dark-1 flex flex-row`}
         >
           <h5>Price</h5>
-          <div className="ml-3">
+          {/* <div className="ml-3">
             <Button
               type="button"
               id="switchNP"
@@ -549,7 +588,7 @@ export default function Create() {
                 )}
               </div>
             </Button>
-          </div>
+          </div> */}
         </div>
 
         <div className={`${styles.element} md:flex md:flex-row`}>

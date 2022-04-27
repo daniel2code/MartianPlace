@@ -278,7 +278,7 @@ const Layout = ({ children }) => {
           </main>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <>
       <div className="modal">
         {/* {user.userToken ? */}
