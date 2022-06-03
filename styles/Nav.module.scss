@@ -10,7 +10,11 @@
     // color: #ffffff;
     // position: fixed;
     width: 100%;
-    background-color: rgba(40, 44, 50, 0.1);
+    // background-color: rgba(40, 44, 50, 0.1);
+    background: linear-gradient(
+    180deg,
+    rgba(46, 17, 88, 1) 13.89%,
+  )
 }
 
 .nav ul {

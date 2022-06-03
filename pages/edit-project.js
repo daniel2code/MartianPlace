@@ -151,9 +151,11 @@ const EditProject = () => {
             </div>
           </div>
         </div>
+
         <div className="mt-12">
           <ProfileDivider title="Teaser / trailer" />
         </div>
+        
         <div className="grid grid-cols-4 gap-12">
           <div
             className={`${styles.element} mt-10 md:mt-6 lg:col-span-1 col-span-4`}

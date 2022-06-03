@@ -26,12 +26,17 @@ import instagramDark from './instagram-dark.svg';
 import spotifyDark from './spotify-dark.svg';
 import telegramDark from './telegram-dark.svg';
 import twitterDark from './twitter-dark.svg';
+import youtubeDark from './youtube.svg'
+import twitchDark from './twitch.svg'
+import webDark from './desktop.svg'
 
 import champion from './champion-white.svg';
 import musicWhite from './music-white.svg';
 import gameWhite from './game-white.svg';
 import filmWhite from './film-white.svg';
 import artsWhite from './arts-white.svg';
+import hide from './hide.svg'
+import show from './show.svg'
 
 export {
   champion,
@@ -40,11 +45,16 @@ export {
   filmWhite,
   artsWhite,
   arrowRight,
+  hide,
+  show,
   discordDark,
   instagramDark,
   twitterDark,
   spotifyDark,
   telegramDark,
+  twitchDark,
+  youtubeDark,
+  webDark,
   github,
   instagram,
   discord,

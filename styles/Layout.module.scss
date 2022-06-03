@@ -9,6 +9,15 @@
   align-items: center;
   color: $white;
   padding: 0px;
+  // background: linear-gradient(
+  //     180deg,
+  //     rgba(46, 17, 88, 1) 13.89%,
+  //     rgba(0, 0, 0, 1) 130%,
+  //     rgba(228, 35, 255, 1) 14.65%
+  //   );
+
+
+  background: linear-gradient(to bottom, rgba(46, 17, 88, 1) 0.19%, #141416, #141416, black, black, black, black, black, black);
 
   .content {
     width: 100%;
@@ -21,6 +30,7 @@
     justify-content: flex-start;
     font-size: 1.2rem;
     width: 100%;
+    
   }
 
   .hero{
@@ -28,13 +38,13 @@
     // top: 200px;
     height: 200px;
     // background: $pink;
-    background: linear-gradient(
-    to top right,
-    rgba(46, 17, 88, 0.6) ,
-    // rgba(0, 0, 0, 0.6) ,
-    rgba(228, 35, 255, 0.3)
-  );
-    opacity: 0.6;
+    // background: linear-gradient(
+    //   180deg,
+    //   rgba(46, 17, 88, 1) 13.89%,
+    //   rgba(0, 0, 0, 1) 130%,
+    //   rgba(228, 35, 255, 1) 14.65%
+    // );
+    // opacity: 0.6;
     // background: linear-gradient(180deg, #2e1158 43.89%, rgba(0, 0, 0, 0) 88.11%);
     z-index: 1;
     position: absolute;

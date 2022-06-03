@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../../styles/FileUploaderDND.module.scss';
-import imgPlaceholder from '../../public/images/pic.svg';
-import { Ring } from 'react-awesome-spinners';
+import React, { useEffect, useState } from "react";
+import styles from "../../styles/FileUploaderDND.module.scss";
+import imgPlaceholder from "../../public/images/pic.svg";
+import { Ring } from "react-awesome-spinners";
 
-import { create, CID, IPFSHTTPClient } from 'ipfs-http-client';
-import { useDispatch } from 'react-redux';
+import { create, CID, IPFSHTTPClient } from "ipfs-http-client";
+import { useDispatch } from "react-redux";
 import { setMessage } from "../../store/slices/messageSlice";
 
 // import fs from 'fs'
@@ -16,6 +16,8 @@ import { setMessage } from "../../store/slices/messageSlice";
 // const path = require('path');
 
 export default function FileUploaderDND(props) {
+  const { imageType } = props;
+
   const [buffer, setBuffer] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   // const dispatch2 = useDispatch();
@@ -28,11 +30,11 @@ export default function FileUploaderDND(props) {
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'AddToDropZone':
+      case "AddToDropZone":
         return { ...state, inDropZone: action.inDropZone };
-      case 'AddToList':
+      case "AddToList":
         return { ...state, fileList: state.fileList.concat(action.files) };
-      case 'AddToImgPath':
+      case "AddToImgPath":
         return { ...state, imgPath: action.imgPath };
       default:
         return state;
@@ -41,20 +43,20 @@ export default function FileUploaderDND(props) {
 
   const [data, dispatch] = React.useReducer(reducer, state);
 
-  const handleDragEnter = event => {
+  const handleDragEnter = (event) => {
     setIsLoading(true);
     event.preventDefault();
-    dispatch({ type: 'AddToDropZone', inDropZone: true });
+    dispatch({ type: "AddToDropZone", inDropZone: true });
   };
 
-  const handleDragOver = event => {
+  const handleDragOver = (event) => {
     setIsLoading(true);
     event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-    dispatch({ type: 'AddToDropZone', inDropZone: true });
+    event.dataTransfer.dropEffect = "move";
+    dispatch({ type: "AddToDropZone", inDropZone: true });
   };
 
-  const handleDrop = event => {
+  const handleDrop = (event) => {
     setIsLoading(true);
     event.preventDefault();
 
@@ -69,19 +71,19 @@ export default function FileUploaderDND(props) {
     });
 
     if (files) {
-      dispatch({ type: 'AddToList', files });
-      dispatch({ type: 'AddToDropZone', inDropZone: false });
+      dispatch({ type: "AddToList", files });
+      dispatch({ type: "AddToDropZone", inDropZone: false });
     } else {
       setIsLoading(false);
     }
   };
 
-  const uploadToClient = event => {
+  const uploadToClient = (event) => {
     if (event.target.files && event.target.files[0]) {
       setIsLoading(true);
 
       const i = event.target.files[0];
-      console.log('image i:', i);
+      console.log("image i:", i);
 
       getImgPath(i);
 
@@ -94,33 +96,33 @@ export default function FileUploaderDND(props) {
       });
 
       if (files) {
-        dispatch({ type: 'AddToList', files });
-        dispatch({ type: 'AddToDropZone', inDropZone: false });
+        dispatch({ type: "AddToList", files });
+        dispatch({ type: "AddToDropZone", inDropZone: false });
       } else {
         setIsLoading(false);
       }
     }
   };
 
-  const getImgPath = i => {
+  const getImgPath = (i) => {
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(i);
 
     reader.onloadend = async () => {
       setBuffer(Buffer(reader.result));
-      console.log('buffer', Buffer(reader.result));
+      console.log("buffer", Buffer(reader.result));
       let ipfs = undefined;
       try {
-        console.log('buffer not null', Buffer(reader.result));
+        console.log("buffer not null", Buffer(reader.result));
 
         ipfs = create({
-          url: 'https://ipfs.infura.io:5001/api/v0',
+          url: "https://ipfs.infura.io:5001/api/v0",
         });
 
-        await ipfs.add(Buffer(reader.result)).then(res => {
-          console.log('result: ', res);
+        await ipfs.add(Buffer(reader.result)).then((res) => {
+          console.log("result: ", res);
 
-          dispatch({ type: 'AddToImgPath', imgPath: res.path });
+          dispatch({ type: "AddToImgPath", imgPath: res.path });
           setIsLoading(false);
         });
 
@@ -136,7 +138,7 @@ export default function FileUploaderDND(props) {
         // const result2 = await ipfs.add(Buffer(JSON.stringify(metadata)));
         // console.log("result: ", result2)
       } catch (error) {
-        console.error('IPFS error ', error);
+        console.error("IPFS error ", error);
         dispatch(
           setMessage({
             message: "Failed to upload media",
@@ -187,9 +189,9 @@ export default function FileUploaderDND(props) {
       <div
         id="fileuploaderdnd-container"
         className={`fileuploaderdnd-container ${styles.outline} ${props.otherstyles} rounded items-stretch text-center self-center`}
-        onDrop={event => handleDrop(event)}
-        onDragOver={event => handleDragOver(event)}
-        onDragEnter={event => handleDragEnter(event)}
+        onDrop={(event) => handleDrop(event)}
+        onDragOver={(event) => handleDragOver(event)}
+        onDragEnter={(event) => handleDragEnter(event)}
       >
         <div className={`fileuploaderdnd-container-button`}>
           <div className={`fileuploaderdnd-container-text`}>
@@ -199,8 +201,8 @@ export default function FileUploaderDND(props) {
             </div>
           </div>
         </div>
-        <span className={'text-[17px]'}>
-          or{' '}
+        <span className={"text-[17px]"}>
+          or{" "}
           <input
             type="file"
             id="actual-btn"
@@ -212,21 +214,24 @@ export default function FileUploaderDND(props) {
             htmlFor="actual-btn"
             className="hover:text-underline text-pink"
           >
-            {props.img2 ? 'update' : 'browse'}
-          </label>{' '}
-          {props.img2 ? 'from' : 'on'} your device
+            {props.img2 ? "update" : "browse"}
+          </label>{" "}
+          {props.img2 ? "from" : "on"} your device
         </span>
       </div>
 
-      <div className="px-4 py-8">
-        <span className={'text-[17px]'}>{`PNG, GIF, WEBP, MP4 or MP3`} </span>
-        <br />
-        <span className={'text-[17px]'}>{`Max 100mb`} </span>
-        <br />
-        {isLoading && !props.img2 ? (
-          <Ring size={80} color={'#fafafa'} sizeUnit={'px'} />
-        ) : null}
-      </div>
+      {/* Displays the image format label where needed */}
+      {!imageType && (
+        <div className="px-4 py-8">
+          <span className={"text-[17px]"}>{`PNG, GIF, WEBP, MP4 or MP3`} </span>
+          <br />
+          <span className={"text-[17px]"}>{`Max 100mb`} </span>
+          <br />
+          {isLoading && !props.img2 ? (
+            <Ring size={80} color={"#fafafa"} sizeUnit={"px"} />
+          ) : null}
+        </div>
+      )}
     </div>
   );
 }

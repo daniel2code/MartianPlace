@@ -4,7 +4,7 @@ import { starCup } from '../../../public/assets/icons';
 
 const Tab = ({ activeIcon, baseIcon, label, active, onClick }) => {
   return (
-    <div className="p-4 pb-0" onClick={onClick}>
+    <div className="py-4 pb-0" onClick={onClick}>
       <div className="flex items-center">
         <div className="flex items-center justify-center">
           {active ? (

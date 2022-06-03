@@ -11,12 +11,12 @@ body {
     sans-serif;
   /* background: linear-gradient(180deg, #2e1158 33.89%, rgba(1, 1, 1, 1) 98.11%); */
   /* background: linear-gradient(200deg, #2e1158 13.89%, rgba(0, 0, 0, 1) 100%, #E423FF 114.65%); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(46, 17, 88, 1) 13.89%,
     rgba(0, 0, 0, 1) 130%,
     rgba(228, 35, 255, 1) 14.65%
-  );
+  ); */
   /* background: linear-gradient(360deg, #7517F8 0%, #7D51FF 23.96%, #B182FB 50.52%, #E423FF 75%, #701A8B 100%); */
   z-index: 0;
 }
