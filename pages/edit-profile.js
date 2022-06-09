@@ -27,7 +27,7 @@ const EditProfile = () => {
   return (
     <>
       <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5">
-        <h1 className="text-[25px] font-bold">Edit Project</h1>
+        <h1 className="text-[25px] font-bold">Edit Profile</h1>
 
         <div className="mt-12">
           <ProfileDivider title="Profile picture" />
@@ -144,7 +144,7 @@ const EditProfile = () => {
             type="text"
             title="nftName"
             parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg`}
-            label="Religion"
+            label="Region"
             labelstyles="mb-2"
           />
         </div>
