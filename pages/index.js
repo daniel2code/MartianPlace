@@ -1,15 +1,16 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { arts, film, game, music } from '../assets/icons';
-import Card from '../components/elements/card';
-import About from '../components/sections/about';
-import Main from '../components/sections/home';
-import CardList from '../components/widgets/card-list';
-import Spotlight from '../components/widgets/spotlight';
-import { DESC } from '../public/contants';
-import { filmNft, artNft, musicNft, trendingNft, gameNft } from '../store/data';
-import Test from './test';
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { arts, film, game, music } from "../assets/icons";
+import Card from "../components/elements/card";
+import About from "../components/sections/about";
+import Main from "../components/sections/home";
+import CardList from "../components/widgets/card-list";
+import Spotlight from "../components/widgets/spotlight";
+import { DESC } from "../public/contants";
+import { filmNft, artNft, musicNft, trendingNft, gameNft } from "../store/data";
+import Footer from "../components/widgets/footer/index";
+import Test from "./test";
 
 const Home = () => {
   return (
@@ -120,6 +121,7 @@ const Home = () => {
         </CardList>
         <About />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { starCup, arrowRight } from '../../../assets/icons';
 
 const CardList = ({ children, icon, title }) => {
   return (
-    <section className="w-full">
+    <section className="w-11/12 md:w-4/5 m-auto">
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
