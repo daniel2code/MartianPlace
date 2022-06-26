@@ -1,0 +1,60 @@
+@import "variables/variables";
+
+.actionBox {
+  border: 1px solid white;
+  border-radius: 16px;
+  width: 171px;
+  height: 40px;
+}
+
+.text1 {
+  font-size: 15px;
+}
+
+.progressBox {
+  background: #222529;
+  border-radius: 15px;
+  height: 12px;
+}
+
+.progress {
+  background: linear-gradient(97.83deg, #7517f8 9.62%, #e423ff 114.65%);
+  border-radius: 15px;
+  height: 12px;
+}
+
+.titleBox {
+  font-size: 15px;
+  h4 {
+    color: #f952fe;
+  }
+}
+
+.line {
+  border-left: 2px solid #2d333d;
+  height: 42px;
+  padding-left: 5%;
+  font-size: 15px;
+
+  h4 {
+    color: #515f73;
+  }
+}
+
+.topBox {
+  grid-column-gap: 15%;
+}
+
+.socialBox {
+  width: 300px;
+}
+
+.social {
+  height: 54px;
+  border-right: 2px solid #2d333d;
+
+  p {
+    color: #515f73;
+    text-transform: uppercase;
+  }
+}
