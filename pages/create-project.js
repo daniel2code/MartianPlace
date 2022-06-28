@@ -21,7 +21,7 @@ import catImg from "../assets/images/cat.svg";
 const Index = () => {
   return (
     <>
-      <Modal />
+      {/* <Modal /> */}
       <div className="mx-2 md:mx-40 mx-6 mt-20 mb-5">
         <div className="flex justify-between flex-col md:flex-row">
           <h1 className="md:text-[40px] text-[30px] font-bold">Kasanova</h1>

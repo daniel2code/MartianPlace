@@ -51,7 +51,7 @@ const Index = () => {
 
         <div className="flex flex-col md:flex-row my-20">
           <button
-            className="rounded-[50px] px-10 py-1 border border-pink sm:w-full md:w-2/12"
+            className="rounded-[50px] px-10 border border-pink sm:w-full md:w-2/12"
             onClick={() => Router.back()}
           >
             Back
