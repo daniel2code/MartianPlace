@@ -1,0 +1,11 @@
+
+.modal-overflow{
+    overflow: auto;
+  }
+  
+  @media screen and (max-width: 700px){
+    .mediumSize{
+      width: 700px;
+      overflow: scroll;
+    }
+  }

@@ -12,6 +12,7 @@ import {
   sale,
   created,
 } from "../assets/icons";
+import styles from "../styles/detailsPage.module.scss";
 import Card from "../components/elements/card";
 import ListItem from "../components/elements/list-item";
 import Footer from "../components/widgets/footer/index";
@@ -114,9 +115,11 @@ const Details = () => {
           </div>
         </div>
 
-        <div className="mt-8 overflow-scroll w-screen md:w-auto">
-          <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg mt-4">
-            <div className="flex items-center justify-between px-8 mb-6">
+        <div className={`mt-8 w-full md:w-full w-full overflow-scroll`}>
+          <div
+            className={`${styles.mediumSize} py-6 border border-light-grey-2 bg-line-light rounded-lg mt-4`}
+          >
+            <div className={`flex items-center justify-between px-8 mb-6`}>
               <div className="flex items-center">
                 <Image src={trending} /> <div className="ml-4">Trending</div>
               </div>
