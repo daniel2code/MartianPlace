@@ -16,6 +16,7 @@ import styles from "../styles/detailsPage.module.scss";
 import Card from "../components/elements/card";
 import ListItem from "../components/elements/list-item";
 import Footer from "../components/widgets/footer/index";
+import CardImage from "../assets/images/nft-image.jpg";
 
 const Details = () => {
   return (
@@ -23,8 +24,13 @@ const Details = () => {
       <div className="mx-2 md:mx-40 mx-6 mt-20 mb-5">
         <div className="grid grid-col-1 lg:grid-cols-3 gap-0 lg:gap-8">
           <div className="lg:col-span-1 col-span-2 mb-4 lg:mb-0 m-auto">
-            <div className="w-full md:w-auto">
+            {/* <div className="w-full md:w-auto">
               <Card title="Movie" />
+            </div> */}
+
+            <div className="border w-full border-light-grey-2 bg-line-light rounded-xl mt-2 w-full">
+              <p className="md:py-3 px-4 p-2">Movies</p>
+              <Image src={CardImage} />
             </div>
             <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 mt-4">
               <div className="flex items-center">
@@ -81,18 +87,19 @@ const Details = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-8 py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
+            <div className="flex items-center justify-between mt-9 py-4 border border-light-grey-2 bg-line-light rounded-lg px-5">
               <div className="flex items-center">
                 <Image src={binance} />
                 <span className="ml-6">12,5 BNB</span>
               </div>
               <div>
-                <button className="w-[140px] bg-gradient-to-r from-button-border-pink to-pink py-3 px-8 rounded-full">
+                <button className="w-[140px] bg-gradient-to-r from-button-border-pink to-pink py-2 px-8 rounded-full">
                   Buy Now
                 </button>
               </div>
             </div>
-            <div className="mt-6 py-6 border border-light-grey-2 bg-line-light rounded-lg px-5">
+
+            <div className="mt-6 py-7 border border-light-grey-2 bg-line-light rounded-lg px-5">
               <div className="flex">
                 <Image src={descIcon} height={30} width={30} />
                 <h4 className="ml-5">Description</h4>

@@ -51,13 +51,14 @@ const Index = () => {
 
         <div className="flex flex-col md:flex-row my-20">
           <button
-            className="rounded-[50px] px-10 border border-pink sm:w-full md:w-2/12"
+            className="rounded-[50px] px-10 py-2 border border-pink sm:w-full md:w-2/12"
             onClick={() => Router.back()}
           >
             Back
           </button>
+
           <button
-            className="bg-pink rounded-[50px] mt-5 md:ml-4 px-10 py-1 w-full md:w-4/12"
+            className="bg-pink rounded-[50px] mt-5 md:mt-0 md:ml-4 py-2 px-10 w-full md:w-4/12"
             style={{
               background:
                 "linear-gradient(97.83deg, #7517F8 9.62%, #E423FF 114.65%)",

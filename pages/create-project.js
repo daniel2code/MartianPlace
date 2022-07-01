@@ -17,6 +17,10 @@ import {
   webDark,
 } from "../public/assets/icons";
 import catImg from "../assets/images/cat.svg";
+import editImg from "../assets/icons/pen-edit.svg";
+import picsImg from "../assets/icons/pics.svg";
+import maskImg from "../assets/icons/mask.svg";
+import descImg from "../assets/icons/desc-about.svg";
 
 const Index = () => {
   return (
@@ -31,14 +35,14 @@ const Index = () => {
               className={`${styles.actionBox} flex items-center justify-center`}
             >
               <span className="mr-7 text-sm">Edit cover photo</span>
-              <Image src={blockchain} />
+              <Image src={editImg} />
             </div>
 
             <div
               className={`${styles.actionBox} flex items-center justify-center`}
             >
               <span className="mr-7 text-sm">Edit project</span>
-              <Image src={blockchain} />
+              <Image src={picsImg} />
             </div>
           </div>
         </div>
@@ -92,10 +96,10 @@ const Index = () => {
 
           <div className="col-span-2">
             <div
-              className={`${styles.topBox} py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 w-full flex items-center`}
+              className={`${styles.topBox} py-4 border border-light-grey-2 bg-line-light rounded-lg px-5 w-full flex items-center`}
             >
               <div className="flex">
-                <Image src={blockchain} />
+                <Image src={maskImg} />
                 <div className={`${styles.titleBox} ml-4`}>
                   <h4 className="">Asurf</h4>
                   <p className="mt-2">Film maker on Netflix</p>
@@ -113,9 +117,9 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 w-full mt-7">
+            <div className="py-6 border border-light-grey-2 bg-line-light rounded-lg px-5 w-full mt-6">
               <div className="flex items-center">
-                <Image src={blockchain} /> <span className="ml-6">About</span>
+                <Image src={descImg} /> <span className="ml-5">About</span>
               </div>
 
               <p className={`${styles.text1} mt-5`}>
