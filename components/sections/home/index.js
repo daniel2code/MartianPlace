@@ -95,20 +95,20 @@ const Main = () => {
           <Image src={martian} />
         </div>
         <div className="ml-0 md:ml-12">
-          <h2 className="text-[48px] font-bold text-pink">
+          <h2 className="text-[48px] font-semibold" style={{color: "#E423FF"}}>
             Marketplace for creative pioneers
           </h2>
           <p className="text-white text-[21px]">
             Buy, sell and discover rare digital NFT art, cards and collectibles
           </p>
           <div className="flex mt-12">
-            <button onClick={()=> Router.push("/discover")} className="bg-pink rounded-[50px] px-10 py-3 bg-gradient-to-r from-button-border-pink to-pink">
+            <button onClick={()=> Router.push("/discover")} className=" rounded-[50px] px-14  py-2 bg">
               Discover
             </button>
             <button onClick={()=> {
               getUserSignature();
               
-            }} className="rounded-[50px] px-10 py-3 ml-4 border border-pink">
+            }} className="rounded-[50px] px-14 py-2 ml-4 border border-pink">
               Create
             </button>
           </div>

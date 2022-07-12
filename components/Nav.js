@@ -122,7 +122,7 @@ const Nav = props => {
                 onClick={selectCreateAction}
               >
                 <h1 className='hover:text-pink' >
-                  create
+                  Create
                 </h1>
               </Button>
               {/* </Link> */}

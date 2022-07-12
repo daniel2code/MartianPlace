@@ -644,7 +644,7 @@ export default function Create() {
           />
         </div>
 
-        <div
+        {/* <div
           className={`${styles.element} mt-12 md:mt-8 border-b border-b-1 border-b-dark-1 flex flex-row`}
         >
           <h5>Properties</h5>
@@ -746,7 +746,7 @@ export default function Create() {
               );
             })}
           </div>
-        </div>
+        </div> */}
 
         <div
           className={`${styles.element} mt-10 md:mt-6 flex flex-row mb-2 pt-1`}
@@ -755,7 +755,7 @@ export default function Create() {
             type="button"
             id={`create`}
             title={`create`}
-            buttonStyles="border border-purple-primary rounded-full px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
+            buttonStyles="border border-purple-primary rounded-full mt-10 py-3 px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
             bg-background-gradient-btn"
             onClick={() => {
               createNFT();
@@ -770,14 +770,14 @@ export default function Create() {
             )}
           </Button>
 
-          <Button
+          {/* <Button
             type="button"
             id={`delete`}
             title={`delete`}
             buttonStyles="border border-purple-primary rounded-full py-2 px-2 w-40 text-[14px] hover:bg-purple-primary"
             onClick={() => { }}
             label={`Delete`}
-          />
+          /> */}
         </div>
       </div>
       {isLoading ? null : null}

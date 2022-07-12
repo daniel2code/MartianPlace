@@ -1,17 +1,17 @@
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { arts, film, game, music } from '../assets/icons';
-import Card from '../components/elements/card';
-import TabGroup from '../components/elements/tab/tab-group';
-import CardList from '../components/widgets/card-list';
-import { artNft, filmNft, gameNft, musicNft } from '../store/data';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { arts, film, game, music } from "../assets/icons";
+import Card from "../components/elements/card";
+import TabGroup from "../components/elements/tab/tab-group";
+import CardList from "../components/widgets/card-list";
+import { artNft, filmNft, gameNft, musicNft } from "../store/data";
 
 export default function Discover() {
-  const buyNft = nft => {};
+  const buyNft = (nft) => {};
 
   useEffect(() => {});
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState("all");
 
   const renderAllNfts = () => {
     return (
@@ -33,7 +33,7 @@ export default function Discover() {
                 </Link>
               )
             )}
-        </CardList>{' '}
+        </CardList>{" "}
         <CardList>
           {filmNft &&
             filmNft.map(
@@ -184,18 +184,20 @@ export default function Discover() {
   };
 
   return (
-    <section className="px-4 mt-12 lg:px-32">
-      <h1 className="text-3xl">Discover</h1>
-      <div className="mt-12">
-        <TabGroup active={activeTab} setActive={setActiveTab} />
+    <section className="px-4 mt-12 ">
+      <div className="w-10/12 m-auto">
+        <h1 className="text-3xl font-bold">Discover</h1>
+        <div className="mt-12">
+          <TabGroup active={activeTab} setActive={setActiveTab} />
+        </div>
       </div>
 
       <section>
-        {activeTab === 'all' && renderAllNfts()}
-        {activeTab === 'game' && renderGameNfts()}
-        {activeTab === 'film' && renderFilmNfts()}
-        {activeTab === 'music' && renderMusicNfts()}
-        {activeTab === 'arts' && renderArtNfts()}
+        {activeTab === "all" && renderAllNfts()}
+        {activeTab === "game" && renderGameNfts()}
+        {activeTab === "film" && renderFilmNfts()}
+        {activeTab === "music" && renderMusicNfts()}
+        {activeTab === "arts" && renderArtNfts()}
       </section>
     </section>
   );

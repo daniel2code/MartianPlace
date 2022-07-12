@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { arts, film, game, music } from "../assets/icons";
+import { arts, film, game, music, starCup } from "../assets/icons";
 import Card from "../components/elements/card";
 import About from "../components/sections/about";
 import Main from "../components/sections/home";
@@ -31,7 +31,7 @@ const Home = () => {
 
       <div className="flex flex-col justify-flex-start w-full">
         <Main />
-        <CardList>
+        <CardList icon={starCup} title="Trending Projects" border={true}>
           {trendingNft &&
             trendingNft.map(
               ({ charName, title, moreDetail, description, url, id }) => (
@@ -47,7 +47,7 @@ const Home = () => {
             )}
         </CardList>
         <Spotlight />
-        <CardList icon={film} title="Film">
+        <CardList icon={film} title="Film" border={true}>
           {filmNft &&
             filmNft.map(
               ({ charName, title, moreDetail, description, url, id }) => (
@@ -65,7 +65,7 @@ const Home = () => {
               )
             )}
         </CardList>
-        <CardList icon={game} title="Game">
+        <CardList icon={game} title="Game" border={true}>
           {gameNft &&
             gameNft.map(
               ({ charName, title, moreDetail, description, url, id }) => (
@@ -83,7 +83,7 @@ const Home = () => {
               )
             )}
         </CardList>
-        <CardList icon={music} title="Music">
+        <CardList icon={music} title="Music" border={true}>
           {musicNft &&
             musicNft.map(
               ({ charName, title, moreDetail, description, url, id }) => (
@@ -101,7 +101,7 @@ const Home = () => {
               )
             )}
         </CardList>
-        <CardList icon={arts} title="Arts">
+        <CardList icon={arts} title="Arts" border={true}>
           {artNft &&
             artNft.map(
               ({ charName, title, moreDetail, description, url, id }) => (

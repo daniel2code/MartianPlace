@@ -8,12 +8,12 @@ const Tab = ({ activeIcon, baseIcon, label, active, onClick }) => {
       <div className="flex items-center">
         <div className="flex items-center justify-center">
           {active ? (
-            <Image src={activeIcon || starCup} height={50} width={50} />
+            <Image src={activeIcon || starCup} height={40} width={40} />
           ) : (
-            <Image src={baseIcon || starCup} height={50} width={50} />
+            <Image src={baseIcon || starCup} height={40} width={40} />
           )}
         </div>
-        <div>
+        <div className='hidden md:block'>
           <p
             className={`ml-5 transition-all duration-500 ease-linear ${
               active ? ' text-white' : 'text-purple-secondary'
