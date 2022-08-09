@@ -35,14 +35,17 @@ const Home = () => {
           {trendingNft &&
             trendingNft.map(
               ({ charName, title, moreDetail, description, url, id }) => (
-                <Card
-                  key={id}
-                  charName={charName}
-                  title={title}
-                  moreDetail={moreDetail}
-                  description={description}
-                  img={url}
-                />
+                <Link href={`/nfts/film/${id}`} key={id}>
+                  <div>
+                    <Card
+                      charName={charName}
+                      title={title}
+                      moreDetail={moreDetail}
+                      description={description}
+                      img={url}
+                    />
+                  </div>
+                </Link>
               )
             )}
         </CardList>

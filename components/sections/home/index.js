@@ -89,26 +89,26 @@ const Main = () => {
   }
 
   return (
-    <section className="mt-12">
+    <section className="mt-12 relative mb-44 md:mb-14">
       <div className="flex items-center justify-center flex-wrap px-4">
         <div>
           <Image src={martian} />
         </div>
-        <div className="ml-0 md:ml-12">
-          <h2 className="text-[48px] font-semibold" style={{color: "#E423FF"}}>
+        <div className="px-5 top-52 md:top-0 absolute md:relative">
+          <h2 className="text-[44px] leading-snug sm:text-[48px] font-semibold " style={{color: "#E423FF"}}>
             Marketplace for creative pioneers
           </h2>
           <p className="text-white text-[21px]">
             Buy, sell and discover rare digital NFT art, cards and collectibles
           </p>
           <div className="flex mt-12">
-            <button onClick={()=> Router.push("/discover")} className=" rounded-[50px] px-14  py-2 bg">
+            <button onClick={()=> Router.push("/discover")} className=" rounded-[50px] w-1/2 lg:w-fit px-10 sm:px-14  py-2 bg">
               Discover
             </button>
             <button onClick={()=> {
               getUserSignature();
               
-            }} className="rounded-[50px] px-14 py-2 ml-4 border border-pink">
+            }} className="rounded-[50px] w-1/2 lg:w-fit px-10 sm:px-14 py-2 ml-4 border border-pink">
               Create
             </button>
           </div>

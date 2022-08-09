@@ -184,8 +184,8 @@ export default function Discover() {
   };
 
   return (
-    <section className="px-4 mt-12 ">
-      <div className="w-10/12 m-auto">
+    <section className="px-0 mt-12 ">
+      <div className="w-11/12 lg:w-4/5 m-auto">
         <h1 className="text-3xl font-bold">Discover</h1>
         <div className="mt-12">
           <TabGroup active={activeTab} setActive={setActiveTab} />

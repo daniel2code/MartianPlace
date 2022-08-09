@@ -181,7 +181,7 @@ const Index = () => {
           <ProfileDivider title="NFT" />
         </div>
       </div>
-      <CardList>
+      <CardList grid={true}>
         {[...Array(10)].map(() => (
           // <Link href={`/nfts/film/${id}`} key={id}>
           <div>

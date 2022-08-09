@@ -317,8 +317,8 @@ const EditProfile = () => {
           <Button
             type="button"
             id={`create`}
-            title={`create`}
-            buttonStyles="border border-purple-primary rounded-full px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
+            title={`Save`}
+            buttonStyles="rounded-full px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
             bg-background-gradient-btn"
           >
             {isLoading ? (
@@ -326,7 +326,7 @@ const EditProfile = () => {
                 <Ring size={32} color={"#fafafa"} sizeUnit={"px"} />{" "}
               </div>
             ) : (
-              "Create"
+              "Save"
             )}
           </Button>
 
@@ -335,7 +335,7 @@ const EditProfile = () => {
             id={`delete`}
             title={`delete`}
             buttonStyles="border border-purple-primary rounded-full py-2 px-2 w-40 text-[14px] hover:bg-purple-primary"
-            label={`Delete`}
+            label={`Cancel`}
           />
         </div>
       </div>

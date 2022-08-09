@@ -1,25 +1,25 @@
-import Image from 'next/image';
-import React from 'react';
-import ReactPlayer from 'react-player';
-import { mask } from '../../../assets/icons';
+import Image from "next/image";
+import React from "react";
+import ReactPlayer from "react-player";
+import { mask } from "../../../assets/icons";
 
 const Spotlight = () => {
   return (
-    <section className="md:px-40 px-4 mt-12">
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+    <section className="md:px-40 px-6 my-12">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
         <div className="w-full">
           <ReactPlayer
             url="https://youtu.be/Pl8OlkkwRpc"
             controls
-            width={'100%'}
+            width={"100%"}
           />
         </div>
-        <div>
+        <div className="lg:col-span-2" >
           <div>
             <h2 className="text-[48px]">In the spotlight</h2>
           </div>
           <div className="">
-            <div className="flex items-start md:items-center mt-8 mb-8 flex-wrap flex-col md:flex-row">
+            <div className="flex items-start md:items-center mt-8 mb-8 flex-wrap flex-col md:flex-row border-b pb-3 border-mid-grey-light">
               <div className="flex items-center justify-start mb-8 md:mb-0 ml-0">
                 <div className="flex items-center justify-center mb-0 md:ml-0">
                   <Image src={mask} />
@@ -52,7 +52,7 @@ const Spotlight = () => {
             </div>
           </div>
           <div>
-            <button className="bg-gradient-to-r from-button-border-pink to-pink w-[176px] py-2 rounded-[50px]">
+            <button className="w-[176px] py-2 rounded-[50px] gradient-color">
               Check Project
             </button>
           </div>

@@ -5,7 +5,7 @@ import { space } from '../../../assets/images';
 const About = () => {
   return (
     <section className="mt-16">
-      <div className="grid grid-col-1 md:grid-cols-2 md:px-40 px-4">
+      <div className="grid grid-col-1 lg:grid-cols-2 lg:px-40 px-5 sm:px-8">
         <div>
           <h2 className="text-[43px] font-bold text-pink">
             About Martianplace

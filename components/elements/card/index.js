@@ -3,10 +3,11 @@ import React from "react";
 import { binance } from "../../../assets/icons";
 import { character } from "../../../assets/images";
 import Button from "../Button";
+import { truncate } from "../../../helpers/textTruncate";
 
 const Card = ({ img, charName, description, moreDetail }) => {
   return (
-    <section className="border border-light-grey-2 bg-line-light md:p-4 p-2 rounded-xl mt-8 w-full" >
+    <section className="border border-light-grey-2 card bg-line-light md:p-4 p-2 rounded-xl mt-8">
       <div>
         <div>
           <h3 className="font-light mb-3">Game</h3>
@@ -23,9 +24,10 @@ const Card = ({ img, charName, description, moreDetail }) => {
         {description && (
           <div className="mb-3">
             <p className="font-light">
-              {description ||
-                "In Night City, a mercenary known as V navigates a dystopian"}
-              society.
+              {truncate(
+                (description ||
+                  "In Night City, a mercenary known as V navigates a dystopian"), 60
+              )}
             </p>
           </div>
         )}
@@ -42,7 +44,7 @@ const Card = ({ img, charName, description, moreDetail }) => {
 };
 
 export const NftCard = ({ img, cardButton }) => (
-  <section className="border border-light-grey-2 bg-line-light md:p-3 p-2 rounded-xl mt-8 w-full">
+  <section className="border border-light-grey-2 bg-line-light md:p-3 p-2 rounded-xl mt-8">
     <div>
       <div>
         <h3 className="font-light mb-3">Game</h3>

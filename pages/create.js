@@ -533,6 +533,7 @@ export default function Create() {
         </div>
 
         <div className={`${styles.element} mt-10 md:my-10`}>
+          <p className="font-bold mb-3" >Share your NFT private or to public?</p>
           <div className="flex items-center">
             <input type="radio" value="private"
               onChange={handleRadioChange}
@@ -542,7 +543,7 @@ export default function Create() {
             </p>
           </div>
 
-          <div className="flex items-center mt-5">
+          <div className="flex items-center mt-4">
             <input type="radio" value="public"
               onChange={handleRadioChange}
               checked={mintAsPublic == "public"} />
@@ -555,7 +556,7 @@ export default function Create() {
         <div
           className={`${styles.element} mt-12 md:mt-8 border-b border-b-1 border-b-dark-1 flex flex-row`}
         >
-          <h5>Price</h5>
+          <h5 className="font-semibold pb-2">Price</h5>
           {/* <div className="ml-3">
             <Button
               type="button"
@@ -591,26 +592,23 @@ export default function Create() {
           </div> */}
         </div>
 
-        <div className={`${styles.element} md:flex md:flex-row`}>
+        <div className={`${styles.element} grid grid-cols-1 md:grid-cols-3`}>
           <div className={`md:flex-1 md:mr-3 mt-10 md:mt-6`}>
             <Input
-              rightIcon={{
-                src: user.userNetwork == "BNB" ? bnbImg : ethImg,
-                alt: "icon",
-              }}
+            
               inputstyles={`shadow-inner border-none focus:outline-none ${styles.inputWidth} ${styles.inputWrapper}`}
               type="number"
               min="1"
               placeHolder={user.userNetwork == "BNB" ? `0.00 BNB` : `0.00 ETH`}
               title="initial"
               parentstyles={`rounded-md border border-1 border-dark-1 bg-nft-input-bg px-3 py-1.5`}
-              label="Initial Price"
+              label="Buy Price"
               labelstyles="mb-2"
               value={priceInitial}
               onChange={setPriceInitial}
             />
           </div>
-          <div className={`md:flex-1 md:ml-3 mt-10 md:mt-6`}>
+          {/* <div className={`md:flex-1 md:ml-3 mt-10 md:mt-6`}>
             <Input
               rightIcon={{
                 src: user.userNetwork == "BNB" ? bnbImg : ethImg,
@@ -627,7 +625,7 @@ export default function Create() {
               value={priceNow}
               onChange={setPriceNow}
             />
-          </div>
+          </div> */}
         </div>
 
         <div className={`${styles.element} mt-10 md:mt-6`}>
@@ -755,7 +753,7 @@ export default function Create() {
             type="button"
             id={`create`}
             title={`create`}
-            buttonStyles="border border-purple-primary rounded-full mt-10 py-3 px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
+            buttonStyles="rounded-full mt-10 py-3 px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
             bg-background-gradient-btn"
             onClick={() => {
               createNFT();

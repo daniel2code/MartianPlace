@@ -46,6 +46,35 @@ body {
   vertical-align: middle;
 }
 
+.gradient-color {
+  background: linear-gradient(97.83deg, #7517F8 9.62%, #E423FF 114.65%);
+}
+
+.card-section{
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  grid-column-gap: 20px;
+}
+
+.card-section::-webkit-scrollbar {
+ height: 10px;              /* width of the entire scrollbar */
+}
+
+.card-section::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.card-section::-webkit-scrollbar-thumb {
+  background-color: transparent;    /* color of the scroll thumb */
+  border: none;  /* creates padding around scroll thumb */
+}
+
+
+.card{
+  width: 300px !important;
+}
+
 @media screen and (max-width: 900px) {
   .modal {
     @import "bootstrap/dist/css/bootstrap.css";
@@ -72,6 +101,20 @@ body {
     text-align: left;
     vertical-align: middle;
   }
+
+
+  .card-section::-webkit-scrollbar {
+    height: 10px;              /* width of the entire scrollbar */
+   }
+   
+   .card-section::-webkit-scrollbar-track {
+     background: transparent;        /* color of the tracking area */
+   }
+   
+   .card-section::-webkit-scrollbar-thumb {
+     background-color: transparent;    /* color of the scroll thumb */
+     border: none;  /* creates padding around scroll thumb */
+   }
 }
 
 .alert {
@@ -101,10 +144,6 @@ body {
   padding-bottom: 10px;
 }
 
-
-.card{
-    
-}
 
 a {
   color: inherit;
