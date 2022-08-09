@@ -26,7 +26,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5">
+      <div className="mx-5 lg:mx-40 sm:mx-10 mt-20 mb-5">
         <h1 className="text-[25px] font-bold">Edit Profile</h1>
 
         <div className="mt-12">

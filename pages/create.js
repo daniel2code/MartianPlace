@@ -417,7 +417,7 @@ export default function Create() {
 
   return (
     <>
-      <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5">
+      <div className="mx-5 lg:mx-40 sm:mx-10 mt-20 mb-5">
         <h1 className="text-[25px] font-bold">Create New NFT</h1>
         <div className={`${styles.element} md:flex md:flex-row mt-10 md:mt-6`}>
           <FileUploaderDND

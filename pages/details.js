@@ -21,7 +21,7 @@ import CardImage from "../assets/images/nft-image.jpg";
 const Details = () => {
   return (
     <section>
-      <div className="mx-2 md:mx-40 mx-6 mt-20 mb-5">
+      <div className="mx-2 lg:mx-40 mx-6 mt-20 mb-5">
         <div className="grid grid-col-1 lg:grid-cols-3 gap-0 lg:gap-8">
           <div className="lg:col-span-1 col-span-2 mb-4 lg:mb-0 m-auto">
             {/* <div className="w-full md:w-auto">

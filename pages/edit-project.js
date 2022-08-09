@@ -77,7 +77,7 @@ const EditProject = () => {
 
   return (
     <>
-      <div className="mx-5 md:mx-40 sm:mx-10 mt-20 mb-5">
+      <div className="mx-5 lg:mx-40 sm:mx-10 mt-20 mb-5">
         <h1 className="text-[25px] font-bold">Edit Project</h1>
         <div className="grid grid-cols-4 gap-12">
           <div

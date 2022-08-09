@@ -20,7 +20,7 @@ const summaryDetails = [
 const Index = () => {
   return (
     <>
-      <div className="mx-2 md:mx-40 mx-6 mt-20 mb-5">
+      <div className="mx-2 lg:mx-40 mx-6 mt-20 mb-5">
         <h1 className="md:text-[40px] text-[30px] font-bold">
           Summary new NFT
         </h1>

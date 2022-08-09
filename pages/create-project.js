@@ -26,7 +26,7 @@ const Index = () => {
   return (
     <>
       {/* <Modal /> */}
-      <div className="mx-2 md:mx-40 mx-6 mt-20 mb-5">
+      <div className="mx-2 lg:mx-40 mx-6 mt-20 mb-5">
         <div className="flex justify-between flex-col md:flex-row">
           <h1 className="md:text-[40px] text-[30px] font-bold">Kasanova</h1>
 
