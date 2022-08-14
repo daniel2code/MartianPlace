@@ -336,7 +336,7 @@ const EditProject = () => {
             type="button"
             id={`create`}
             title={`create`}
-            buttonStyles="border border-purple-primary rounded-full px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
+            buttonStyles="bg rounded-full px-2 w-80 mr-5 text-[14px] hover:bg-purple-primary
             bg-background-gradient-btn"
           >
             {isLoading && !url ? (

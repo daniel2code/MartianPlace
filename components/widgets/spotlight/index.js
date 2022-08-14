@@ -5,7 +5,7 @@ import { mask } from "../../../assets/icons";
 
 const Spotlight = () => {
   return (
-    <section className="md:px-40 px-6 my-12">
+    <section className="my-12">
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
         <div className="w-full">
           <ReactPlayer

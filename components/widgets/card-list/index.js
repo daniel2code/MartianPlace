@@ -5,9 +5,9 @@ import { starCup, arrowRight } from "../../../assets/icons";
 const CardList = ({ children, icon, title, border, grid, fullWidth }) => {
   return (
     <section
-      className={`${fullWidth ? `w-full` : `w-11/12`} ${
-        fullWidth === true ? "lg:w-full" : `lg:w-4/5`
-      } m-auto mt-7 lg:6`}
+      className={`${fullWidth ? `w-full` : `w-full`} ${
+        fullWidth === true ? "lg:w-full" : `lg:w-full`
+      } mt-7`}
     >
       <div>
         <div

@@ -5,9 +5,9 @@ import { space } from '../../../assets/images';
 const About = () => {
   return (
     <section className="mt-16">
-      <div className="grid grid-col-1 lg:grid-cols-2 lg:px-40 px-5 sm:px-8">
+      <div className="grid grid-col-1 lg:grid-cols-2 px-3">
         <div>
-          <h2 className="text-[43px] font-bold text-pink">
+          <h2 className="text-[43px] font-bold text-pink section-title">
             About Martianplace
           </h2>
           <h5 className="text-[22px] font-light mb-8">
@@ -23,7 +23,7 @@ const About = () => {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <div>
-            <button className="border border-pink text-white w-[175px] px-10 py-3 rounded-[50px] transition-all ease duration-500 hover:opacity-9">
+            <button className="btn-border text-white w-[175px] px-10 py-3 rounded-[50px] transition-all ease duration-500 hover:opacity-9">
               Signup
             </button>
           </div>

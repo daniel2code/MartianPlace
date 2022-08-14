@@ -5,7 +5,7 @@ import { discord, marketplace, twitter } from '../../../assets/icons';
 
 const Footer = () => {
   return (
-    <footer className="flex items-center justify-between text-white font-light py-6 md:mx-40 mx-3 border-t-2 border-light-grey-2">
+    <footer className="flex items-center justify-between text-white font-light py-6 px-5 border-t-2 border-light-grey-2">
       <div>@ 2022 Martianplace</div>
       <div className="flex">
         <div>

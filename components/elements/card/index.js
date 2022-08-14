@@ -7,7 +7,7 @@ import { truncate } from "../../../helpers/textTruncate";
 
 const Card = ({ img, charName, description, moreDetail }) => {
   return (
-    <section className="border border-light-grey-2 card bg-line-light md:p-4 p-2 rounded-xl mt-8">
+    <section className="card bg-line-light md:p-4 p-2 rounded-xl mt-8">
       <div>
         <div>
           <h3 className="font-light mb-3">Game</h3>
@@ -17,7 +17,7 @@ const Card = ({ img, charName, description, moreDetail }) => {
         </div>
         {charName && (
           <div className="mt-3 mb-3">
-            <h2 className="font-bold text-pink">{charName || "Cyberpunkez"}</h2>
+            <h2 className="font-bold card-title-text">{charName || "Cyberpunkez"}</h2>
           </div>
         )}
 
