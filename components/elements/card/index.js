@@ -23,7 +23,7 @@ const Card = ({ img, charName, description, moreDetail }) => {
 
         {description && (
           <div className="mb-3">
-            <p className="font-light">
+            <p className="font-light text-base">
               {truncate(
                 (description ||
                   "In Night City, a mercenary known as V navigates a dystopian"), 60

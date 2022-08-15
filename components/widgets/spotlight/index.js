@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 import ReactPlayer from "react-player";
 import { mask } from "../../../assets/icons";
 
@@ -44,7 +44,7 @@ const Spotlight = () => {
               <h2 className="font-bold mb-2">Kasanova</h2>
             </div>
             <div className="mb-6">
-              <p className="font-light">
+              <p className="font-light text-base">
                 A romantic comedy about a single dad who falls in love with the
                 Mother of his sons Crush. It is a battle for love highlighting
                 Family, friendship and love.
@@ -52,7 +52,7 @@ const Spotlight = () => {
             </div>
           </div>
           <div>
-            <button className="w-[176px] py-2 rounded-[50px] gradient-color">
+            <button className="w-[176px] py-2 rounded-[50px] gradient-color text-base font-bold">
               Check Project
             </button>
           </div>

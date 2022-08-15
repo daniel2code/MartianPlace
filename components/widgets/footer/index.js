@@ -6,7 +6,7 @@ import { discord, marketplace, twitter } from '../../../assets/icons';
 const Footer = () => {
   return (
     <footer className="flex items-center justify-between text-white font-light py-6 px-5 border-t-2 border-light-grey-2">
-      <div>@ 2022 Martianplace</div>
+      <div className='text-base' >@ 2022 Martianplace</div>
       <div className="flex">
         <div>
           <Link href="https://mobile.twitter.com/martianplace1">
@@ -25,8 +25,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="md:flex items-center hidden">
-        <p>Privacy Policy</p>
-        <p className="ml-3">Terms of Service</p>
+        <p className='text-base'>Privacy Policy</p>
+        <p className="ml-3 text-base">Terms of Service</p>
       </div>
     </footer>
   );

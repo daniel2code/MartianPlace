@@ -23,7 +23,7 @@ const Profile = () => {
         </div>
         <div className="flex items-center">
           <button className="text-xs lg:text-sm px-4 py-2 rounded-md bg-transparent-black flex items-center ml-2">
-            <span>Edit Cover Photo</span>
+            <span className='text-xs'>Edit Cover Photo</span>
             <span className="ml-1 ">
               <Image
                 src={imgUploadIcon}
@@ -32,7 +32,7 @@ const Profile = () => {
             </span>
           </button>
           <button className="text-xs lg:text-sm p-4 rounded-md bg-transparent-black ml-4 px-4 py-2">
-            <span>Edit Profile</span>
+            <span className='text-xs' >Edit Profile</span>
             <span className="ml-1 ">
               <Image
                 src={penEdit}
