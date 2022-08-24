@@ -71,8 +71,21 @@ body {
 }
 
 .card {
-  width: 300px !important;
+  width: 100%;
   border: 1px solid #2d333d;
+}
+
+.cardBox{
+  width: 25%;
+}
+
+@media screen and (max-width: 1000px){
+.cardBox{
+}
+
+  .card{
+    width: 300px !important;
+  }
 }
 
 .landing-page-container {

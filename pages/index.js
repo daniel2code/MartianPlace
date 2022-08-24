@@ -52,7 +52,9 @@ const Home = () => {
                   )
                 )}
             </CardList>
+
             <Spotlight />
+
             <CardList icon={film} title="Film" border={true}>
               {filmNft &&
                 filmNft.map(

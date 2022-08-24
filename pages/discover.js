@@ -202,14 +202,13 @@ export default function Discover() {
   };
 
   return (
-    <section className="px-0 mt-12 ">
-      <div className="w-11/12 lg:w-4/5 m-auto">
+    <section className="px-0 mt-12 landing-page-container w-11/12 lg:w-4/5 m-auto">
+      <div className="">
         <h1 className="text-3xl font-bold">Discover</h1>
         <div className="mt-12">
           <TabGroup active={activeTab} setActive={setActiveTab} />
         </div>
       </div>
-
       <section>
         {activeTab === "all" && renderAllNfts()}
         {activeTab === "game" && renderGameNfts()}
