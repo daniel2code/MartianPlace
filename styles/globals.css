@@ -21,6 +21,10 @@ body {
   z-index: 0;
 }
 
+.__tsd{
+  color: white
+}
+
 .modal {
   @import "bootstrap/dist/css/bootstrap.css";
 
